@@ -34,6 +34,10 @@ test('Claude chooses monthly rather than annual price, omits Free without Claude
   assert.deepEqual(parseClaude([html(fixtures.claude)]), plans);
   assert.ok(plans.every(p => p.quota.window === 'week' && p.quota.group === 'claude-pro'));
   assert.match(plans[2].note.en, /Verified accounts/);
+  assert.deepEqual(plans.map(p=>p.caps[0].amount),[1,5,null]);
+  assert.equal(plans[2].caps[0].condition.zh,'认证后');
+  assert.throws(() => parseClaude([fixtures.claude.replaceAll('5x Pro usage every 5 hours and every week', '5x Pro usage every week')]), /five-hour multiplier/);
+  assert.throws(() => parseClaude([fixtures.claude.replaceAll(/No 5-hour limit for verified accounts/gi, 'No 5-hour limit for all accounts')]), /verification condition/);
   assert.throws(() => parseClaude([fixtures.claude.replace('$20 if billed monthly', 'contact sales if billed monthly')]), /monthly price/);
   assert.throws(() => parseClaude([fixtures.claude.replace('10x Pro usage every week', 'more Pro usage every week')]), /multiplier/);
 });
@@ -54,11 +58,13 @@ test('Copilot rejects a newly advertised individual plan without a total-credit 
 test('Codex preserves model-specific five-hour range, Pro tiers and limited Go access', () => {
   const plans = parseCodex([fixtures.codex, proDetails]);
   assert.deepEqual(plans.map(p => p.monthlyUsd), [0, 8, 20, 100, 200, 500]);
+  assert.equal(plans.find(p=>p.id==='plus').caps[0].status,'possible');
   assert.deepEqual(plans.find(p => p.id === 'plus').quota, { amount: 15, max: 160, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' });
   for (const p of plans.filter(p => p.id.startsWith('pro-'))) {
     assert.equal(p.quota.amount, null);
     assert.equal(p.quota.group, null);
     assert.match(p.note.en, /No five-hour limit/);
+    assert.equal(p.caps.find(c=>c.window==='5h').status,'none');
   }
   assert.deepEqual(plans.filter(p=>p.id.startsWith('pro-')).map(p=>p.name), ['Pro 100','Pro 200','Pro 500']);
   assert.match(plans.find(p=>p.id==='pro-200').usageSummary.en, /More than 100/);
@@ -189,4 +195,15 @@ test('fetch times out and sends format-specific Accept headers', async () => {
   for (const [url, expected] of [['https://cursor.com/pricing', 'text/html'], ['https://learn.chatgpt.com/docs/pricing.md', 'text/markdown'], ['https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans', 'text/markdown']]) {
     await fetchOfficial(url, { fetchImpl: async (value, options) => { assert.ok(options.headers.Accept.startsWith(expected)); assert.equal(options.redirect, 'manual'); return ok(); } });
   }
+});
+
+test('additional caps reject contradictions and preserve limits when the primary quantity is unknown',()=>{
+ const base={...canned(),quota:{amount:null,unit:'unknown',window:'week',group:null},caps:[{window:'5h',amount:2000,unit:'credits',status:'limited'}]};
+ validatePlans([base]);
+ assert.throws(()=>validatePlans([{...base,caps:[{...base.caps[0],window:'week'}]}]),/Duplicate/);
+ assert.throws(()=>validatePlans([{...base,caps:[{...base.caps[0],status:'none'}]}]),/quantity/);
+ assert.throws(()=>guardChanges([base],[{...base,caps:[]}]),/Cap scope changed/);
+ assert.throws(()=>guardChanges([base],[{...base,caps:[{...base.caps[0],amount:1000}]}]),/Cap decreased/);
+ const unlimited={...base,caps:[{window:'5h',amount:null,unit:'unknown',status:'none'}]};
+ assert.throws(()=>guardChanges([unlimited],[base]),/Cap scope changed/);
 });

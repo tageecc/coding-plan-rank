@@ -32,7 +32,8 @@ export function normalizeText(raw) {
 export const slug = value => value.toLowerCase().replace(/\+/g, '-plus').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const bi = (zh, en) => ({ zh, en });
 const unknown = () => ({ amount: null, unit: 'unknown', window: 'dynamic', group: null });
-const makePlan = (name, monthlyUsd, quota, note) => ({ id: slug(name), name, monthlyUsd, quota, note });
+export const usageCap = (window, amount=null, unit='unknown', status='limited', condition) => ({window, amount, unit, status, ...(condition ? {condition} : {})});
+const makePlan = (name, monthlyUsd, quota, note, caps=[]) => ({ id: slug(name), name, monthlyUsd, quota, note, caps });
 
 function uniquePlans(plans, required) {
   const result = new Map();
@@ -100,7 +101,10 @@ export function parseClaude(raws) {
       requireFact(/More usage than Free, every 5 hours and every week/.test(body), 'Claude Pro baseline changed');
       amount = 1;
     } else amount = oneNumber([...body.matchAll(/(\d+(?:\.\d+)?)x Pro usage every (?:5 hours and every )?week/g)], `Claude ${name} weekly multiplier`);
-    return makePlan(name, price, { amount, unit: 'relative', window: 'week', group: 'claude-pro' }, bi(`以 Pro 为 1×；Claude 与 Claude Code 共享周额度。${/No 5-hour limit/.test(body) ? '已验证账户无五小时限制。' : '另有五小时限制。'}`, `Pro = 1×; weekly allowance shared by Claude and Claude Code. ${/No 5-hour limit/.test(body) ? 'Verified accounts have no five-hour limit.' : 'Five-hour limits also apply.'}`));
+    const noFiveHourLimit=/No 5-hour limit/.test(body);
+    if(noFiveHourLimit) requireFact(/No 5-hour limit for verified accounts/i.test(text), 'Claude five-hour verification condition changed');
+    const fiveHourAmount=name==='Pro'?1:noFiveHourLimit?null:oneNumber([...body.matchAll(/(\d+(?:\.\d+)?)x Pro usage every 5 hours/g)], `Claude ${name} five-hour multiplier`);
+    return makePlan(name, price, { amount, unit: 'relative', window: 'week', group: 'claude-pro' }, bi(`以 Pro 为 1×；Claude 与 Claude Code 共享周额度。${noFiveHourLimit ? '已验证账户无五小时限制。' : '另有五小时限制。'}`, `Pro = 1×; weekly allowance shared by Claude and Claude Code. ${noFiveHourLimit ? 'Verified accounts have no five-hour limit.' : 'Five-hour limits also apply.'}`), [noFiveHourLimit ? usageCap('5h',null,'unknown','none',bi('认证后','Verified')) : usageCap('5h',fiveHourAmount,'relative')]);
   });
   // Claude Free does not include Claude Code and is outside this coding-plan list.
   return uniquePlans(plans.filter(plan => plan.id !== 'free'), ['pro', 'max', 'ultra']);
@@ -193,11 +197,11 @@ export function parseCodex(raws) {
       return prices.map(price => ({
         ...makePlan(`Pro ${price}`, price, {...unknown(),window:'week'}, bi(
           `无五小时限制；固定周用量未公开，与 ChatGPT Work 共享。${price===100?'低于 Pro 200 和 Pro 500；不含超高速模式。':price===200?'用量高于 Pro 100、低于 Pro 500；不含超高速模式。':'三档中用量最高，包含超高速模式；超高速会加快额度消耗。'}`,
-          `No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. ${price===100?'Less usage than Pro 200 and Pro 500; no Ultrafast.':price===200?'More usage than Pro 100, less than Pro 500; no Ultrafast.':'Highest usage of the three; includes Ultrafast, which consumes allowance faster.'}`)),
+          `No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. ${price===100?'Less usage than Pro 200 and Pro 500; no Ultrafast.':price===200?'More usage than Pro 100, less than Pro 500; no Ultrafast.':'Highest usage of the three; includes Ultrafast, which consumes allowance faster.'}`), [usageCap('5h',null,'unknown','none')]),
         usageSummary: price===100?bi('未公开','Undisclosed'):price===200?bi('高于100档','More than 100'):bi('最高；含超高速','Most; Ultrafast'),
       }));
     }
-    if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply.`))];
+    if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply.`), [usageCap('week',null,'unknown','possible')])];
     requireFact(['Free', 'Go'].includes(card.name), `New Codex card requires usage mapping: ${card.name}`);
     requireFact(/GPT-6 Luna at Standard speed in the desktop app, subject to rollout/.test(card.body), `Codex ${card.name} limited access wording changed`);
     return [makePlan(card.name, Number(card.price.slice(1)), unknown(), bi('免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。', 'Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed.'))];

@@ -1,9 +1,9 @@
-import { normalizeText, requireFact, slug } from './parsers.mjs';
+import { normalizeText, requireFact, slug, usageCap } from './parsers.mjs';
 
 const bi = (zh, en) => ({ zh, en });
 const number = value => Number(value.replace(/,/g, ''));
 const unknown = window => ({ amount: null, unit: 'unknown', window, group: null });
-const plan = (name, monthlyUsd, quota, note) => ({ id: slug(name), name, monthlyUsd, quota, note });
+const plan = (name, monthlyUsd, quota, note, caps=[]) => ({ id: slug(name), name, monthlyUsd, quota, note, caps });
 const source = (url, title) => ({ url, title });
 
 function normalizeOfficial(raw) {
@@ -43,7 +43,7 @@ export function parseAntigravity(raws) {
   requireFact(tiers.length === 2 && new Set(tiers.map(m => m[2])).size === 2, 'Google: Ultra price tiers changed');
   const note = bi('每五小时重置，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。', 'Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples.');
   requireFact(/Users not on Google AI Pro or Ultra plans/.test(limits) && /meaningful quota, refreshed weekly/.test(limits), 'Google: unpaid access changed');
-  return [plan('Free', 0, unknown('week'), bi('免费基础额度按周重置，固定数量未公开；无付费计划的优先额度。', 'Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority.')), plan('Google AI Pro', number(pro[1]), unknown('5h'), note), ...tiers.map(m => plan(`Google AI Ultra ${m[2]}x`, number(m[1]), unknown('5h'), note))];
+  return [plan('Free', 0, unknown('week'), bi('免费基础额度按周重置，固定数量未公开；无付费计划的优先额度。', 'Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority.')), plan('Google AI Pro', number(pro[1]), unknown('5h'), note, [usageCap('week')]), ...tiers.map(m => plan(`Google AI Ultra ${m[2]}x`, number(m[1]), unknown('5h'), note, [usageCap('week')]))];
 }
 
 export function parseDevin(raws) {
@@ -54,7 +54,7 @@ export function parseDevin(raws) {
     const price = matchOne(limits, new RegExp(`^${name} [^\\n$]+\\$([\\d,.]+)\\/month 1$`, 'gm'), `Devin ${name} monthly price`);
     const publicPrice = matchOne(prices, new RegExp(`^${name}(?:POPULAR|NEW)?\\n\\$([\\d,.]+)\\s*per month$`, 'gm'), `Devin ${name} public price`);
     requireFact(number(publicPrice[1]) === number(price[1]), `Devin ${name}: pricing and billing sources disagree`);
-    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'));
+    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'), name==='Pro'?[usageCap('day')]:[]);
   });
   const freeCard = section(prices, '\nFree\n', '\nPro', 'Devin free card');
   const freePrice = matchOne(freeCard, /^\$([\d,.]+)$/gm, 'Devin Free price');
@@ -72,7 +72,7 @@ export function parseGlm(raws) {
     const card = matchOne(body, /\$([\d,.]+)\s*\/\s*month\s*\$([\d,.]+)(?=\s|$)/g, `GLM ${name} regular monthly price`);
     const quota = matchOne(limits, new RegExp(`^${name} ([\\d,]+) ([\\d,]+)$`, 'gm'), `GLM ${name} credit allowances`);
     const fiveHour = number(quota[1]);
-    return plan(name, number(card[2]), { amount: number(quota[2]), unit: 'credits', window: 'week', group: 'glm-coding-credits' }, bi(`常规标价；另有每五小时 ${fiveHour.toLocaleString('en-US')} 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。`, `Regular list price; also capped at ${fiveHour.toLocaleString('en-US')} credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance.`));
+    return plan(name, number(card[2]), { amount: number(quota[2]), unit: 'credits', window: 'week', group: 'glm-coding-credits' }, bi(`常规标价；另有每五小时 ${fiveHour.toLocaleString('en-US')} 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。`, `Regular list price; also capped at ${fiveHour.toLocaleString('en-US')} credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance.`), [usageCap('5h',fiveHour,'credits')]);
   });
 }
 
@@ -88,7 +88,7 @@ function parseMinimax(raws, domestic) {
       : new RegExp(`^${name} \\d+(?:\\.\\d+)?% off \\$([\\d,.]+)\\/month$`, 'gm');
     const price = number(matchOne(prices, pricePattern, `${label} ${name} regular price`)[1]);
     const quota = matchOne(limits, new RegExp(`^${name} [^\\n]+? ([\\d.]+)${domestic ? ' 倍(?:（基准）)?' : '×'}$`, 'gm'), `${label} ${name} relative quota`);
-    const result = plan(name, domestic ? null : price, { amount: number(quota[1]), unit: 'relative', window: 'week', group: domestic ? 'minimax-cn-go' : 'minimax-intl-go' }, bi('官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。', 'Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.'));
+    const result = plan(name, domestic ? null : price, { amount: number(quota[1]), unit: 'relative', window: 'week', group: domestic ? 'minimax-cn-go' : 'minimax-intl-go' }, bi('官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。', 'Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.'), [usageCap('5h')]);
     if (domestic) Object.assign(result, { currency: 'CNY', monthlyPrice: price });
     return result;
   });
@@ -105,7 +105,7 @@ export function parseKimi(raws) {
   const names = matchOne(prices, /^Item (Plus Pro Max Ultra)$/gm, 'Kimi monthly-price columns')[1].split(' ');
   const values = [...row[1].matchAll(/\$([\d,.]+)\/month/g)].map(m => number(m[1]));
   requireFact(values.length === names.length, 'Kimi: monthly price columns do not align');
-  return names.map((name, i) => plan(name, values[i], unknown('5h'), bi('国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。', 'International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded.')));
+  return names.map((name, i) => plan(name, values[i], unknown('5h'), bi('国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。', 'International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded.'), [usageCap('month')]));
 }
 
 export function parseKiro(raws) {

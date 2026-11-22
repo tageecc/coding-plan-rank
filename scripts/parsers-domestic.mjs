@@ -1,10 +1,10 @@
-import {normalizeText, requireFact, slug} from './parsers.mjs';
+import {normalizeText, requireFact, slug, usageCap} from './parsers.mjs';
 
 const number = value => Number(value.replaceAll(',', ''));
 const bi = (zh, en) => ({zh, en});
 const source = url => ({url, title: 'Official plan documentation'});
 const quota = (amount, group, window='month') => ({amount, unit: 'credits', window, group});
-const plan = (name, monthlyPrice, q, note) => ({id: slug(name), name, currency: 'CNY', monthlyPrice, monthlyUsd: null, quota: q, note});
+const plan = (name, monthlyPrice, q, note, caps=[]) => ({id: slug(name), name, currency: 'CNY', monthlyPrice, monthlyUsd: null, quota: q, note, caps});
 const text = (raws, index=0) => {
   requireFact(typeof raws?.[index] === 'string' && raws[index].trim(), 'Missing domestic official source');
   return normalizeText(raws[index]).replaceAll('\u200b','').split('\n').map(line => line.replace(/^#{1,6}\s+/,'').replaceAll('**','')).filter(line => line.trim()).join('\n');
@@ -37,7 +37,7 @@ export function parseKimiChina(raws) {
   const s=text(raws), limits=text(raws,1);
   requireFact(/项目 Plus Pro Max Ultra/.test(s) && /每\s*5\s*小时/.test(limits) && /月总额度/.test(limits) && /新会员：取消每周额度限制/.test(limits), 'Kimi China plan or quota rules changed');
   const row=one(s,/^连续包月 ¥([\d,]+)\/月 ¥([\d,]+)\/月 ¥([\d,]+)\/月 ¥([\d,]+)\/月$/gm,'Kimi China monthly prices');
-  return ['Plus','Pro','Max','Ultra'].map((name,i)=>plan(name,number(row[i+1]),{amount:null,unit:'unknown',window:'5h',group:null},bi('滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。','Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers.')));
+  return ['Plus','Pro','Max','Ultra'].map((name,i)=>plan(name,number(row[i+1]),{amount:null,unit:'unknown',window:'5h',group:null},bi('滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。','Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers.'), [usageCap('month')]));
 }
 
 export function parseMimo(raws) {
@@ -68,7 +68,7 @@ export function parseVolc(raws) {
   const amounts=four(section(block,'月额度（AFP）','周额度（AFP）'),/^([\d,]+)$/gm,'Volc monthly AFP');
   const weeks=four(section(block,'周额度（AFP）','5小时额度（AFP）'),/^([\d,]+)$/gm,'Volc weekly AFP');
   const hours=four(section(block,'5小时额度（AFP）','日额度（AFP）'),/^([\d,]+)$/gm,'Volc five-hour AFP');
-  return ['Small','Medium','Large','Max'].map((name,i)=>plan(name,number(prices[i][1]),quota(number(amounts[i][1]),'volc-agent-afp'),bi(`Agent Plan 月度 AFP；文本另受每周 ${weeks[i][1]}、每五小时 ${hours[i][1]} AFP 上限约束，非 Token 数。`,`Agent Plan monthly AFP; text also capped at ${weeks[i][1]} AFP/week and ${hours[i][1]} AFP/five hours, not tokens.`)));
+  return ['Small','Medium','Large','Max'].map((name,i)=>plan(name,number(prices[i][1]),quota(number(amounts[i][1]),'volc-agent-afp'),bi(`Agent Plan 月度 AFP；文本另受每周 ${weeks[i][1]}、每五小时 ${hours[i][1]} AFP 上限约束，非 Token 数。`,`Agent Plan monthly AFP; text also capped at ${weeks[i][1]} AFP/week and ${hours[i][1]} AFP/five hours, not tokens.`), [usageCap('5h',number(hours[i][1]),'credits'),usageCap('week',number(weeks[i][1]),'credits')]));
 }
 
 export function parseGlmChina(raws) {
@@ -78,7 +78,7 @@ export function parseGlmChina(raws) {
   return ['Lite','Pro','Max'].map(name=> {
     const row=one(prices,new RegExp(`^${name} CNY ([\\d.]+) month$`,'gm'),'GLM China monthly price');
     const amount=one(limits,new RegExp(`^${name} 套餐 ([\\d,]+) ([\\d,]+)$`,'gm'),'GLM China credits');
-    return plan(name,number(row[1]),quota(number(amount[2]),'glm-cn','week'),bi(`每七天重置；另受每五小时 ${amount[1]} 积分上限约束；按模型和缓存抵扣。`,`Resets every seven days; also capped at ${amount[1]} credits per five hours, with model/cache-dependent deductions.`));
+    return plan(name,number(row[1]),quota(number(amount[2]),'glm-cn','week'),bi(`每七天重置；另受每五小时 ${amount[1]} 积分上限约束；按模型和缓存抵扣。`,`Resets every seven days; also capped at ${amount[1]} credits per five hours, with model/cache-dependent deductions.`), [usageCap('5h',number(amount[1]),'credits')]);
   });
 }
 

@@ -6,6 +6,46 @@
 
 ## 2026-11-22
 
+- **Google Antigravity · Google AI Pro**：周期限额更新 / Window caps updated
+- **Google Antigravity · Google AI Ultra 5x**：周期限额更新 / Window caps updated
+- **Google Antigravity · Google AI Ultra 20x**：周期限额更新 / Window caps updated
+- **Claude Code · Pro**：周期限额更新 / Window caps updated
+- **Claude Code · Max**：周期限额更新 / Window caps updated
+- **Claude Code · Ultra**：周期限额更新 / Window caps updated
+- **Codex · Plus**：周期限额更新 / Window caps updated
+- **Codex · Pro 100**：周期限额更新 / Window caps updated
+- **Codex · Pro 200**：周期限额更新 / Window caps updated
+- **Codex · Pro 500**：周期限额更新 / Window caps updated
+- **Devin / Windsurf · Pro**：周期限额更新 / Window caps updated
+- **GLM Coding Plan · Lite**：周期限额更新 / Window caps updated
+- **GLM Coding Plan · Pro**：周期限额更新 / Window caps updated
+- **GLM Coding Plan · Max**：周期限额更新 / Window caps updated
+- **GLM CN · Lite**：周期限额更新 / Window caps updated
+- **GLM CN · Pro**：周期限额更新 / Window caps updated
+- **GLM CN · Max**：周期限额更新 / Window caps updated
+- **Kimi Code · Plus**：周期限额更新 / Window caps updated
+- **Kimi Code · Pro**：周期限额更新 / Window caps updated
+- **Kimi Code · Max**：周期限额更新 / Window caps updated
+- **Kimi Code · Ultra**：周期限额更新 / Window caps updated
+- **Kimi CN · Plus**：周期限额更新 / Window caps updated
+- **Kimi CN · Pro**：周期限额更新 / Window caps updated
+- **Kimi CN · Max**：周期限额更新 / Window caps updated
+- **Kimi CN · Ultra**：周期限额更新 / Window caps updated
+- **MiniMax M Plan · Go**：周期限额更新 / Window caps updated
+- **MiniMax M Plan · Explore**：周期限额更新 / Window caps updated
+- **MiniMax M Plan · Build**：周期限额更新 / Window caps updated
+- **MiniMax M Plan 中国版 · Go**：周期限额更新 / Window caps updated
+- **MiniMax M Plan 中国版 · Explore**：周期限额更新 / Window caps updated
+- **MiniMax M Plan 中国版 · Build**：周期限额更新 / Window caps updated
+- **Volcengine · Small**：周期限额更新 / Window caps updated
+- **Volcengine · Medium**：周期限额更新 / Window caps updated
+- **Volcengine · Large**：周期限额更新 / Window caps updated
+- **Volcengine · Max**：周期限额更新 / Window caps updated
+
+[核验快照 / Snapshot](../data/history/2026-11-22T09-18-40-897Z-889b11a369.json)
+
+## 2026-11-22
+
 - **Google Antigravity · Free**：说明更新 / Notes updated
 - **Google Antigravity · Google AI Pro**：说明更新 / Notes updated
 - **Google Antigravity · Google AI Ultra 5x**：说明更新 / Notes updated

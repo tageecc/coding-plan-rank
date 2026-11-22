@@ -25,7 +25,7 @@ test('each README shows every plan in one four-column table with single-line cel
    assert.equal(row.children.length,4,`${file}: four columns`);
    for(const cell of row.children)assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
   }
-  assert.deepEqual([...table.querySelectorAll('th')].map(cell=>cell.textContent),file==='README.md'?['工具 / 套餐','月费（元）','重置周期','用量']:['Tool / plan','CNY / month','Reset cycle','Usage']);
+  assert.deepEqual([...table.querySelectorAll('th')].map(cell=>cell.textContent),file==='README.md'?['工具 / 套餐','月费（元）','5小时限额','周／月限额']:['Tool / plan','CNY/mo','5h cap','Week / month']);
   assert.ok(!/额度效率|Quota value|刷新/.test(body),`${file}: plain usage and reset wording`);
   const rows=[...table.querySelectorAll('tbody tr')];
   const labels=rows.map(row=>row.children[0].textContent);
@@ -34,15 +34,31 @@ test('each README shows every plan in one four-column table with single-line cel
   for(const brand of file==='README.md'?['Kimi','智谱','MiniMax']:['Kimi','GLM','MiniMax']) {
    const regions=file==='README.md'?['中国','国际']:['China','Global'];
    const indices=labels.map((label,i)=>label.startsWith(`${brand} `)?i:-1).filter(i=>i>=0);
-   assert.ok(regions.every(region=>indices.some(i=>labels[i].startsWith(`${brand} ${region} · `))),`${file}: both markets explicitly labeled for ${brand}`);
+   assert.ok(regions.every(region=>indices.some(i=>labels[i].startsWith(`${brand} ${region}·`))),`${file}: both markets explicitly labeled for ${brand}`);
    assert.equal(indices.at(-1)-indices[0]+1,indices.length,`${file}: regional plans grouped by brand`);
   }
-  const proRows=rows.filter(row=>/^Codex · Pro /.test(row.children[0].textContent));
-  assert.deepEqual(proRows.map(row=>row.children[0].textContent),['Codex · Pro 100','Codex · Pro 200','Codex · Pro 500']);
-  assert.ok(rows.every(row=>!/(?:\/月|\/周|\/5小时|\/mo|\/wk|\/5h)$/.test(row.children[3].textContent)),`${file}: period belongs in its own column`);
+  const proRows=rows.filter(row=>/^Codex·Pro /.test(row.children[0].textContent));
+  assert.deepEqual(proRows.map(row=>row.children[0].textContent),['Codex·Pro 100','Codex·Pro 200','Codex·Pro 500']);
+  const rowFor=prefix=>rows.find(row=>row.children[0].textContent.startsWith(prefix));
+  const volc=rowFor(file==='README.md'?'火山方舟·Small':'Volcengine·Small');
+  assert.match(volc.children[2].textContent,/2(?:,000|K)AFP/);
+  assert.match(volc.children[3].textContent,file==='README.md'?/7,000\/周.*2万\/月/:/7K\/w.*20K\/m/);
+  const plus=rowFor('Codex·Plus');
+  assert.match(plus.children[2].textContent,/15–160/);
+  assert.match(plus.children[3].textContent,file==='README.md'?/可能限额\/周/:/May apply\/w/);
+  assert.equal(rowFor('Codex·Pro 100').children[2].textContent,file==='README.md'?'不限':'No cap');
+  assert.equal(rowFor(file==='README.md'?'阿里云·Lite':'Aliyun·Lite').children[2].textContent,file==='README.md'?'未公开':'Unpub.');
+  const glm=rowFor(file==='README.md'?'智谱 国际·Lite':'GLM Global·Lite');
+  assert.match(glm.children[2].textContent,/2(?:,000|K)/);
+  assert.match(glm.children[3].textContent,file==='README.md'?/1万积分\/周/:/10Kcr\/w/);
+  const tencent=rowFor(file==='README.md'?'腾讯通用·Max':'Tencent·Max');
+  assert.match(tencent.children[3].textContent,file==='README.md'?/11,980积分\/月/:/11.98Kcr\/m/);
+  const kimi=rowFor(file==='README.md'?'Kimi 中国·Plus':'Kimi China·Plus');
+  assert.equal(kimi.children[2].textContent,file==='README.md'?'有，未公开':'Set; unpub.');
+  assert.match(kimi.children[3].textContent,file==='README.md'?/未公开\/月/:/Unpub.\/m/);
   assert.ok(!/👍|支持<|Support<|community-vote|issue-body-viewer/.test(body),`${file}: no voting UI`);
   const priceCells=[...table.querySelectorAll('tbody tr')].map(row=>row.children[1].textContent);
-  assert.ok(priceCells.every(value=>/^(?:(?:≈)?[\d,.]+元|汇率待核验)$/.test(value)),`${file}: every price in CNY`);
+  assert.ok(priceCells.every(value=>/^(?:(?:≈)?[\d,.]+|汇率待核验)$/.test(value)),`${file}: every price in CNY`);
   assert.equal(document.querySelectorAll('sup, [id^="source-"]').length,0,`${file}: no source footnotes`);
   assert.ok(!/\*\*(来源|Sources)\*\*/.test(body),`${file}: no sources section`);
  }

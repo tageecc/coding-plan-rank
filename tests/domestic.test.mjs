@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {domesticProviders, evidenceDomesticText} from '../scripts/parsers-domestic.mjs';
 import {extractGlmMonthly, loadGlmPricing} from '../scripts/glm-pricing.mjs';
-import {validatePlans, officialUrl} from '../scripts/update.mjs';
+import {validatePlans, officialUrl, guardChanges} from '../scripts/update.mjs';
 
 const fixture=JSON.parse(await readFile(new URL('./fixtures/domestic-official.json',import.meta.url),'utf8'));
 const bundle=await readFile(new URL('./fixtures/glm-price-config.txt',import.meta.url),'utf8');
@@ -48,7 +48,12 @@ test('Tencent Hy and general allowances never get mixed',()=>{
 test('Volc requires the secondary caps and known monthly reset rule',()=>{
  const raws=input('volc-cn');raws[0]=raws[0].replace('每周一 00:00:00 重置周限额','每月重置周限额');
  assert.throws(()=>definition('volc-cn').parse(raws),/resets changed/);
- assert.match(definition('volc-cn').parse(input('volc-cn'))[0].note.zh,/7,000.*2,000/);
+ const plans=definition('volc-cn').parse(input('volc-cn'));
+ assert.match(plans[0].note.zh,/7,000.*2,000/);
+ assert.deepEqual(plans[0].caps.map(c=>[c.window,c.amount]),[['5h',2000],['week',7000]]);
+ const changed=input('volc-cn');changed[0]=changed[0].replace(/(5小时额度（AFP）[\s\u200b]*)2,000/,(all,prefix)=>prefix+'1,500');
+ assert.equal(definition('volc-cn').parse(changed)[0].caps[0].amount,1500);
+ assert.throws(()=>guardChanges(plans,definition('volc-cn').parse(changed)),/Cap decreased/);
 });
 test('GLM extracts active V3 regular monthly data without evaluating remote code',()=>{
  assert.equal(extractGlmMonthly(bundle),'Lite CNY 118 month\nPro CNY 538 month\nMax CNY 1078 month');

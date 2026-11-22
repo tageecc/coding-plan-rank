@@ -110,6 +110,16 @@ export function validatePlans(plans) {
     requireFact(q.group === null || (typeof q.group === 'string' && q.group.length > 0), `Invalid quota group: ${plan.id}`);
     requireFact((q.amount === null) === (q.unit === 'unknown') && (q.amount !== null || q.group === null), `Unknown quota must not imply a comparable allowance: ${plan.id}`);
     requireFact(q.max === undefined || (typeof q.max === 'number' && Number.isFinite(q.max) && q.amount !== null && q.max >= q.amount), `Invalid quota range: ${plan.id}`);
+    const windows = new Set([q.window]);
+    requireFact(plan.caps === undefined || Array.isArray(plan.caps), `Invalid additional caps: ${plan.id}`);
+    for (const cap of plan.caps ?? []) {
+      requireFact(enums.window.has(cap.window) && cap.window !== 'dynamic' && !windows.has(cap.window), `Duplicate or invalid cap window: ${plan.id}`);
+      windows.add(cap.window);
+      requireFact(['limited','none','possible'].includes(cap.status) && enums.unit.has(cap.unit), `Invalid cap status or unit: ${plan.id}`);
+      requireFact(cap.amount === null || (Number.isFinite(cap.amount) && cap.amount > 0), `Invalid cap amount: ${plan.id}`);
+      requireFact((cap.amount === null) === (cap.unit === 'unknown') && (cap.status === 'limited' || cap.amount === null), `Invalid cap quantity: ${plan.id}`);
+      requireFact(cap.condition === undefined || validBi(cap.condition), `Invalid cap condition: ${plan.id}`);
+    }
   }
   return plans;
 }
@@ -119,15 +129,21 @@ export function guardChanges(previous, next) {
     const current = next.find(plan => plan.id === old.id);
     requireFact(current, `Known plan disappeared: ${old.name}`);
     requireFact((old.currency ?? 'USD') === (current.currency ?? 'USD'), `Plan currency changed: ${old.name}`);
-    if (old.quota.amount === null) continue;
-    const a = old.quota, b = current.quota;
-    requireFact(b.amount !== null && a.unit === b.unit && a.window === b.window && a.group === b.group, `Quota scope changed: ${old.name}`);
-    requireFact(b.amount >= a.amount && (a.max === undefined || (b.max !== undefined && b.max >= a.max)), `Quota decreased: ${old.name}; review required`);
+    if (old.quota.amount !== null) {
+      const a = old.quota, b = current.quota;
+      requireFact(b.amount !== null && a.unit === b.unit && a.window === b.window && a.group === b.group, `Quota scope changed: ${old.name}`);
+      requireFact(b.amount >= a.amount && (a.max === undefined || (b.max !== undefined && b.max >= a.max)), `Quota decreased: ${old.name}; review required`);
+    }
+    for (const a of old.caps ?? []) {
+      const b = current.caps?.find(cap => cap.window === a.window);
+      requireFact(b && b.status === a.status && JSON.stringify(a.condition) === JSON.stringify(b.condition), `Cap scope changed: ${old.name}; review required`);
+      if (a.amount !== null) requireFact(b.amount !== null && b.unit === a.unit && b.amount >= a.amount, `Cap decreased: ${old.name}; review required`);
+    }
   }
 }
 
 export const sha256 = text => createHash('sha256').update(text).digest('hex');
-const stablePlans = plans => [...plans].sort((a, b) => a.id.localeCompare(b.id)).map(p => ({ id: p.id, name: p.name, currency: p.currency ?? 'USD', price: p.currency === 'CNY' ? p.monthlyPrice : p.monthlyUsd, quota: { amount: p.quota.amount, unit: p.quota.unit, window: p.quota.window, group: p.quota.group, ...(p.quota.max === undefined ? {} : { max: p.quota.max }) }, note: p.note, ...(p.usageSummary ? {usageSummary:p.usageSummary} : {}) }));
+const stablePlans = plans => [...plans].sort((a, b) => a.id.localeCompare(b.id)).map(p => ({ id: p.id, name: p.name, currency: p.currency ?? 'USD', price: p.currency === 'CNY' ? p.monthlyPrice : p.monthlyUsd, quota: { amount: p.quota.amount, unit: p.quota.unit, window: p.quota.window, group: p.quota.group, ...(p.quota.max === undefined ? {} : { max: p.quota.max }) }, note: p.note, caps:[...(p.caps??[])].sort((a,b)=>a.window.localeCompare(b.window)), ...(p.usageSummary ? {usageSummary:p.usageSummary} : {}) }));
 
 export async function updateData({ providers, previous = { providers: [] }, load, now = new Date().toISOString(), evidence = evidenceText }) {
   requireFact(new Set(providers.map(p => p.id)).size === providers.length, 'Duplicate provider ID in registry');

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { extraProviders, evidenceExtraText, extraEvidenceText } from '../scripts/parsers-extra.mjs';
 import { validatePlans, officialUrl } from '../scripts/update.mjs';
 
-const fixture = JSON.parse(await readFile(new URL('../fixtures/extras-official.json', import.meta.url), 'utf8'));
+const fixture = JSON.parse(await readFile(new URL('./fixtures/extras-official.json', import.meta.url), 'utf8'));
 const provider = id => extraProviders.find(p => p.id === id);
 const raws = id => [...fixture.providers[id].raws];
 const parse = id => provider(id).parse(raws(id));

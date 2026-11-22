@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T13:03:09.998Z",
+  "updatedAt": "2026-11-22T13:37:13.545Z",
   "providers": [
     {
       "id": "cursor",
@@ -13,11 +13,19 @@
         {
           "url": "https://cursor.com/pricing",
           "title": "Cursor pricing"
+        },
+        {
+          "url": "https://cursor.com/help/models-and-usage/usage-limits",
+          "title": "Current weekly pool and reset rules"
+        },
+        {
+          "url": "https://forum.cursor.com/t/how-do-i-know-im-being-laggy-or-rate-limited/159982",
+          "title": "Cursor staff answer about hourly limits"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
+      "sourceHash": "57057fd1a5f4df1ccea303bcd7c9e593f3004a82047b67c2c79e262a1faff704",
       "plans": [
         {
           "id": "free",
@@ -26,14 +34,21 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "week",
             "group": null
           },
           "note": {
-            "zh": "免费用量有限，未公布可比额度。",
-            "en": "Limited free usage; no comparable allowance published."
+            "zh": "免费周额度，固定数量未公开；无固定五小时额度。",
+            "en": "Limited weekly free allowance, fixed quantity undisclosed; no fixed five-hour allowance."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "plus",
@@ -46,10 +61,17 @@
             "group": "cursor-grok-plus"
           },
           "note": {
-            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
-            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度，无固定五小时额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok, without a fixed five-hour allowance. Third-party models and Grok API billed separately."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "premium",
@@ -62,10 +84,17 @@
             "group": "cursor-grok-plus"
           },
           "note": {
-            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
-            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度，无固定五小时额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok, without a fixed five-hour allowance. Third-party models and Grok API billed separately."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "super",
@@ -78,10 +107,17 @@
             "group": "cursor-grok-plus"
           },
           "note": {
-            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
-            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度，无固定五小时额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok, without a fixed five-hour allowance. Third-party models and Grok API billed separately."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "ultra",
@@ -94,10 +130,17 @@
             "group": "cursor-grok-plus"
           },
           "note": {
-            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
-            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度，无固定五小时额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok, without a fixed five-hour allowance. Third-party models and Grok API billed separately."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     },
@@ -115,7 +158,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -210,11 +253,21 @@
         {
           "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans",
           "title": "About ChatGPT Pro tiers"
+        },
+        {
+          "url": "https://help.openai.com/en/articles/20001498-how-resets-work-in-codex",
+          "title": "Official reset windows by plan"
+        },
+        {
+          "url": "https://github.com/steipete/CodexBar/pull/4766",
+          "title": "Primary account observation: one Free account with a fixed 30-day window",
+          "kind": "observation",
+          "observedAt": "2026-10-25"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "7b4e32d3efea1869cb3673e1b453030a2c43811c6b76cafbbdace8b40890ee00",
+      "sourceHash": "f3f69c0c7c62ee77a1b06f474ce6754e17fdbbcf8f6b69621a168b2ea7b7f16d",
       "plans": [
         {
           "id": "free",
@@ -223,14 +276,25 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "30d",
             "group": null
           },
           "note": {
-            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
-            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+            "zh": "仅桌面 GPT-6 Luna Standard 灰度，不含 Cloud。2026-10-25 CodexBar 开发者公开实测：一个 Free 账户仅有固定30天窗口，无5小时窗口；不代表所有账户，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna Standard desktop rollout, excluding Cloud. CodexBar developer observation on 2026-10-25: one Free account reported only a fixed 30-day window, with no five-hour window. This is a sample, not a universal policy; quantity undisclosed."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none",
+              "condition": {
+                "zh": "实测",
+                "en": "sample"
+              }
+            }
+          ]
         },
         {
           "id": "go",
@@ -239,14 +303,21 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "month",
             "group": null
           },
           "note": {
-            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
-            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+            "zh": "仅桌面 GPT-6 Luna Standard 灰度，不含 Cloud。官方重置规则列为月额度，无五小时主额度；固定数量未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Cloud. Official reset rules identify a monthly allowance, without a main five-hour allowance; quantity undisclosed."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "plus",
@@ -260,15 +331,15 @@
             "group": "codex-gpt-6.1-sol"
           },
           "note": {
-            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
-            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另受每周额度约束。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. A weekly allowance also applies."
           },
           "caps": [
             {
               "window": "week",
               "amount": null,
               "unit": "unknown",
-              "status": "possible"
+              "status": "limited"
             }
           ]
         },
@@ -367,11 +438,15 @@
         {
           "url": "https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans",
           "title": "Plans for GitHub Copilot"
+        },
+        {
+          "url": "https://docs.github.com/api/article/body?pathname=/en/copilot/concepts/billing-and-usage/individuals/usage-limits",
+          "title": "Current dynamic rate limits and credit allowance"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
+      "sourceHash": "1c07f0c61eae45ab0c04bd74da31796190126ffbc4db8db77ab084390a739683",
       "plans": [
         {
           "id": "student",
@@ -384,10 +459,17 @@
             "group": null
           },
           "note": {
-            "zh": "仅限已验证学生；积分额度未公布。",
-            "en": "Verified students only; credit allowance not published."
+            "zh": "仅限已验证学生；积分额度未公布。 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。",
+            "en": "Verified students only; credit allowance not published. Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "dynamic"
+            }
+          ]
         },
         {
           "id": "free",
@@ -400,10 +482,17 @@
             "group": null
           },
           "note": {
-            "zh": "免费积分额度未公布。",
-            "en": "Free credit allowance not published."
+            "zh": "免费积分额度未公布。 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。",
+            "en": "Free credit allowance not published. Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "dynamic"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -416,10 +505,17 @@
             "group": "github-ai-credits"
           },
           "note": {
-            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
-            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model. Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "dynamic"
+            }
+          ]
         },
         {
           "id": "pro-plus",
@@ -432,10 +528,17 @@
             "group": "github-ai-credits"
           },
           "note": {
-            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
-            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model. Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "dynamic"
+            }
+          ]
         },
         {
           "id": "max",
@@ -448,10 +551,17 @@
             "group": "github-ai-credits"
           },
           "note": {
-            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
-            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model. Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "dynamic"
+            }
+          ]
         }
       ]
     },
@@ -477,7 +587,7 @@
           "title": "Antigravity free individual access"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "5a6ca6a70d08cd7b32b775543e472de39e75ce3b03491068fff13bb8d7c94ecc",
       "plans": [
@@ -492,10 +602,17 @@
             "group": null
           },
           "note": {
-            "zh": "免费基础额度按周重置，固定数量未公开；无付费计划的优先额度。",
-            "en": "Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority."
+            "zh": "按官方免费档规则为周额度，非付费档的五小时窗口；固定数量未公开。",
+            "en": "Official free-tier rules specify a weekly allowance rather than the paid five-hour window; fixed quantity undisclosed."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "google-ai-pro",
@@ -584,11 +701,15 @@
         {
           "url": "https://docs.devin.ai/admin/billing/self-serve",
           "title": "Devin self-serve billing and quotas"
+        },
+        {
+          "url": "https://docs.devin.ai/desktop/accounts/quota",
+          "title": "Desktop Free daily/weekly quota and legacy migration"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "7b70b825555d99cacce605f97c129c0bc17baed6ae09f9412accfccb40605dc2",
+      "sourceHash": "95ff307ba635fedda252edd8c78a3ad8a24112592aa5a18f7ebec7a235f869f8",
       "plans": [
         {
           "id": "free",
@@ -597,14 +718,27 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "week",
             "group": null
           },
           "note": {
-            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
-            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+            "zh": "免费桌面 Agent 用量按日、周重置，非五小时；固定数量未公开，模型及云端访问受限。",
+            "en": "Free Desktop agent allowance resets daily and weekly, not every five hours; quantity undisclosed, with restricted models and cloud access."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "day",
+              "amount": null,
+              "unit": "unknown",
+              "status": "limited"
+            },
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -617,10 +751,16 @@
             "group": null
           },
           "note": {
-            "zh": "按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
-            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+            "zh": "官方列出的用量窗口为日、周，非五小时；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Official allowance windows are calendar day/week, not five hours; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
           },
           "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            },
             {
               "window": "day",
               "amount": null,
@@ -672,7 +812,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
       "plans": [
@@ -765,7 +905,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -858,7 +998,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -957,7 +1097,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -1071,11 +1211,15 @@
         {
           "url": "https://kiro.dev/docs/billing/",
           "title": "Kiro billing-cycle reset rules"
+        },
+        {
+          "url": "https://kiro.dev/docs/billing/related-questions/",
+          "title": "FAQ: requests pause only when credits are exhausted"
         }
       ],
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
+      "sourceHash": "9297e76995424f00857e35c69a141a8c1b31709e9d0b045c2f2e16be4e94262e",
       "plans": [
         {
           "id": "free",
@@ -1088,10 +1232,17 @@
             "group": "kiro-credits"
           },
           "note": {
-            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
-            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+            "zh": "官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -1104,10 +1255,17 @@
             "group": "kiro-credits"
           },
           "note": {
-            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
-            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+            "zh": "官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro-plus",
@@ -1120,10 +1278,17 @@
             "group": "kiro-credits"
           },
           "note": {
-            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
-            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+            "zh": "官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro-max",
@@ -1136,10 +1301,17 @@
             "group": "kiro-credits"
           },
           "note": {
-            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
-            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+            "zh": "官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "power",
@@ -1152,10 +1324,17 @@
             "group": "kiro-credits"
           },
           "note": {
-            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
-            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+            "zh": "官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     },
@@ -1166,15 +1345,23 @@
         {
           "url": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview",
           "title": "Official plan documentation"
+        },
+        {
+          "url": "https://help.aliyun.com/zh/model-studio/token-plan-usage-quota",
+          "title": "Official plan documentation"
+        },
+        {
+          "url": "https://help.aliyun.com/zh/model-studio/token-plan-faq",
+          "title": "Official plan documentation"
         }
       ],
       "description": {
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "065ea341d8849ba8dd041f9dc7974b5f526af1e4d7b0adb24585777851f80491",
+      "sourceHash": "75236ad4a8fa6d9047d4e2bb46003e0ebac72453039efb2ed17fe7b8015a9076",
       "plans": [
         {
           "id": "lite",
@@ -1189,10 +1376,17 @@
             "group": "aliyun-personal"
           },
           "note": {
-            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
-            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+            "zh": "依据官方完整用量与限流规则整理：额度按订阅月计量，无固定五小时额度；仍有动态 TPM/RPM 及并发限制。模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Derived from the complete official usage/FAQ rules: subscription-month credits, without a fixed five-hour allowance; dynamic TPM/RPM and concurrency limits still apply. Model/cache/tool-based deductions, not tokens. Promotions and add-ons excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "essential",
@@ -1207,10 +1401,17 @@
             "group": "aliyun-personal"
           },
           "note": {
-            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
-            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+            "zh": "依据官方完整用量与限流规则整理：额度按订阅月计量，无固定五小时额度；仍有动态 TPM/RPM 及并发限制。模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Derived from the complete official usage/FAQ rules: subscription-month credits, without a fixed five-hour allowance; dynamic TPM/RPM and concurrency limits still apply. Model/cache/tool-based deductions, not tokens. Promotions and add-ons excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "standard",
@@ -1225,10 +1426,17 @@
             "group": "aliyun-personal"
           },
           "note": {
-            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
-            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+            "zh": "依据官方完整用量与限流规则整理：额度按订阅月计量，无固定五小时额度；仍有动态 TPM/RPM 及并发限制。模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Derived from the complete official usage/FAQ rules: subscription-month credits, without a fixed five-hour allowance; dynamic TPM/RPM and concurrency limits still apply. Model/cache/tool-based deductions, not tokens. Promotions and add-ons excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -1243,10 +1451,17 @@
             "group": "aliyun-personal"
           },
           "note": {
-            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
-            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+            "zh": "依据官方完整用量与限流规则整理：额度按订阅月计量，无固定五小时额度；仍有动态 TPM/RPM 及并发限制。模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Derived from the complete official usage/FAQ rules: subscription-month credits, without a fixed five-hour allowance; dynamic TPM/RPM and concurrency limits still apply. Model/cache/tool-based deductions, not tokens. Promotions and add-ons excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     },
@@ -1263,7 +1478,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "218f0c1e117b554004a134b514e85573cad4a2381026cccc2b6986ba68ad82e7",
       "plans": [
@@ -1410,7 +1625,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "45de6d87582f3d3d61d83bc6f5d100b5a19833cb5ffa8ffe27e80cad934b7e4c",
       "plans": [
@@ -1508,7 +1723,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
       "sourceHash": "db8fb122eaaf58659200c23170aea82e84456746fd81a1d1590c2856794b7c80",
       "plans": [
@@ -1621,15 +1836,19 @@
         {
           "url": "https://mimo.mi.com/static/docs/price/token-plan.md",
           "title": "Official plan documentation"
+        },
+        {
+          "url": "https://mimo.mi.com/docs/zh-CN/news/latest/token-plan-release",
+          "title": "Official plan documentation"
         }
       ],
       "description": {
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "01e53ebdb7ff1cd2d2db1fc568758d201a9f0e278a062abd23ab33f4da9c013b",
+      "sourceHash": "86ca82eee4e4801c80178e3c93c7ac70a7282650ae800dac6b3ddee61cfc3cc7",
       "plans": [
         {
           "id": "lite",
@@ -1644,10 +1863,17 @@
             "group": "mimo-cn"
           },
           "note": {
-            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
-            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+            "zh": "官方发布公告明确无五小时 Token 限额；按订阅月积分计量，各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Official release explicitly removes the five-hour token cap; subscription-month credits with model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "standard",
@@ -1662,10 +1888,17 @@
             "group": "mimo-cn"
           },
           "note": {
-            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
-            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+            "zh": "官方发布公告明确无五小时 Token 限额；按订阅月积分计量，各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Official release explicitly removes the five-hour token cap; subscription-month credits with model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -1680,10 +1913,17 @@
             "group": "mimo-cn"
           },
           "note": {
-            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
-            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+            "zh": "官方发布公告明确无五小时 Token 限额；按订阅月积分计量，各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Official release explicitly removes the five-hour token cap; subscription-month credits with model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "max",
@@ -1698,10 +1938,17 @@
             "group": "mimo-cn"
           },
           "note": {
-            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
-            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+            "zh": "官方发布公告明确无五小时 Token 限额；按订阅月积分计量，各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Official release explicitly removes the five-hour token cap; subscription-month credits with model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     },
@@ -1712,15 +1959,23 @@
         {
           "url": "https://cloud.tencent.com/product/tokenhub",
           "title": "Official plan documentation"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130060",
+          "title": "Official plan documentation"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130076",
+          "title": "Official plan documentation"
         }
       ],
       "description": {
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "976effc9d98734b082a437dd122949ef67d536410c3737977266a2ad4ebc8675",
+      "sourceHash": "972d8843483e55f34201326131ad2dceb009e5c5e0bee8614deae8a1c799d613",
       "plans": [
         {
           "id": "lite",
@@ -1735,10 +1990,17 @@
             "group": "tencent-hy"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "standard",
@@ -1753,10 +2015,17 @@
             "group": "tencent-hy"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -1771,10 +2040,17 @@
             "group": "tencent-hy"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "max",
@@ -1789,10 +2065,17 @@
             "group": "tencent-hy"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     },
@@ -1803,15 +2086,23 @@
         {
           "url": "https://cloud.tencent.com/product/tokenhub",
           "title": "Official plan documentation"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130060",
+          "title": "Official plan documentation"
+        },
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130076",
+          "title": "Official plan documentation"
         }
       ],
       "description": {
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T13:03:09.998Z",
+      "checkedAt": "2026-11-22T13:37:13.545Z",
       "status": "ok",
-      "sourceHash": "325ef55965a651e7910806c8b53ac3f3c8ea07dd79f185f575e063fb30bb50d1",
+      "sourceHash": "8aa91071be470226fb28b6482082d9162d78f8f7f78f71dacfb864eb371c96cc",
       "plans": [
         {
           "id": "lite",
@@ -1826,10 +2117,17 @@
             "group": "tencent-general"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "standard",
@@ -1844,10 +2142,17 @@
             "group": "tencent-general"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "pro",
@@ -1862,10 +2167,17 @@
             "group": "tencent-general"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         },
         {
           "id": "max",
@@ -1880,10 +2192,17 @@
             "group": "tencent-general"
           },
           "note": {
-            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
-            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+            "zh": "依据现行 Token Plan 完整额度与 FAQ 整理：按订阅月积分计量，无固定五小时额度；另有按套餐动态调整的并发速率限制。不能沿用旧 Coding Plan 请求窗口。模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Derived from current Token Plan quota/FAQ rules: subscription-month credits, without a fixed five-hour allowance; tier-dependent dynamic concurrency rate limits still apply. Legacy Coding Plan request windows do not apply. Model-dependent deductions; token estimates are not fixed allowances."
           },
-          "caps": []
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
         }
       ]
     }
@@ -1893,7 +2212,7 @@
     "quote": "CNY",
     "rate": 6.677707,
     "rateDate": "2026-11-20",
-    "checkedAt": "2026-11-22T13:03:09.998Z",
+    "checkedAt": "2026-11-22T13:37:13.545Z",
     "referenceRates": {
       "USD": 1.099,
       "CNY": 7.3388

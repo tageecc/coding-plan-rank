@@ -61,6 +61,9 @@ function oneNumber(matches, label) {
 
 export function parseCursor(raws) {
   const text = normalizeText(raws[0]);
+  const limits = normalizeText(raws[1]);
+  const answer = normalizeText(raws[2]);
+  requireFact(/included pool refreshes weekly/.test(limits) && /Cursor has no hourly or time usage limits/.test(answer) && !/(?:five|5)[ -]hour/i.test(limits), 'Cursor hourly or weekly usage rules changed');
   requireFact(/pool of AI usage shared across Cursor and Grok/i.test(text) && /allowance refreshes weekly/i.test(text), 'Cursor shared weekly usage wording changed');
   requireFact(/third-party models[^.]*do not include an allowance|do not include an allowance for third-party models/i.test(text) && /API list price/i.test(text), 'Cursor third-party billing wording changed');
   const section = between(text, '\nFree\n', 'Compare features across plans');
@@ -70,13 +73,13 @@ export function parseCursor(raws) {
     const name = match[1].trim();
     const body = section.slice(match.index, starts[i + 1]?.index ?? section.length);
     const price = Number(match[2].replace(/,/g, ''));
-    if (name === 'Free') return makePlan(name, price, unknown(), bi('免费用量有限，未公布可比额度。', 'Limited free usage; no comparable allowance published.'));
+    if (name === 'Free') return makePlan(name, price, {...unknown(),window:'week'}, bi('免费周额度，固定数量未公开；无固定五小时额度。', 'Limited weekly free allowance, fixed quantity undisclosed; no fixed five-hour allowance.'), [usageCap('5h',null,'unknown','none')]);
     let amount;
     if (name === 'Plus') {
       requireFact(/Shared\nAI usage pool/.test(body) && /Only Grok models/.test(body), 'Cursor Plus baseline changed');
       amount = 1;
     } else amount = oneNumber([...body.matchAll(/(\d+(?:\.\d+)?)x\nmore usage compared to Plus/g)], `Cursor ${name} multiplier`);
-    return makePlan(name, price, { amount, unit: 'relative', window: 'week', group: 'cursor-grok-plus' }, bi('以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。', 'Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately.'));
+    return makePlan(name, price, { amount, unit: 'relative', window: 'week', group: 'cursor-grok-plus' }, bi('以 Plus 为 1×；Cursor 与 Grok 共享周额度，无固定五小时额度。第三方模型及 Grok API 另计费。', 'Plus = 1×; weekly allowance shared by Cursor and Grok, without a fixed five-hour allowance. Third-party models and Grok API billed separately.'), [usageCap('5h',null,'unknown','none')]);
   });
   return uniquePlans(plans, ['free', 'plus', 'premium', 'super', 'ultra']);
 }
@@ -127,6 +130,8 @@ function markdownTables(text) {
 
 export function parseCopilot(raws) {
   const text = normalizeText(raws[0]);
+  const limits = normalizeText(raws[1]);
+  requireFact(/Rate limiting is a mechanism/.test(limits) && /Rate limits are temporary/.test(limits) && /allowance of AI credits/.test(limits) && !/(?:five|5)[ -]hour/i.test(limits), 'Copilot dynamic rate-limit rules changed');
   const section = between(text, '### GitHub AI Credits allowance by plan', '### Inline suggestions');
   const tables = markdownTables(section).filter(table => table.headers.includes('Total monthly AI credits'));
   requireFact(tables.length === 1, 'Copilot total monthly credit table missing or ambiguous');
@@ -155,12 +160,16 @@ export function parseCopilot(raws) {
       plans.unshift(makePlan(row[0].slice(8), 0, unknown(), bi(row[0].endsWith('Student') ? '仅限已验证学生；积分额度未公布。' : '免费积分额度未公布。', row[0].endsWith('Student') ? 'Verified students only; credit allowance not published.' : 'Free credit allowance not published.')));
     } else requireFact(covered.has(row[0]), `Copilot individual plan lacks a supported total credit row: ${row[0]}`);
   }
-  return uniquePlans(plans, ['free', 'student', 'pro', 'pro-plus', 'max']);
+  return uniquePlans(plans, ['free', 'student', 'pro', 'pro-plus', 'max']).map(plan => ({...plan, caps:[usageCap('5h',null,'unknown','dynamic')], note:bi(`${plan.note.zh} 另有动态速率限制；现行文档未规定统一五小时窗口，不等于不限流。`, `${plan.note.en} Dynamic capacity rate limits also apply; current docs do not specify a uniform five-hour window. This is not unlimited access.`)}));
 }
 
 export function parseCodex(raws) {
   const raw = raws[0];
   const proDetails = normalizeText(raws[1]);
+  const resets = normalizeText(raws[2]);
+  const freeObservation = normalizeText(raws[3]);
+  requireFact(/Go: The monthly allowance/.test(resets) && /Plus and Business Standard: The 5-hour and weekly allowances/.test(resets) && /Pro 100, Pro 200, and Pro 500: The weekly allowance/.test(resets), 'Codex plan reset windows changed');
+  requireFact(/Codex Free accounts report one window: primary with windowMinutes: 43200/.test(freeObservation) && /limit_window_seconds: 2592000/.test(freeObservation) && /a real Free account/.test(freeObservation) && /rather than a blanket Free-plan rule/.test(freeObservation), 'Codex Free account observation or its scope changed');
   const proSection = between(proDetails, '\nPro plans\n', '\nHow do I subscribe?');
   const proRows = [...proSection.matchAll(/^Pro (\d+) \$(\d+) (Not included|Included)$/gm)];
   requireFact(proRows.length === 3 && proRows.every(row => row[1] === row[2]) && proRows.map(row => row[1]).join(',') === '100,200,500', 'Codex Pro tier comparison changed');
@@ -201,22 +210,26 @@ export function parseCodex(raws) {
         usageSummary: price===100?bi('未公开','Undisclosed'):price===200?bi('高于100档','More than 100'):bi('最高；含超高速','Most; Ultrafast'),
       }));
     }
-    if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply.`), [usageCap('week',null,'unknown','possible')])];
+    if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另受每周额度约束。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. A weekly allowance also applies.`), [usageCap('week')])];
     requireFact(['Free', 'Go'].includes(card.name), `New Codex card requires usage mapping: ${card.name}`);
     requireFact(/GPT-6 Luna at Standard speed in the desktop app, subject to rollout/.test(card.body), `Codex ${card.name} limited access wording changed`);
-    return [makePlan(card.name, Number(card.price.slice(1)), unknown(), bi('免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。', 'Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed.'))];
+    const free = card.name === 'Free';
+    return [makePlan(card.name, Number(card.price.slice(1)), {...unknown(),window:free?'30d':'month'}, bi(
+      free?'仅桌面 GPT-6 Luna Standard 灰度，不含 Cloud。2026-10-25 CodexBar 开发者公开实测：一个 Free 账户仅有固定30天窗口，无5小时窗口；不代表所有账户，固定额度未公开。':'仅桌面 GPT-6 Luna Standard 灰度，不含 Cloud。官方重置规则列为月额度，无五小时主额度；固定数量未公开。',
+      free?'Limited to GPT-6 Luna Standard desktop rollout, excluding Cloud. CodexBar developer observation on 2026-10-25: one Free account reported only a fixed 30-day window, with no five-hour window. This is a sample, not a universal policy; quantity undisclosed.':'Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Cloud. Official reset rules identify a monthly allowance, without a main five-hour allowance; quantity undisclosed.'
+    ), [usageCap('5h',null,'unknown','none',free?bi('实测','sample'):undefined)])];
   });
   return uniquePlans(plans, ['free', 'go', 'plus', 'pro-100', 'pro-200', 'pro-500']);
 }
 
 export const coreProviders = [
-  { id: 'cursor', name: 'Cursor', product: 'Cursor', description: bi('集成 AI 智能体的代码编辑器，订阅额度与 Grok 共享。', 'Code editor with AI agents and a subscription allowance shared with Grok.'), sources: [{ url: 'https://cursor.com/pricing', title: 'Cursor pricing' }], parse: parseCursor },
+  { id: 'cursor', name: 'Cursor', product: 'Cursor', description: bi('集成 AI 智能体的代码编辑器，订阅额度与 Grok 共享。', 'Code editor with AI agents and a subscription allowance shared with Grok.'), sources: [{ url: 'https://cursor.com/pricing', title: 'Cursor pricing' }, {url:'https://cursor.com/help/models-and-usage/usage-limits',title:'Current weekly pool and reset rules'}, {url:'https://forum.cursor.com/t/how-do-i-know-im-being-laggy-or-rate-limited/159982',title:'Cursor staff answer about hourly limits'}], parse: parseCursor },
   { id: 'claude', name: 'Anthropic', product: 'Claude Code', description: bi('终端与开发工具中的编码智能体，与 Claude 订阅共享用量。', 'Coding agent for terminals and development tools, sharing usage with Claude subscriptions.'), sources: [{ url: 'https://claude.com/pricing', title: 'Claude plans and pricing' }], parse: parseClaude },
-  { id: 'codex', name: 'OpenAI', product: 'Codex', description: bi('覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。', 'Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances.'), sources: [{ url: 'https://learn.chatgpt.com/docs/pricing.md', title: 'ChatGPT Work and Codex pricing' }, { url: 'https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans', title: 'About ChatGPT Pro tiers' }], parse: parseCodex },
-  { id: 'copilot', name: 'GitHub', product: 'GitHub Copilot', description: bi('面向编辑器、终端与 GitHub 的编码助手，付费计划按 AI 积分计量。', 'Coding assistant for editors, terminals, and GitHub, with AI credits on paid plans.'), sources: [{ url: 'https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans', title: 'Plans for GitHub Copilot' }], parse: parseCopilot },
+  { id: 'codex', name: 'OpenAI', product: 'Codex', description: bi('覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。', 'Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances.'), sources: [{ url: 'https://learn.chatgpt.com/docs/pricing.md', title: 'ChatGPT Work and Codex pricing' }, { url: 'https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans', title: 'About ChatGPT Pro tiers' }, {url:'https://help.openai.com/en/articles/20001498-how-resets-work-in-codex',title:'Official reset windows by plan'}, {url:'https://github.com/steipete/CodexBar/pull/4766',title:'Primary account observation: one Free account with a fixed 30-day window',kind:'observation',observedAt:'2026-10-25'}], parse: parseCodex },
+  { id: 'copilot', name: 'GitHub', product: 'GitHub Copilot', description: bi('面向编辑器、终端与 GitHub 的编码助手，付费计划按 AI 积分计量。', 'Coding assistant for editors, terminals, and GitHub, with AI credits on paid plans.'), sources: [{ url: 'https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans', title: 'Plans for GitHub Copilot' }, {url:'https://docs.github.com/api/article/body?pathname=/en/copilot/concepts/billing-and-usage/individuals/usage-limits',title:'Current dynamic rate limits and credit allowance'}], parse: parseCopilot },
 ];
 
-// Evidence contains only bounded official excerpts; site navigation and model catalogs are omitted.
+// Keep bounded vendor excerpts and attributed firsthand observations; omit navigation and catalogs.
 export function evidenceText(id, raws) {
   const text = normalizeText(raws.join('\n\n'));
   if (id === 'cursor' || id === 'claude') {
@@ -224,9 +237,9 @@ export function evidenceText(id, raws) {
     const details = text.split('\n').filter(line => id === 'cursor'
       ? /Every tier includes|Plus includes Grok|API usage is billed separately/.test(line)
       : /Your activity across Claude|Claude Code is included in all paid plans/.test(line));
-    return `${cards}\n${[...new Set(details)].join('\n')}\n`;
+    return `${cards}\n${[...new Set(details)].join('\n')}\n${id==='cursor'?`${normalizeText(raws[1]).split('\n').filter(line=>/included pool refreshes weekly|What happens when I hit|keep working from/.test(line)).filter((line,i,lines)=>lines.indexOf(line)===i).join('\n')}\nCursor staff answer: ${normalizeText(raws[2]).split('\n').find(line=>line==='Cursor has no hourly or time usage limits')}\n`:''}`;
   }
-  if (id === 'copilot') return `${between(text, '### GitHub AI Credits allowance by plan', '### Inline suggestions')}\n`;
+  if (id === 'copilot') return `${between(text, '### GitHub AI Credits allowance by plan', '### Inline suggestions')}\n${normalizeText(raws[1])}\n`;
   if (id === 'codex') {
     const excerpt = between(raws[0], '## Pricing options', '## Speed multipliers')
       .replace(/<PricingCard\b([^>]*)>/g, (_, attrs) => {
@@ -234,7 +247,10 @@ export function evidenceText(id, raws) {
         return `\n${a.name ?? ''} ${a.price ?? ''} ${a.interval ?? ''}\n`;
       });
     const details = normalizeText(raws[1]);
-    return `${normalizeText(excerpt)}\n${between(details, '\nPro plans\n', '\nHow do I subscribe?')}\n`;
+    const resets=normalizeText(raws[2]);
+    const observed=normalizeText(raws[3]);
+    const sample=observed.split('\n').filter(line=>/Codex Free accounts report one window|limit_window_seconds: 2592000|a real Free account|rather than a blanket Free-plan rule/.test(line)).join('\n');
+    return `${normalizeText(excerpt)}\n${between(details, '\nPro plans\n', '\nHow do I subscribe?')}\n${between(resets,'A full banked reset restores','When you use the reset')}\nThird-party PRIMARY ACCOUNT OBSERVATION — observed 2026-10-25, not an OpenAI guarantee for every Free account:\n${sample}\n`;
   }
   requireFact(text.length <= 16000, `${id}: official evidence needs a bounded excerpt adapter`);
   return `${text}\n`;

@@ -39,13 +39,14 @@ function usageDisplay(provider,plan,lang) {
   const zh=lang==='zh';
   const caps=[{...plan.quota,status:'limited'},...(plan.caps??[])];
   const hour=caps.find(q=>q.window==='5h');
-  const status=!hour?'❓':hour.status==='none'?`❌${hour.condition?(zh?hour.condition.zh:'w/ID'):''}`:hour.status==='possible'?'❓':'✅';
-  const statusTitle=!hour?(zh?'官方未说明是否有5小时限制':'Official docs do not state whether a five-hour cap applies')
-    :hour.status==='none'?(zh?`${hour.condition?.zh??''}无5小时限制`:`No five-hour cap${hour.condition?' after verification':''}`)
-    :hour.status==='possible'?(zh?'可能有5小时限制':'A five-hour cap may apply')
+  if(!hour || hour.status==='possible')throw new Error(`Research required for five-hour policy: ${provider.id}/${plan.id}`);
+  const condition=hour.condition?(zh?hour.condition.zh:({Verified:'w/ID',sample:'obs.'}[hour.condition.en]??hour.condition.en)):'';
+  const status=hour.status==='none'?`❌${condition}`:hour.status==='dynamic'?(zh?'动态':'Dynamic'):'✅';
+  const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限制`:`No five-hour cap${condition?` (${condition==='w/ID'?'after verification':condition})`:''}`)
+    :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
     :zh?'有5小时限制':'Five-hour cap applies';
-  const periods=zh?{'5h':'5小时',week:'每周',month:'每月',day:'每天'}:{'5h':'5h',week:'Weekly',month:'Monthly',day:'Daily'};
-  const rows=['5h','day','week','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&(window!=='5h'||q.amount!==null))).map(q=>{
+  const periods=zh?{'5h':'5小时',week:'每周',month:'每月','30d':'30天',day:'每天'}:{'5h':'5h',week:'Weekly',month:'Monthly','30d':'30-day',day:'Daily'};
+  const rows=['5h','day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic'&&(window!=='5h'||q.amount!==null))).map(q=>{
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
     const amount=q.status==='possible'?(zh?'可能另限':'May apply')
       :q.amount!==null?allowance(provider,plan,lang,q)

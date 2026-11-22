@@ -45,6 +45,16 @@ test('Tencent Hy and general allowances never get mixed',()=>{
  assert.equal(definition('tencent-hy').parse(raws)[0].quota.amount,560);
  assert.notEqual(definition('tencent-cn').parse(raws)[0].quota.group,definition('tencent-hy').parse(raws)[0].quota.group);
 });
+test('monthly credit plans require quota/FAQ evidence; MiMo requires its explicit no-five-hour announcement',()=>{
+ for(const id of ['aliyun-cn','mimo-cn','tencent-hy','tencent-cn']) {
+  const p=definition(id),raws=input(id);
+  assert.ok(p.parse(raws).every(plan=>plan.caps.some(c=>c.window==='5h'&&c.status==='none')));
+  assert.throws(()=>p.parse([raws[0]]),/Missing domestic official source/);
+  if(id==='mimo-cn')raws[1]=raws[1].replace('无 5 小时 token 使用限额','有 5 小时 token 使用限额');
+  else raws[1]+='\n每5小时另有额度。';
+  assert.throws(()=>p.parse(raws),/rules changed|no-five-hour rule changed/);
+ }
+});
 test('Volc requires the secondary caps and known monthly reset rule',()=>{
  const raws=input('volc-cn');raws[0]=raws[0].replace('每周一 00:00:00 重置周限额','每月重置周限额');
  assert.throws(()=>definition('volc-cn').parse(raws),/resets changed/);

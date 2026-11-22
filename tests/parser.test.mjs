@@ -1,11 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { coreProviders, normalizeText, parseCursor, parseClaude, parseCodex, parseCopilot, evidenceText } from '../scripts/parsers.mjs';
-import { fetchOfficial, FetchError, officialUrl, validatePlans, guardChanges, sha256, updateData } from '../scripts/update.mjs';
+import { coreProviders, normalizeText, parseCursor as parseCursorSources, parseClaude, parseCodex as parseCodexSources, parseCopilot as parseCopilotSources, evidenceText } from '../scripts/parsers.mjs';
+import { fetchOfficial, FetchError, officialUrl, OBSERVATION_HOSTS, validatePlans, guardChanges, sha256, updateData } from '../scripts/update.mjs';
 
 const fixtures = Object.fromEntries(await Promise.all(['cursor.txt', 'claude.txt', 'codex.md', 'copilot.md'].map(async name => [name.split('.')[0], await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8')])));
 const proDetails = await readFile(new URL('fixtures/codex-pro.txt', import.meta.url), 'utf8');
+const limits = JSON.parse(await readFile(new URL('fixtures/limit-rules.json', import.meta.url),'utf8'));
+const parseCursor = raws => parseCursorSources([...raws,...limits.cursor]);
+const parseCopilot = raws => parseCopilotSources([...raws,...limits.copilot]);
+const parseCodex = raws => parseCodexSources([...raws,...limits.codex]);
 const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const html = s => `<main>${s.split('\n').map(line => `<p>${escape(line)}</p>`).join('')}</main>`;
 
@@ -58,7 +62,12 @@ test('Copilot rejects a newly advertised individual plan without a total-credit 
 test('Codex preserves model-specific five-hour range, Pro tiers and limited Go access', () => {
   const plans = parseCodex([fixtures.codex, proDetails]);
   assert.deepEqual(plans.map(p => p.monthlyUsd), [0, 8, 20, 100, 200, 500]);
-  assert.equal(plans.find(p=>p.id==='plus').caps[0].status,'possible');
+  assert.equal(plans.find(p=>p.id==='plus').caps[0].status,'limited');
+  assert.equal(plans.find(p=>p.id==='go').quota.window,'month');
+  const free=plans.find(p=>p.id==='free');
+  assert.equal(free.quota.window,'30d');
+  assert.equal(free.caps[0].condition.zh,'实测');
+  assert.match(free.note.en,/sample, not a universal policy/);
   assert.deepEqual(plans.find(p => p.id === 'plus').quota, { amount: 15, max: 160, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' });
   for (const p of plans.filter(p => p.id.startsWith('pro-'))) {
     assert.equal(p.quota.amount, null);
@@ -89,12 +98,26 @@ test('normalization strips executable, hidden-template and navigation text witho
 test('current fixtures produce compact evidence and valid schema', () => {
   for (const provider of coreProviders) {
     const raw = fixtures[provider.id];
-    const raws=provider.id==='codex'?[raw,proDetails]:[raw];
+    const raws=[raw,...(provider.id==='codex'?[proDetails]:[]),...(limits[provider.id]??[])];
     validatePlans(provider.parse(raws));
     const evidence = evidenceText(provider.id, raws);
     assert.ok(evidence.length > 100 && Buffer.byteLength(evidence) < 24000);
     assert.match(sha256(evidence), /^[a-f0-9]{64}$/);
   }
+});
+
+test('supplementary usage rules must remain valid; missing information cannot become no cap',()=>{
+  assert.throws(()=>parseCursorSources([fixtures.cursor]),/Empty official source/);
+  assert.throws(()=>parseCursorSources([fixtures.cursor,limits.cursor[0].replace('included pool refreshes weekly','included pool refreshes every five hours'),limits.cursor[1]]),/usage rules changed/);
+  assert.throws(()=>parseCodexSources([fixtures.codex,proDetails,limits.codex[0].replace('Go: The monthly allowance','Go: The weekly allowance'),limits.codex[1]]),/reset windows changed/);
+  assert.throws(()=>parseCodexSources([fixtures.codex,proDetails,limits.codex[0],limits.codex[1].replace('rather than a blanket Free-plan rule','all Free accounts follow this rule')]),/observation or its scope changed/);
+  const copilot=parseCopilot([fixtures.copilot]);
+  assert.ok(copilot.every(plan=>plan.caps[0].status==='dynamic'));
+  assert.throws(()=>parseCopilotSources([fixtures.copilot,limits.copilot[0]+'\nA five-hour allowance applies.']),/dynamic rate-limit rules changed/);
+  const observation=coreProviders.find(p=>p.id==='codex').sources.find(s=>s.kind==='observation');
+  assert.equal(observation.observedAt,'2026-10-25');
+  assert.throws(()=>officialUrl(observation.url),/allowlist/);
+  assert.equal(officialUrl(observation.url,OBSERVATION_HOSTS).hostname,'github.com');
 });
 
 const canned = () => ({ id: 'pro', name: 'Pro', monthlyUsd: 20, quota: { amount: 100, unit: 'credits', window: 'month', group: 'test-credits' }, note: { zh: '说明', en: 'Note' } });

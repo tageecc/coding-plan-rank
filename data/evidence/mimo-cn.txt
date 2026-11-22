@@ -29,3 +29,5 @@ Annual Quota
 132 billion Credits
 456 billion Credits
 984 billion Credits
+
+2. 无 5 小时 token 使用限额——支持集中消耗 token ，高强度养龙虾或编程，体验拉满、不被打断。

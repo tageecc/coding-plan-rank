@@ -80,11 +80,14 @@ test('each README groups plans under merged tool cells in one single-line table'
   const plus=rowFor('Codex','Plus');
   assert.equal(plus.status,'✅');
   assert.match(plus.allowances[0],/15[–-]160/);
-  assert.equal(plus.allowances[1],zh?'每周 可能另限':'Weekly May apply');
+  assert.equal(plus.allowances[1],zh?'每周 未公布':'Weekly Not stated');
   assert.equal(rowFor('Codex','Pro 100').status,'❌');
-  const unknown=rowFor(zh?'阿里云':'Aliyun','Lite');
-  assert.equal(unknown.status,'❓');
-  assert.match(unknown.statusTitle,/未说明是否有|do not state whether/);
+  for(const tool of ['Cursor','Kiro',zh?'阿里云':'Aliyun',zh?'小米 MiMo':'MiMo',zh?'腾讯通用':'Tencent',zh?'腾讯混元':'Tencent Hy','Antigravity','Devin'])assert.ok(rows.filter(row=>row.tool===tool).filter(row=>tool!=='Antigravity'||[zh?'免费':'Free'].includes(row.plan)).every(row=>row.status==='❌'),`${file}: researched hourly policy for ${tool}`);
+  assert.equal(rowFor('Codex','Go'+(zh?'·桌面':'·PC')).status,'❌');
+  const free=rowFor('Codex',zh?'免费·桌面':'Free·PC');
+  assert.equal(free.status,zh?'❌实测':'❌obs.');
+  assert.deepEqual(free.allowances,zh?['30天 未公布']:['30-day Not stated']);
+  assert.ok(rows.filter(row=>row.tool==='Copilot').every(row=>row.status===(zh?'动态':'Dynamic')));
   assert.equal(rowFor('Claude Code','Ultra').status,zh?'❌认证后':'❌w/ID');
   assert.match(rowFor('Claude Code','Ultra').statusTitle,/认证后无|after verification/);
   const glm=rowFor(zh?'智谱 国际':'GLM Global','Lite');
@@ -99,9 +102,10 @@ test('each README groups plans under merged tool cells in one single-line table'
   const devin=rowFor('Devin','Pro');
   assert.deepEqual(devin.allowances,zh?['每天 未公布','每周 未公布']:['Daily Not stated','Weekly Not stated']);
   for(const row of rows) {
-   assert.match(row.status,/^[✅❌❓]/,`${file}: five-hour column shows existence, not a quota`);
+   assert.match(row.status,/^(?:[✅❌]|动态$|Dynamic$)/,`${file}: five-hour column shows a researched policy`);
    assert.ok(!row.allowances.some(value=>/[·／/]/.test(value)),`${file}: periods are separate rows, not slash-separated codes`);
   }
+  assert.ok(!body.includes('❓')&&!body.includes('未说明'),`${file}: no unexplored-policy placeholders`);
   assert.match(rowFor('Codex',zh?'免费·桌面':'Free·PC').plan,zh?/桌面/:/PC/);
   assert.ok(!/👍|支持<|Support<|community-vote|issue-body-viewer/.test(body),`${file}: no voting UI`);
   assert.ok(rows.every(row=>/^(?:[\d.]+|汇率待核验)$/.test(row.price)),`${file}: every price in CNY`);

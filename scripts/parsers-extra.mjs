@@ -43,23 +43,27 @@ export function parseAntigravity(raws) {
   requireFact(tiers.length === 2 && new Set(tiers.map(m => m[2])).size === 2, 'Google: Ultra price tiers changed');
   const note = bi('每五小时重置，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。', 'Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples.');
   requireFact(/Users not on Google AI Pro or Ultra plans/.test(limits) && /meaningful quota, refreshed weekly/.test(limits), 'Google: unpaid access changed');
-  return [plan('Free', 0, unknown('week'), bi('免费基础额度按周重置，固定数量未公开；无付费计划的优先额度。', 'Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority.')), plan('Google AI Pro', number(pro[1]), unknown('5h'), note, [usageCap('week')]), ...tiers.map(m => plan(`Google AI Ultra ${m[2]}x`, number(m[1]), unknown('5h'), note, [usageCap('week')]))];
+  const freeRules=section(limits,'Users not on Google AI Pro or Ultra plans','The baseline rate limits','Google free reset rules');
+  requireFact(/A weekly rate limit/.test(freeRules) && !/(?:five|5)[ -]hour/i.test(freeRules) && /Baseline agent quota refreshed weekly/.test(access),'Google: free weekly-only quota changed');
+  return [plan('Free', 0, unknown('week'), bi('按官方免费档规则为周额度，非付费档的五小时窗口；固定数量未公开。', 'Official free-tier rules specify a weekly allowance rather than the paid five-hour window; fixed quantity undisclosed.'),[usageCap('5h',null,'unknown','none')]), plan('Google AI Pro', number(pro[1]), unknown('5h'), note, [usageCap('week')]), ...tiers.map(m => plan(`Google AI Ultra ${m[2]}x`, number(m[1]), unknown('5h'), note, [usageCap('week')]))];
 }
 
 export function parseDevin(raws) {
   const prices = text(raws, 0, 'Devin');
   const limits = text(raws, 1, 'Devin');
+  const freeLimits = text(raws, 2, 'Devin');
+  requireFact(/Free: Wait until your next daily or weekly reset/.test(freeLimits) && /quota resets on a daily and weekly basis, based on the calendar date/.test(freeLimits) && !/(?:five|5)[ -]hour/i.test(limits+freeLimits),'Devin: free daily/weekly quota rules changed');
   requireFact(/Pro has a daily and weekly allowance/.test(limits) && /Max has a weekly allowance only, with no daily cap/.test(limits) && /calendar basis/.test(limits), 'Devin: calendar quota rules changed');
   const result = ['Pro', 'Max'].map(name => {
     const price = matchOne(limits, new RegExp(`^${name} [^\\n$]+\\$([\\d,.]+)\\/month 1$`, 'gm'), `Devin ${name} monthly price`);
     const publicPrice = matchOne(prices, new RegExp(`^${name}(?:POPULAR|NEW)?\\n\\$([\\d,.]+)\\s*per month$`, 'gm'), `Devin ${name} public price`);
     requireFact(number(publicPrice[1]) === number(price[1]), `Devin ${name}: pricing and billing sources disagree`);
-    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'), name==='Pro'?[usageCap('day')]:[usageCap('5h',null,'unknown','none')]);
+    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '官方列出的用量窗口为日、周，非五小时；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Official allowance windows are calendar day/week, not five hours; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'), [usageCap('5h',null,'unknown','none'),...(name==='Pro'?[usageCap('day')]:[])]);
   });
   const freeCard = section(prices, '\nFree\n', '\nPro', 'Devin free card');
   const freePrice = matchOne(freeCard, /^\$([\d,.]+)$/gm, 'Devin Free price');
   requireFact(number(freePrice[1]) === 0 && /Light quota to code with agents/.test(freeCard) && /The Free plan lets you try Devin with limited usage/.test(limits), 'Devin free agent access changed');
-  return [plan('Free', 0, unknown('dynamic'), bi('免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。', 'Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access.')), ...result];
+  return [plan('Free', 0, unknown('week'), bi('免费桌面 Agent 用量按日、周重置，非五小时；固定数量未公开，模型及云端访问受限。', 'Free Desktop agent allowance resets daily and weekly, not every five hours; quantity undisclosed, with restricted models and cloud access.'),[usageCap('day'),usageCap('5h',null,'unknown','none')]), ...result];
 }
 
 export function parseGlm(raws) {
@@ -111,23 +115,25 @@ export function parseKimi(raws) {
 export function parseKiro(raws) {
   const prices = text(raws, 0, 'Kiro');
   const limits = text(raws, 1, 'Kiro');
+  const faq = text(raws, 2, 'Kiro');
+  requireFact(/Requests pause only when you have no credits left/.test(faq) && /Free tier has fixed monthly limits/.test(faq) && !/(?:five|5)[ -]hour/i.test(limits+faq),'Kiro: monthly credit exhaustion rules changed');
   requireFact(/plan credits renew at the beginning of the next billing cycle/.test(limits) && /Credits are consumed fractionally/.test(limits), 'Kiro: monthly credit reset or unit changed');
   const cards = [...prices.matchAll(/^KIRO (FREE|PRO\+|PRO MAX|PRO|POWER)\n\$([\d,.]+)\nper (?:user \/ )?month\n([\d,]+) credits$/gm)];
   requireFact(cards.length === 5 && new Set(cards.map(m => m[1])).size === 5, 'Kiro: individual price/credit cards changed');
   return cards.map(m => {
     const name = m[1] === 'PRO+' ? 'Pro+' : m[1].toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
-    return plan(name, number(m[2]), { amount: number(m[3]), unit: 'credits', window: 'month', group: 'kiro-credits' }, bi('订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。', 'Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded.'));
+    return plan(name, number(m[2]), { amount: number(m[3]), unit: 'credits', window: 'month', group: 'kiro-credits' }, bi('官方 FAQ 说明仅积分全部耗尽才暂停请求，按月重置，无五小时额度；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。', 'Official FAQ says requests pause only when all credits are exhausted; monthly reset without a five-hour allowance. Tasks consume fractional credits, not one credit per request. Trial and purchased credits excluded.'),[usageCap('5h',null,'unknown','none')]);
   });
 }
 
 export const extraProviders = [
   { id: 'antigravity', name: 'Google', product: 'Google Antigravity', description: bi('Google AI 订阅包含的编码智能体；不沿用已停止销售的 Code Assist 套餐。', 'Coding agent included with Google AI subscriptions; excludes discontinued Code Assist plans.'), sources: [source('https://gemini.google/us/subscriptions/', 'Google AI US monthly subscriptions'), source('https://antigravity.google/docs/plans', 'Antigravity plans and usage limits'), source('https://antigravity.google/pricing', 'Antigravity free individual access')], parse: parseAntigravity },
-  { id: 'devin', name: 'Cognition', product: 'Devin / Windsurf', description: bi('Windsurf 官网现指向 Devin；涵盖桌面、CLI 与云端。', 'Windsurf pricing now redirects to Devin, covering Desktop, CLI and cloud.'), sources: [source('https://devin.ai/pricing', 'Devin plans and pricing'), source('https://docs.devin.ai/admin/billing/self-serve', 'Devin self-serve billing and quotas')], parse: parseDevin },
+  { id: 'devin', name: 'Cognition', product: 'Devin / Windsurf', description: bi('Windsurf 官网现指向 Devin；涵盖桌面、CLI 与云端。', 'Windsurf pricing now redirects to Devin, covering Desktop, CLI and cloud.'), sources: [source('https://devin.ai/pricing', 'Devin plans and pricing'), source('https://docs.devin.ai/admin/billing/self-serve', 'Devin self-serve billing and quotas'),source('https://docs.devin.ai/desktop/accounts/quota','Desktop Free daily/weekly quota and legacy migration')], parse: parseDevin },
   { id: 'glm', name: 'Z.ai', product: 'GLM Coding Plan', description: bi('GLM 编码订阅国际版，支持多种智能体工具。', 'International GLM coding subscription for multiple agent tools.'), sources: [source('https://zcode.z.ai/en', 'ZCode GLM regular and discounted plan prices'), source('https://docs.z.ai/devpack/overview', 'GLM Coding Plan credit allowances and reset rules')], parse: parseGlm },
   { id: 'minimax', name: 'MiniMax', product: 'MiniMax M Plan', description: bi('MiniMax 国际版编码与多模态共享订阅。', 'MiniMax international subscription shared by coding and multimodal tools.'), sources: [source('https://platform.minimax.io/docs/m-plan/monthly-offer', 'M Plan regular renewal prices; launch offer ended'), source('https://platform.minimax.io/docs/m-plan/faq', 'M Plan international tiers and usage windows')], parse: parseMinimaxInternational },
   { id: 'minimax-cn', name: 'MiniMax 中国', product: 'MiniMax M Plan 中国版', description: bi('人民币计价的 MiniMax 中国版；价格和档位倍数与国际版不同。', 'CNY-billed MiniMax China plans; prices and tier multipliers differ from international plans.'), sources: [source('https://platform.minimax.cn/docs/m-plan/monthly-offer', 'M Plan 中国版常规续费价；首月活动已结束'), source('https://platform.minimax.cn/docs/m-plan/faq', 'M Plan 中国版档位与用量规则')], parse: parseMinimaxChina },
   { id: 'kimi', name: 'Moonshot AI', product: 'Kimi Code', description: bi('Kimi 国际版会员中的编码权益，与其他会员服务共享额度。', 'Coding benefits in international Kimi membership, sharing allowance with other member services.'), sources: [source('https://www.kimi.ai/resources/coding-plan', 'Kimi international monthly plan prices'), source('https://www.kimi.com/en/help/kimi-code/benefits', 'Kimi Code new and legacy membership limits')], parse: parseKimi },
-  { id: 'kiro', name: 'AWS', product: 'Kiro', description: bi('AWS 编码智能体，按月提供可按小数消耗的积分。', 'AWS coding agent with monthly, fractionally consumed credits.'), sources: [source('https://kiro.dev/pricing/', 'Kiro individual monthly prices and credits'), source('https://kiro.dev/docs/billing/', 'Kiro billing-cycle reset rules')], parse: parseKiro },
+  { id: 'kiro', name: 'AWS', product: 'Kiro', description: bi('AWS 编码智能体，按月提供可按小数消耗的积分。', 'AWS coding agent with monthly, fractionally consumed credits.'), sources: [source('https://kiro.dev/pricing/', 'Kiro individual monthly prices and credits'), source('https://kiro.dev/docs/billing/', 'Kiro billing-cycle reset rules'),source('https://kiro.dev/docs/billing/related-questions/','FAQ: requests pause only when credits are exhausted')], parse: parseKiro },
 ];
 
 // The updater can use this instead of retaining navigation-heavy whole pages.
@@ -135,12 +141,12 @@ export function evidenceExtraText(id, raws) {
   const combined = raws.map(normalizeOfficial);
   switch (id) {
     case 'antigravity': return `${section(combined[2], 'For Individuals', 'For Builders', 'Google free access')}\n${section(combined[0], '\nGoogle AI Pro\n', '\nGet started\n', 'Google Pro evidence')}\n${section(combined[0], '\nGoogle AI Ultra\n', '\nGet started\n', 'Google Ultra evidence')}\n${section(combined[1], 'Baseline quota', 'Overages', 'Google quota evidence')}\n`;
-    case 'devin': return `${section(combined[0], '\nFree\n', '\nPro', 'Devin Free evidence')}\n${combined[1].split('\n').filter(line => /^(Pro Individual users|Max Power users)/.test(line)).join('\n')}\n${section(combined[1], 'How quotas work', 'On-demand credits', 'Devin quota evidence').split('\n').filter(line => !line.startsWith('Teams ')).join('\n')}\n`;
+    case 'devin': return `${section(combined[0], '\nFree\n', '\nPro', 'Devin Free evidence')}\n${combined[1].split('\n').filter(line => /^(Pro Individual users|Max Power users)/.test(line)).join('\n')}\n${section(combined[1], 'How quotas work', 'On-demand credits', 'Devin quota evidence').split('\n').filter(line => !line.startsWith('Teams ')).join('\n')}\nDesktop quota rules, used for Free only; current Pro/Max use self-serve billing rules above:\n${section(combined[2],'When you hit your limit','Checking your remaining quota','Devin Free reset evidence')}\n`;
     case 'glm': return `${section(combined[0], 'GLM Coding\nLite\n', '\nCapabilities\n', 'GLM evidence')}\n${section(combined[1], 'Usage Credit Allowance', 'Estimated Token Allowance', 'GLM quota evidence')}\n`;
     case 'minimax': return `Regular renewal prices; first-month launch offer ended.\n${section(combined[0], 'Tier First-month discount Regular price', 'New purchases:', 'MiniMax prices')}\n${section(combined[1], 'Tier Intended usage', 'Which models does M Plan include?', 'MiniMax relative allowance')}\n${section(combined[1], 'Do text, speech, video, and image models', 'Do different models', 'MiniMax shared scope')}\n${section(combined[1], 'How is usage reset?', 'Does unused quota carry over?', 'MiniMax resets')}\n`;
     case 'minimax-cn': return `常规续费价；首月活动已结束。\n${section(combined[0], '档位 首月活动折扣 原价', '新购：', 'MiniMax 中国版价格')}\n${section(combined[1], '档位 使用定位', 'M Plan 包含哪些模型', 'MiniMax 中国版相对额度')}\n${section(combined[1], '文本、声音、视频和图片的额度是分开的吗？', '不同模型的额度消耗', 'MiniMax 中国版共享范围')}\n${section(combined[1], '用量是如何重置的？', '没用完的额度会累积或结转吗？', 'MiniMax 中国版刷新')}\n`;
     case 'kimi': return `${section(combined[0], 'Item Plus Pro Max Ultra', 'Get coding plan', 'Kimi evidence')}\n${section(combined[1], 'Quota and Limits', 'Extra Usage', 'Kimi quota evidence')}\n`;
-    case 'kiro': return `${section(combined[0], '\nKIRO FREE\n', '\nTeams and enterprises\n', 'Kiro evidence')}\n${combined[1].split('\n').filter(line => /^Credits are consumed fractionally/.test(line)).join('\n')}\n${section(combined[1], 'Credit reset', 'Page updated:', 'Kiro reset evidence')}\n`;
+    case 'kiro': return `${section(combined[0], '\nKIRO FREE\n', '\nTeams and enterprises\n', 'Kiro evidence')}\n${combined[1].split('\n').filter(line => /^Credits are consumed fractionally/.test(line)).join('\n')}\n${section(combined[1], 'Credit reset', 'Page updated:', 'Kiro reset evidence')}\n${section(combined[2],'What happens when I reach the monthly limit','How does the free trial work?','Kiro exhaustion evidence')}\n`;
     default: throw new Error(`Unknown extra provider: ${id}`);
   }
 }

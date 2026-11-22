@@ -9,7 +9,7 @@ import { loadGlmPricing } from './glm-pricing.mjs';
 import { updateExchangeRate } from './exchange-rate.mjs';
 
 export const OFFICIAL_HOSTS = new Set([
-  'cursor.com', 'www.cursor.com', 'claude.com', 'www.claude.com',
+  'cursor.com', 'www.cursor.com', 'forum.cursor.com', 'claude.com', 'www.claude.com',
   'learn.chatgpt.com', 'help.openai.com', 'docs.github.com',
   'windsurf.com', 'www.windsurf.com', 'docs.windsurf.com',
   'zed.dev', 'www.zed.dev', 'docs.zed.dev',
@@ -24,6 +24,8 @@ export const OFFICIAL_HOSTS = new Set([
   'www.ecb.europa.eu', 'help.aliyun.com', 'docs.volcengine.com', 'docs.bigmodel.cn', 'static.bigmodel.cn', 'mimo.mi.com', 'cloud.tencent.com',
   'zcode.z.ai', 'platform.minimax.cn', 'kimi.ai', 'www.kimi.ai', 'kiro.dev',
 ]);
+// A firsthand account observation is evidence of that sample, not a vendor policy.
+export const OBSERVATION_HOSTS = new Set(['github.com']);
 export const MAX_BYTES = 3 * 1024 * 1024;
 
 export class FetchError extends Error {
@@ -90,7 +92,7 @@ export async function fetchOfficial(source, {
   throw lastError;
 }
 
-const enums = { unit: new Set(['relative', 'credits', 'messages', 'requests', 'unknown']), window: new Set(['week', 'month', '5h', 'day', 'dynamic']) };
+const enums = { unit: new Set(['relative', 'credits', 'messages', 'requests', 'unknown']), window: new Set(['week', 'month', '30d', '5h', 'day', 'dynamic']) };
 const validBi = value => value && typeof value.zh === 'string' && value.zh.length > 0 && typeof value.en === 'string' && value.en.length > 0;
 export function validatePlans(plans) {
   requireFact(Array.isArray(plans) && plans.length > 0, 'No supported plans extracted');
@@ -115,7 +117,8 @@ export function validatePlans(plans) {
     for (const cap of plan.caps ?? []) {
       requireFact(enums.window.has(cap.window) && cap.window !== 'dynamic' && !windows.has(cap.window), `Duplicate or invalid cap window: ${plan.id}`);
       windows.add(cap.window);
-      requireFact(['limited','none','possible'].includes(cap.status) && enums.unit.has(cap.unit), `Invalid cap status or unit: ${plan.id}`);
+      requireFact(['limited','none','possible','dynamic'].includes(cap.status) && enums.unit.has(cap.unit), `Invalid cap status or unit: ${plan.id}`);
+      requireFact(cap.status!=='dynamic' || cap.window==='5h', `Dynamic policy is only supported for the five-hour comparison: ${plan.id}`);
       requireFact(cap.amount === null || (Number.isFinite(cap.amount) && cap.amount > 0), `Invalid cap amount: ${plan.id}`);
       requireFact((cap.amount === null) === (cap.unit === 'unknown') && (cap.status === 'limited' || cap.amount === null), `Invalid cap quantity: ${plan.id}`);
       requireFact(cap.condition === undefined || validBi(cap.condition), `Invalid cap condition: ${plan.id}`);
@@ -195,7 +198,8 @@ async function atomicWrite(filename, value) {
 
 export async function run({ root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), fromDir } = {}) {
   const providers = [...coreProviders, ...extraProviders, ...domesticProviders];
-  for (const provider of providers) for (const source of provider.sources) officialUrl(source.url);
+  const sourceHosts = source => source.kind==='observation'?OBSERVATION_HOSTS:OFFICIAL_HOSTS;
+  for (const provider of providers) for (const source of provider.sources) officialUrl(source.url,sourceHosts(source));
   let previous;
   try { previous = JSON.parse(await readFile(path.join(root, 'data/plans.json'), 'utf8')); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
@@ -206,7 +210,7 @@ export async function run({ root = path.resolve(path.dirname(fileURLToPath(impor
       catch (error) { if (error.code !== 'ENOENT') throw error; }
     }
     throw new FetchError(`No captured official source for ${id} (${url})`);
-  } : url => url === 'https://bigmodel.cn/glm-coding' ? loadGlmPricing(fetchOfficial) : fetchOfficial(url);
+  } : (url,id,index) => url === 'https://bigmodel.cn/glm-coding' ? loadGlmPricing(fetchOfficial) : fetchOfficial(url,{allowedHosts:sourceHosts(providers.find(p=>p.id===id).sources[index])});
   const domesticIds = new Set(domesticProviders.map(provider => provider.id));
   const extraIds = new Set(extraProviders.map(provider => provider.id));
   const now = new Date().toISOString();

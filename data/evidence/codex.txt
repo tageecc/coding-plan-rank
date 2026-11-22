@@ -108,3 +108,14 @@ Pro 200 $200 Not included
 Pro 500 $500 Included
 Pro 200 includes more usage than Pro 100. Pro 500 offers the highest included usage of the three plans.
 See the pricing page for a comparison of the features and usage included in each plan.
+A full banked reset restores the main Codex allowances on your current plan:
+Go: The monthly allowance.
+Plus and Business Standard: The 5-hour and weekly allowances.
+Pro 100, Pro 200, and Pro 500: The weekly allowance.
+
+Third-party PRIMARY ACCOUNT OBSERVATION — observed 2026-10-25, not an OpenAI guarantee for every Free account:
+Codex Free accounts report one window: primary with windowMinutes: 43200. Codex's pace
+is a real, fixed duration: OpenAI's wham/usage returns limit_window_seconds: 2592000 with a reset
+a real Free account (11% used, 5.39 of 30 days elapsed):
+Sufficient (live_output): The body supplies live output from the patched Linux OAuth usage CLI against a real Free account: 11% used after 5.39 of 30 days yields expected usage 18%, delta −7%, and a reserve summary; it explicitly excludes native menu validation.
+Landed as 3d00b1a — thanks @johan456789! The reported 30-day window now gets the regular pace treatment (expected usage and delta), with a regression that crosses February. The docs describe the reported duration rather than a blanket Free-plan rule. Ships in the next release.

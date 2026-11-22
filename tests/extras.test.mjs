@@ -88,6 +88,21 @@ test('Kiro counts monthly credits, excludes trial gifts and includes the current
   assert.equal(provider('kiro').parse(input).find(p => p.name === 'Pro').quota.amount, 1250);
 });
 
+test('Google Free, Devin Free and Kiro keep their documented reset windows separate from paid five-hour plans',()=>{
+  const google=parse('antigravity');
+  assert.equal(google[0].caps[0].status,'none');
+  assert.ok(google.slice(1).every(p=>p.quota.window==='5h'));
+  const free=parse('devin')[0];
+  assert.equal(free.quota.window,'week');
+  assert.ok(free.caps.some(c=>c.window==='day'&&c.status==='limited'));
+  assert.ok(parse('devin').every(p=>p.caps.some(c=>c.window==='5h'&&c.status==='none')));
+  assert.ok(parse('kiro').every(p=>p.caps[0].status==='none'));
+  const kiro=raws('kiro');kiro[2]=kiro[2].replace('Requests pause only when you have no credits left','Requests can pause with credits remaining');
+  assert.throws(()=>provider('kiro').parse(kiro),/exhaustion rules changed/);
+  const devin=raws('devin');devin[2]=devin[2].replace('Free: Wait until your next daily or weekly reset','Free: Wait five hours');
+  assert.throws(()=>provider('devin').parse(devin),/free daily\/weekly quota rules changed/);
+});
+
 test('official Markdown tables preserve column semantics for GLM and MiniMax', () => {
   const glm = raws('glm');
   glm[1] = glm[1].replace('Plan Type 5-Hour Credits Weekly Credits\nLite 2,000 10,000\nPro 12,000 60,000\nMax 28,000 140,000', '| Plan Type | 5-Hour Credits | Weekly Credits |\n| --- | --- | --- |\n| Lite | 2,000 | 10,000 |\n| Pro | 12,000 | 60,000 |\n| Max | 28,000 | 140,000 |');

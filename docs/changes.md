@@ -6,6 +6,48 @@
 
 ## 2026-11-22
 
+- **Aliyun · Lite**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Aliyun · Essential**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Aliyun · Standard**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Aliyun · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Google Antigravity · Free**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Codex · Free**：动态额度；未公开定量 → 动态额度；未公开定量; 周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Codex · Go**：动态额度；未公开定量 → 动态额度；未公开定量; 周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Codex · Plus**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **GitHub Copilot · Student**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **GitHub Copilot · Free**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **GitHub Copilot · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **GitHub Copilot · Pro+**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **GitHub Copilot · Max**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Cursor · Free**：动态额度；未公开定量 → 动态额度；未公开定量; 周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Cursor · Plus**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Cursor · Premium**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Cursor · Super**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Cursor · Ultra**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Devin / Windsurf · Free**：动态额度；未公开定量 → 动态额度；未公开定量; 周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Devin / Windsurf · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Kiro · Free**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Kiro · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Kiro · Pro+**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Kiro · Pro Max**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Kiro · Power**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **MiMo CN · Lite**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **MiMo CN · Standard**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **MiMo CN · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **MiMo CN · Max**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent General · Lite**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent General · Standard**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent General · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent General · Max**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent Hy · Lite**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent Hy · Standard**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent Hy · Pro**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+- **Tencent Hy · Max**：周期限额更新 / Window caps updated; 说明更新 / Notes updated
+
+[核验快照 / Snapshot](../data/history/2026-11-22T13-35-56-432Z-95b9e424de.json)
+
+## 2026-11-22
+
 - **Devin / Windsurf · Max**：周期限额更新 / Window caps updated
 
 [核验快照 / Snapshot](../data/history/2026-11-22T13-00-32-842Z-c6af22ceac.json)

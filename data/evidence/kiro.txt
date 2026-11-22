@@ -37,3 +37,15 @@ Sign up / upgrade
 Credits are consumed fractionally based on each request. Simple edits and shorter prompts will use fewer credits than complex, lengthy tasks. This means that fractional credits allow you to get more value from your credit allocation.
 Credit reset
 For all tiers, your plan credits renew at the beginning of the next billing cycle. Trial credits don't reset at the end of the month. They stay available until they expire, 12 months after you receive them.
+
+What happens when I reach the monthly limit of my plan?
+Using up your plan credits is not the same as using up every credit in your balance. When your plan credits are exhausted, Kiro continues with the other credits you hold. If your first upgrade gave you trial credits, Kiro uses them after your plan credits; they stay available until they expire, 12 months after you receive them. Requests pause only when you have no credits left, until your plan credits reset at the start of the next month or you purchase add-on credits.
+The Kiro Free tier has fixed monthly limits and doesn't support add-on credits. If you hit a Free limit, you can upgrade to a paid plan
+for immediate additional capacity.
+On paid plans, you can purchase add-on credits to continue working uninterrupted beyond your included limits. You can also upgrade
+to a higher plan at any time. The upgrade takes effect immediately, with the fee and credits prorated for the time left in the month.
+I'm near month-end. Should I upgrade now or purchase add-on credits?
+If you're on a paid plan and only have a few days left, purchasing add-on credits is often the simplest way to finish the month
+unless your month-to-date add-on credit spend is approaching the price difference to the next tier. When that "breakeven" point
+is reached, upgrading will usually lower your total bill and raise your limits immediately. If you upgrade, Kiro prorates
+the higher plan's fee and credits for the time left in the month. You don't get a second free month.

@@ -69,3 +69,7 @@ Prices shown do not include applicable taxes or fees (e.g. VAT). Third Party mod
 Every tier includes a pool of AI usage shared across Cursor and Grok. Within Grok, the pool covers Chat, Imagine, Voice, and Bot. Higher tiers include larger pools, and usage costs vary by product. Your allowance refreshes weekly, so one heavy day never wipes out your whole month.
 Paid plans include Grok API access. API usage is billed separately at standard model rates and doesn't draw from your plan's usage pool. See model pricing.
 Plus includes Grok models only. Premium and above include generous usage of Grok models but do not include an allowance for third-party models. Third-party models remain available in Cursor at API list price. You pay for exactly what you use, and you can set spending caps to manage costs.
+What happens when I hit my usage limit?
+The X Subscription: keep working from your prepaid credit, wait for your weekly pool to reset, or upgrade to a higher plan. See Usage-based charges for how top-ups work.
+The X Subscription: your included pool refreshes weekly. The next reset date is shown under Usage at grok.com/dashboard. Prepaid credit doesn't reset with your weekly pool; each top-up stays available until used or until it expires (currently 365 days after purchase).
+Cursor staff answer: Cursor has no hourly or time usage limits

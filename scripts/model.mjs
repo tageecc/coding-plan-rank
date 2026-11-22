@@ -12,6 +12,6 @@ export function quotaText(q, lang='zh') {
   const n = new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(q.amount);
   const value = q.max == null ? n : `${n}–${new Intl.NumberFormat('en-US').format(q.max)}`;
   const units = {relative:lang==='zh'?'× 基础档':'× base',credits:' credits',messages:lang==='zh'?' 条消息':' messages',requests:lang==='zh'?' 次请求':' requests',unknown:''};
-  const windows = lang==='zh'?{week:'周',month:'月','5h':'5 小时',day:'天',dynamic:'动态'}:{week:'week',month:'month','5h':'5h',day:'day',dynamic:'dynamic'};
+  const windows = lang==='zh'?{week:'周',month:'月','30d':'30天','5h':'5 小时',day:'天',dynamic:'动态'}:{week:'week',month:'month','30d':'30-day','5h':'5h',day:'day',dynamic:'dynamic'};
   return `${value}${units[q.unit]??''} / ${windows[q.window]??q.window}`;
 }

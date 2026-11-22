@@ -9,7 +9,7 @@ catch {voting={providers:{}};}
 const providers=dataset.providers;
 const html=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const domesticNames={'aliyun-cn':'阿里云','volc-cn':'火山方舟','glm-cn':'智谱','kimi-cn':'Kimi 国内','mimo-cn':'小米 MiMo','tencent-hy':'腾讯混元','tencent-cn':'腾讯通用'};
-const toolNames={copilot:'Copilot',antigravity:'Antigravity',glm:'GLM',kimi:'Kimi',minimax:'MiniMax intl','minimax-cn':'MiniMax CN'};
+const toolNames={'tencent-cn':'Tencent',copilot:'Copilot',antigravity:'Antigravity',glm:'GLM',kimi:'Kimi',minimax:'MiniMax intl','minimax-cn':'MiniMax CN'};
 const day=value=>value?new Intl.DateTimeFormat('en-CA',{
   timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',
 }).format(new Date(value)):'—';

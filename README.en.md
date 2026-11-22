@@ -60,10 +60,10 @@
 <tr><td nowrap>MiniMax CN · Go</td><td nowrap align="right">¥49</td><td nowrap>1× Go/wk</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/9#issue-body-viewer">👍 0</a></td></tr>
 <tr><td nowrap>MiniMax CN · Explore</td><td nowrap align="right">¥119</td><td nowrap>3× Go/wk</td><td nowrap align="right">1.24×</td><td nowrap></td></tr>
 <tr><td nowrap>MiniMax CN · Build</td><td nowrap align="right">¥469</td><td nowrap>12× Go/wk</td><td nowrap align="right"><strong>1.25×</strong></td><td nowrap></td></tr>
-<tr><td nowrap>Tencent General · Lite</td><td nowrap align="right">¥39</td><td nowrap>780cr/mo</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/19#issue-body-viewer">👍 0</a></td></tr>
-<tr><td nowrap>Tencent General · Standard</td><td nowrap align="right">¥99</td><td nowrap>1,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
-<tr><td nowrap>Tencent General · Pro</td><td nowrap align="right">¥299</td><td nowrap>5,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
-<tr><td nowrap>Tencent General · Max</td><td nowrap align="right">¥599</td><td nowrap>11,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Tencent · Lite</td><td nowrap align="right">¥39</td><td nowrap>780cr/mo</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/19#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Tencent · Standard</td><td nowrap align="right">¥99</td><td nowrap>1,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Tencent · Pro</td><td nowrap align="right">¥299</td><td nowrap>5,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Tencent · Max</td><td nowrap align="right">¥599</td><td nowrap>11,980cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
 <tr><td nowrap>Tencent Hy · Lite</td><td nowrap align="right">¥28</td><td nowrap>560cr/mo</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/18#issue-body-viewer">👍 0</a></td></tr>
 <tr><td nowrap>Tencent Hy · Standard</td><td nowrap align="right">¥78</td><td nowrap>1,560cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
 <tr><td nowrap>Tencent Hy · Pro</td><td nowrap align="right">¥238</td><td nowrap>4,760cr/mo</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>

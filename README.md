@@ -1,4 +1,4 @@
-<a id="plans"></a>更新时间：2026-11-22 17:08（北京时间）
+<a id="plans"></a>更新时间：2026-11-22 17:11（北京时间）
 
 <table width="100%">
 <thead><tr><th width="1000" nowrap>工具 / 套餐</th><th width="1000" nowrap align="right">月费（元）</th><th width="1000" nowrap>重置周期</th><th width="1000" nowrap>用量</th></tr></thead>
@@ -29,9 +29,9 @@
 <tr><td nowrap>Copilot · Pro</td><td nowrap align="right">≈66.78元</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">每月</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">1,500积分</td></tr>
 <tr><td nowrap>Copilot · Pro+</td><td nowrap align="right">≈260.43元</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">每月</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">7,000积分</td></tr>
 <tr><td nowrap>Copilot · Max</td><td nowrap align="right">≈667.77元</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">每月</td><td nowrap title="每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。">20,000积分</td></tr>
-<tr><td nowrap>智谱 · Lite</td><td nowrap align="right">118元</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">10,000积分</td></tr>
-<tr><td nowrap>智谱 · Pro</td><td nowrap align="right">538元</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">60,000积分</td></tr>
-<tr><td nowrap>智谱 · Max</td><td nowrap align="right">1,078元</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">140,000积分</td></tr>
+<tr><td nowrap>智谱 · Lite（待核验）</td><td nowrap align="right">118元</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">10,000积分</td></tr>
+<tr><td nowrap>智谱 · Pro（待核验）</td><td nowrap align="right">538元</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">60,000积分</td></tr>
+<tr><td nowrap>智谱 · Max（待核验）</td><td nowrap align="right">1,078元</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">每周</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">140,000积分</td></tr>
 <tr><td nowrap>GLM · Lite</td><td nowrap align="right">≈120.2元</td><td nowrap title="常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">每周</td><td nowrap title="常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">10,000积分</td></tr>
 <tr><td nowrap>GLM · Pro</td><td nowrap align="right">≈534.22元</td><td nowrap title="常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">每周</td><td nowrap title="常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">60,000积分</td></tr>
 <tr><td nowrap>GLM · Max</td><td nowrap align="right">≈1,121.85元</td><td nowrap title="常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">每周</td><td nowrap title="常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">140,000积分</td></tr>

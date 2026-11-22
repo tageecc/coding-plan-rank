@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile,access,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {parseHTML} from 'linkedom';
-test('each README shows every plan in one five-column table with single-line cells',async()=>{
+test('each README shows every plan in one four-column table with single-line cells',async()=>{
  const data=JSON.parse(await readFile('data/plans.json','utf8'));
  const expectedRows=data.providers.reduce((sum,p)=>sum+Math.max(p.plans.length,1),0);
  for(const file of ['README.md','README.en.md']) {
@@ -18,9 +18,12 @@ test('each README shows every plan in one five-column table with single-line cel
   assert.ok(!body.includes('<details>'),`${file}: no collapsed plans`);
   assert.equal(table.querySelectorAll('br').length,0,`${file}: no forced line breaks`);
   for(const row of table.querySelectorAll('tr')) {
-   assert.equal(row.children.length,5,`${file}: five columns`);
+   assert.equal(row.children.length,4,`${file}: four columns`);
    for(const cell of row.children)assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
   }
+  assert.ok(!/👍|支持<|Support<|community-vote|issue-body-viewer/.test(body),`${file}: no voting UI`);
+  const priceCells=[...table.querySelectorAll('tbody tr')].map(row=>row.children[1].textContent);
+  assert.ok(priceCells.every(value=>/^(?:(?:≈)?[\d,.]+元|汇率待核验)$/.test(value)),`${file}: every price in CNY`);
   assert.equal(document.querySelectorAll('sup, [id^="source-"]').length,0,`${file}: no source footnotes`);
   assert.ok(!/\*\*(来源|Sources)\*\*/.test(body),`${file}: no sources section`);
  }

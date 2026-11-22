@@ -1,20 +1,7 @@
 # Coding Plan Rank
-<!-- impeccable:product-schema 1 -->
-## Platform
-GitHub Markdown repository; no website in the initial release.
-## Stack
-Node.js scripts, Markdown, GitHub Issues reactions and scheduled GitHub Actions.
-## Users
-Developers comparing AI coding-agent subscription prices and quotas.
-## Product Purpose
-A clear, narrow, sourced comparison with daily updates and a community ranking.
-## Capabilities and Constraints
-One self-contained README per language with one five-column HTML table: tool/plan, monthly price, quota, within-tool quota value and support. Show every plan without expanding sections or opening other Markdown files. Keep all cells on one line with native nowrap attributes and compact labels; prioritize no horizontal scrolling on desktop (verified at 1024, 1280 and 1440 px). GitHub controls table width and overflow; narrow mobile viewports may scroll. Put full tool names and source notes in the same file. Support counts and vote links belong in the table; GitHub requires leaving Markdown to submit a reaction. User approved coding-agent scope and desktop layout priority. Website deferred by user.
-## Brand Commitments
-Simple and direct. Avoid giant tables or horizontal scrolling.
-## Product Principles
-- Above the table, show only the update timestamp. Fill the desktop content width; put language links and essential explanations below the table.
-- Show price and quota without unrelated metrics.
-- Distinguish community preference from mathematical value.
-- Never convert unknown quotas into invented token or dollar values.
-- Update automatically while preserving evidence and honest freshness.
+
+GitHub Markdown 项目，暂不建设网页。Node.js 解析官方个人编程 Agent 订阅资料和欧洲央行汇率，由 GitHub Actions 每日更新。
+
+每种语言只有一张四列表格：工具/套餐、人民币月费、额度、同工具额度效率。展示所有已核实套餐，顶部仅更新时间。单元格禁止换行，桌面端表格占满可用宽度且无横向滚动；手机窄屏由 GitHub 自身样式控制。
+
+保留关键访问限制：免费灰度、限桌面、学生身份不能混同为完整付费权限。未知额度不编造，积分与请求数不互相换算。原币报价、规则与原文证据留在数据文件中。表下只保留必要的汇率、估算说明和导航。

@@ -1,0 +1,388 @@
+{
+  "changedAt": "2026-11-22T08:43:19.969Z",
+  "changes": [
+    {
+      "id": "antigravity",
+      "before": [
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "免费基础额度按周刷新，固定数量未公开；无付费计划的优先额度。",
+            "en": "Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority."
+          }
+        },
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro $100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro $200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro $500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro $100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro $200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro $500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        }
+      ]
+    },
+    {
+      "id": "devin",
+      "before": [
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ]
+    }
+  ]
+}

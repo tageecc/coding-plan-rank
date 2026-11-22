@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T08:35:24.921Z",
+  "updatedAt": "2026-11-22T08:47:23.740Z",
   "providers": [
     {
       "id": "cursor",
@@ -15,7 +15,7 @@
           "title": "Cursor pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
       "plans": [
@@ -110,7 +110,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -175,7 +175,7 @@
           "title": "ChatGPT Work and Codex pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "d667808e14faf07284827654f34c4495011a2ae94512adad9282027d1db05e43",
       "plans": [
@@ -190,8 +190,8 @@
             "group": null
           },
           "note": {
-            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
-            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
           }
         },
         {
@@ -205,8 +205,8 @@
             "group": null
           },
           "note": {
-            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
-            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
           }
         },
         {
@@ -232,7 +232,7 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "week",
             "group": null
           },
           "note": {
@@ -247,7 +247,7 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "week",
             "group": null
           },
           "note": {
@@ -262,7 +262,7 @@
           "quota": {
             "amount": null,
             "unit": "unknown",
-            "window": "dynamic",
+            "window": "week",
             "group": null
           },
           "note": {
@@ -286,7 +286,7 @@
           "title": "Plans for GitHub Copilot"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
       "plans": [
@@ -383,12 +383,31 @@
         {
           "url": "https://antigravity.google/docs/plans",
           "title": "Antigravity plans and usage limits"
+        },
+        {
+          "url": "https://antigravity.google/pricing",
+          "title": "Antigravity free individual access"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
-      "sourceHash": "0e06aa3d7edd2ee8cb5abe7d717276605dc30066ae9ae70ea94ed21fb3bcf407",
+      "sourceHash": "5a6ca6a70d08cd7b32b775543e472de39e75ce3b03491068fff13bb8d7c94ecc",
       "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "免费基础额度按周刷新，固定数量未公开；无付费计划的优先额度。",
+            "en": "Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority."
+          }
+        },
         {
           "id": "google-ai-pro",
           "name": "Google AI Pro",
@@ -454,10 +473,25 @@
           "title": "Devin self-serve billing and quotas"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
-      "sourceHash": "2999e45c21381a20c353738be6ee430eab03bcd69b179228a01f707e8973f57d",
+      "sourceHash": "7b70b825555d99cacce605f97c129c0bc17baed6ae09f9412accfccb40605dc2",
       "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          }
+        },
         {
           "id": "pro",
           "name": "Pro",
@@ -508,7 +542,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
       "plans": [
@@ -577,7 +611,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -646,7 +680,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -721,7 +755,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -805,7 +839,7 @@
           "title": "Kiro billing-cycle reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
       "plans": [
@@ -899,7 +933,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "065ea341d8849ba8dd041f9dc7974b5f526af1e4d7b0adb24585777851f80491",
       "plans": [
@@ -986,7 +1020,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "218f0c1e117b554004a134b514e85573cad4a2381026cccc2b6986ba68ad82e7",
       "plans": [
@@ -1077,7 +1111,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "45de6d87582f3d3d61d83bc6f5d100b5a19833cb5ffa8ffe27e80cad934b7e4c",
       "plans": [
@@ -1151,7 +1185,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "db8fb122eaaf58659200c23170aea82e84456746fd81a1d1590c2856794b7c80",
       "plans": [
@@ -1238,7 +1272,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "01e53ebdb7ff1cd2d2db1fc568758d201a9f0e278a062abd23ab33f4da9c013b",
       "plans": [
@@ -1325,7 +1359,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "976effc9d98734b082a437dd122949ef67d536410c3737977266a2ad4ebc8675",
       "plans": [
@@ -1412,7 +1446,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T08:35:24.921Z",
+      "checkedAt": "2026-11-22T08:47:23.740Z",
       "status": "ok",
       "sourceHash": "325ef55965a651e7910806c8b53ac3f3c8ea07dd79f185f575e063fb30bb50d1",
       "plans": [
@@ -1486,5 +1520,18 @@
         }
       ]
     }
-  ]
+  ],
+  "exchangeRate": {
+    "base": "USD",
+    "quote": "CNY",
+    "rate": 6.677707,
+    "rateDate": "2026-11-20",
+    "checkedAt": "2026-11-22T08:47:23.740Z",
+    "referenceRates": {
+      "USD": 1.099,
+      "CNY": 7.3388
+    },
+    "status": "ok",
+    "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+  }
 }

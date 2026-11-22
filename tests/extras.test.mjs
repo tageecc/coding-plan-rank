@@ -10,8 +10,8 @@ const raws = id => [...fixture.providers[id].raws];
 const parse = id => provider(id).parse(raws(id));
 
 const expectedPrices = {
-  antigravity: [19.99, 99.99, 199.99],
-  devin: [20, 200],
+  antigravity: [0, 19.99, 99.99, 199.99],
+  devin: [0, 20, 200],
   glm: [18, 80, 168],
   minimax: [22, 55, 132],
   'minimax-cn': [49, 119, 469],
@@ -35,11 +35,11 @@ for (const definition of extraProviders) {
 
 test('Google footnote numbers do not become plan names or coding-quota multipliers', () => {
   const plans = parse('antigravity');
-  assert.deepEqual(plans.map(p => p.name), ['Google AI Pro', 'Google AI Ultra 5x', 'Google AI Ultra 20x']);
-  assert.ok(plans.every(p => p.quota.amount === null && p.quota.group === null && p.quota.window === '5h'));
+  assert.deepEqual(plans.map(p => p.name), ['Free', 'Google AI Pro', 'Google AI Ultra 5x', 'Google AI Ultra 20x']);
+  assert.ok(plans.every(p => p.quota.amount === null && p.quota.group === null && ['week','5h'].includes(p.quota.window)));
   const input = raws('antigravity');
   input[0] = input[0].replace(/^Google AI Pro\d*$/gm, 'Google AI Pro27').replace('$19.99/ month', '$29.99/ month');
-  assert.equal(provider('antigravity').parse(input)[0].monthlyUsd, 29.99);
+  assert.equal(provider('antigravity').parse(input).find(p=>p.name==='Google AI Pro').monthlyUsd, 29.99);
 });
 
 test('Devin prices must agree across independent official pricing and billing pages', () => {
@@ -101,4 +101,12 @@ test('missing sources or changed reset semantics fail instead of returning cache
   const devin = raws('devin');
   devin[1] = devin[1].replace('Max has a weekly allowance only, with no daily cap', 'Max now has a daily cap');
   assert.throws(() => provider('devin').parse(devin), /calendar quota rules changed/);
+});
+
+test('Devin free-card extraction survives official layouts that move the download button',()=>{
+ const input=raws('devin');input[0]=fixture.providers.devin.alternatePricing;
+ assert.deepEqual(provider('devin').parse(input).map(p=>p.monthlyUsd),[0,20,200]);
+ assert.ok(Buffer.byteLength(evidenceExtraText('devin',input))<24000);
+ input[0]=input[0].replace('$0','$5');
+ assert.throws(()=>provider('devin').parse(input),/free agent access changed/);
 });

@@ -2,7 +2,19 @@
 
 [返回排行 / Back](../README.md)
 
-只记录已核验的事实变化；例行核验日期和票数不计入。完整历史见 [Git 提交记录](https://github.com/tageecc/coding-plan-rank/commits/main/)。 / Verified factual changes only; routine checks and vote changes are excluded.
+只记录已核验的事实变化；例行核验日期和汇率不计入。完整历史见 [Git 提交记录](https://github.com/tageecc/coding-plan-rank/commits/main/)。 / Verified factual changes only; routine checks and exchange-rate changes are excluded.
+
+## 2026-11-22
+
+- **Google Antigravity · Free**：新增 / New
+- **Codex · Free**：说明更新 / Notes updated
+- **Codex · Go**：说明更新 / Notes updated
+- **Codex · Pro $100**：动态额度；未公开定量 → 动态额度；未公开定量
+- **Codex · Pro $200**：动态额度；未公开定量 → 动态额度；未公开定量
+- **Codex · Pro $500**：动态额度；未公开定量 → 动态额度；未公开定量
+- **Devin / Windsurf · Free**：新增 / New
+
+[核验快照 / Snapshot](../data/history/2026-11-22T08-43-19-969Z-962d36dfc4.json)
 
 ## 2026-11-22
 

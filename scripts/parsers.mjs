@@ -183,12 +183,12 @@ export function parseCodex(raws) {
       requireFact(matches.length === 1 && /^\$\d[\d,]*(?:(?:, |,? or )\$\d[\d,]*)*$/.test(matches[0][1]), 'Codex Pro tier list missing or unsupported');
       const prices = [...matches[0][1].matchAll(/\$([\d,]+)/g)].map(match => Number(match[1].replace(/,/g, '')));
       requireFact(prices.length === new Set(prices).size && Math.min(...prices) === Number(card.price.slice(1)), 'Codex Pro starting price conflicts with tiers');
-      return prices.map(price => makePlan(`Pro $${price}`, price, unknown(), bi('无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。', 'No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work.')));
+      return prices.map(price => makePlan(`Pro $${price}`, price, {...unknown(),window:'week'}, bi('无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。', 'No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work.')));
     }
     if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply.`))];
     requireFact(['Free', 'Go'].includes(card.name), `New Codex card requires usage mapping: ${card.name}`);
     requireFact(/GPT-6 Luna at Standard speed in the desktop app, subject to rollout/.test(card.body), `Codex ${card.name} limited access wording changed`);
-    return [makePlan(card.name, Number(card.price.slice(1)), unknown(), bi('仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。', 'Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access.'))];
+    return [makePlan(card.name, Number(card.price.slice(1)), unknown(), bi('免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。', 'Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed.'))];
   });
   return uniquePlans(plans, ['free', 'go', 'plus', 'pro-100', 'pro-200', 'pro-500']);
 }

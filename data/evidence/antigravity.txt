@@ -1,3 +1,17 @@
+For Individuals
+$0/month
+Experience Antigravity without a subscription plan
+Get started
+Plan includes:
+Access across the Antigravity app, CLI, IDE Extensions, and Python SDK
+Parallel background agents, subagents, browser use, and scheduled tasks
+Baseline agent quota refreshed weekly1
+Models included:
+Gemini 3.8 Flash
+Claude Sonnet 4.6 (thinking)4
+Claude Opus 4.6 (thinking)4
+GPT-OSS-120b4
+
 
 Google AI Pro
 Get higher access to new and powerful features to boost your productivity and creativity.

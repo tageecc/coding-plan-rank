@@ -30,17 +30,6 @@ export function comparableGroups(providers) {
   }
   return groups;
 }
-export function rankedVotes(providers, voting) {
-  const rows = providers.map(p => ({provider:p, vote:voting.providers?.[p.id]}));
-  rows.sort((a,b)=>(b.vote?.status==='ok'?b.vote.count:-1)-(a.vote?.status==='ok'?a.vote.count:-1) || a.provider.product.localeCompare(b.provider.product,'en'));
-  let last = null, rank = 0;
-  return rows.map((r,i)=> {
-    const count = r.vote?.status === 'ok' ? r.vote.count : null;
-    if (count !== last) rank=i+1;
-    last=count;
-    return {...r,rank:count>0?rank:null};
-  });
-}
 export const md = value => String(value ?? '').replaceAll('|','\\|').replaceAll(/\r?\n/g,' ').replaceAll('<','&lt;').replaceAll('>','&gt;');
 export function quotaText(q, lang='zh') {
   if (!q || q.amount == null) return lang==='zh'?'动态额度；未公开定量':'Dynamic; quantity undisclosed';

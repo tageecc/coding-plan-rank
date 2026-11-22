@@ -6,6 +6,7 @@ import { coreProviders, evidenceText, ReviewError, requireFact } from './parsers
 import { extraProviders, evidenceExtraText } from './parsers-extra.mjs';
 import { domesticProviders, evidenceDomesticText } from './parsers-domestic.mjs';
 import { loadGlmPricing } from './glm-pricing.mjs';
+import { updateExchangeRate } from './exchange-rate.mjs';
 
 export const OFFICIAL_HOSTS = new Set([
   'cursor.com', 'www.cursor.com', 'claude.com', 'www.claude.com',
@@ -20,7 +21,7 @@ export const OFFICIAL_HOSTS = new Set([
   'qoder.com', 'www.qoder.com', 'docs.qoder.com',
   'qwen.ai', 'www.qwen.ai', 'qwenlm.github.io',
   'gemini.google', 'antigravity.google', 'devin.ai', 'docs.devin.ai',
-  'help.aliyun.com', 'docs.volcengine.com', 'docs.bigmodel.cn', 'static.bigmodel.cn', 'mimo.mi.com', 'cloud.tencent.com',
+  'www.ecb.europa.eu', 'help.aliyun.com', 'docs.volcengine.com', 'docs.bigmodel.cn', 'static.bigmodel.cn', 'mimo.mi.com', 'cloud.tencent.com',
   'zcode.z.ai', 'platform.minimax.cn', 'kimi.ai', 'www.kimi.ai', 'kiro.dev',
 ]);
 export const MAX_BYTES = 3 * 1024 * 1024;
@@ -65,7 +66,7 @@ export async function fetchOfficial(source, {
           throw new FetchError(`Official source returned HTTP ${response.status}: ${url.hostname}`);
         }
         const type = response.headers.get('content-type')?.split(';')[0].trim().toLowerCase();
-        requireFact(!type || ['text/html', 'text/plain', 'text/markdown', 'text/x-markdown', 'application/xhtml+xml', ...(allowScriptText ? ['application/javascript', 'text/javascript'] : [])].includes(type), `Unsupported official response type: ${type}`);
+        requireFact(!type || ['text/html', 'text/plain', 'text/markdown', 'text/x-markdown', 'application/xhtml+xml', 'text/xml', 'application/xml', ...(allowScriptText ? ['application/javascript', 'text/javascript'] : [])].includes(type), `Unsupported official response type: ${type}`);
         requireFact(Number(response.headers.get('content-length') || 0) <= maxBytes, 'Official response exceeds 3 MB');
         requireFact(response.body, 'Empty official response body');
         const chunks = [];
@@ -191,7 +192,10 @@ export async function run({ root = path.resolve(path.dirname(fileURLToPath(impor
   } : url => url === 'https://bigmodel.cn/glm-coding' ? loadGlmPricing(fetchOfficial) : fetchOfficial(url);
   const domesticIds = new Set(domesticProviders.map(provider => provider.id));
   const extraIds = new Set(extraProviders.map(provider => provider.id));
-  const result = await updateData({ providers, previous, load, evidence: (id, raws) => domesticIds.has(id) ? evidenceDomesticText(id, raws) : extraIds.has(id) ? evidenceExtraText(id, raws) : evidenceText(id, raws) });
+  const now = new Date().toISOString();
+  const result = await updateData({ providers, previous, load, now, evidence: (id, raws) => domesticIds.has(id) ? evidenceDomesticText(id, raws) : extraIds.has(id) ? evidenceExtraText(id, raws) : evidenceText(id, raws) });
+  result.data.exchangeRate = await updateExchangeRate(fromDir ? async () => readFile(path.resolve(root, fromDir, 'exchange-rate.xml'), 'utf8') : fetchOfficial, previous?.exchangeRate, now);
+  result.status.exchangeRate = result.data.exchangeRate;
   for (const [name, value] of result.writes) await atomicWrite(path.join(root, 'data', name), value);
   if (result.snapshot) {
     const content = `${JSON.stringify(result.snapshot, null, 2)}\n`;
@@ -201,6 +205,7 @@ export async function run({ root = path.resolve(path.dirname(fileURLToPath(impor
   await atomicWrite(path.join(root, 'data/plans.json'), `${JSON.stringify(result.data, null, 2)}\n`);
   await atomicWrite(path.join(root, 'data/update-status.json'), `${JSON.stringify(result.status, null, 2)}\n`);
   for (const item of result.status.providers) console.log(`${item.id}: ${item.status}${item.error ? ` — ${item.error}` : ''}`);
+  console.log(`USD/CNY: ${result.data.exchangeRate.status} (${result.data.exchangeRate.rateDate || 'unverified'})`);
   return result;
 }
 

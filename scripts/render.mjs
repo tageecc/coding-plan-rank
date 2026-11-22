@@ -8,8 +8,8 @@ import {cnyMoney} from './exchange-rate.mjs';
 const providers=dataset.providers;
 const html=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const toolNames={
-  zh:{'aliyun-cn':'阿里云','volc-cn':'火山方舟','glm-cn':'智谱 中国',glm:'智谱 国际','kimi-cn':'Kimi 中国',kimi:'Kimi 国际','mimo-cn':'小米 MiMo','tencent-hy':'腾讯混元','tencent-cn':'腾讯通用',copilot:'Copilot',antigravity:'Antigravity',minimax:'MiniMax 国际','minimax-cn':'MiniMax 中国'},
-  en:{'glm-cn':'GLM China',glm:'GLM Global','kimi-cn':'Kimi China',kimi:'Kimi Global','mimo-cn':'MiMo','tencent-cn':'Tencent',copilot:'Copilot',antigravity:'Antigravity',minimax:'MiniMax Global','minimax-cn':'MiniMax China'},
+  zh:{'aliyun-cn':'阿里云','volc-cn':'火山方舟','glm-cn':'智谱 中国',glm:'智谱 国际','kimi-cn':'Kimi 中国',kimi:'Kimi 国际','mimo-cn':'小米 MiMo','tencent-hy':'腾讯混元','tencent-cn':'腾讯通用',copilot:'Copilot',devin:'Devin',antigravity:'Antigravity',minimax:'MiniMax 国际','minimax-cn':'MiniMax 中国'},
+  en:{'glm-cn':'GLM China',glm:'GLM Global','kimi-cn':'Kimi China',kimi:'Kimi Global','mimo-cn':'MiMo','tencent-cn':'Tencent',copilot:'Copilot',devin:'Devin',antigravity:'Antigravity',minimax:'MiniMax Global','minimax-cn':'MiniMax China'},
 };
 const toolName=(provider,lang)=>toolNames[lang][provider.id]??provider.product;
 const day=value=>value?new Intl.DateTimeFormat('en-CA',{
@@ -22,11 +22,11 @@ function allowance(provider,plan,lang,q=plan.quota) {
   if(q.amount==null)return plan.usageSummary?.[lang]??(lang==='zh'?'未公开':'Undisclosed');
   const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:20}).format(n);
   const compact=n=>{
-    const scales=lang==='zh'?[[1e8,'亿'],[1e4,'万']]:[[1e9,'B'],[1e6,'M'],[1e3,'K']];
+    const scales=lang==='zh'?[[1e8,'亿'],[1e4,'万']]:[[1e9,'B'],[1e6,'M'],[1e3,'k']];
     const scale=scales.find(([size])=>n>=size && Number.isInteger(n*100/size));
     return scale?`${number(n/scale[0])}${scale[1]}`:number(n);
   };
-  const amount=q.max==null?compact(q.amount):`${compact(q.amount)}–${compact(q.max)}`;
+  const amount=q.max==null?compact(q.amount):`${compact(q.amount)}${lang==='zh'?'–':'-'}${compact(q.max)}`;
   if(q.unit==='relative') {
     const base=provider.plans.find(p=>p.quota.group===(q.group??plan.quota.group) && p.quota.amount===1);
     return `${amount}×${base?.name??(lang==='zh'?'基础档':'base')}`;
@@ -40,7 +40,7 @@ function usageCells(provider,plan,lang) {
   const caps=[{...plan.quota,status:'limited'},...(plan.caps??[])];
   const hour=caps.find(q=>q.window==='5h');
   const short=hour?.status==='none'
-    ? zh ? `${hour.condition?.zh??''}不限` : hour.condition?'Verified: none':'No cap'
+    ? zh ? `${hour.condition?.zh??''}不限` : hour.condition?'ID: no cap':'No cap'
     : hour ? hour.amount==null ? (zh?'有，未公开':'Set; unpub.') : allowance(provider,plan,lang,hour)
     : zh?'未公开':'Unpub.';
   const periods=zh?{week:'周',month:'月',day:'日'}:{week:'w',month:'m',day:'d'};
@@ -53,7 +53,9 @@ function usageCells(provider,plan,lang) {
       : allowance(provider,plan,lang,q);
     return `${amount}/${periods[q.window]}`;
   }).join('·');
-  const compactTotal=provider.id==='volc-cn'?total.replaceAll('AFP',''):total;
+  const compactTotal=provider.id==='volc-cn'
+    ? total.replaceAll('AFP','').split('·').map(value=>{const [amount,period]=value.split('/');return `${period}${amount}`;}).join('·')
+    : total.replace('More than 100/','>100/').replace('Most; Ultrafast/','Most/').replace('最高；含超高速/','最高/');
   return [short,compactTotal||(zh?'未公开':'Unpub.')];
 }
 
@@ -65,23 +67,25 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具 / 套餐','月费（元）','5小时限额','周／月限额']:['Tool / plan','CNY/mo','5h cap','Week / month']).map((title,i)=>`<th width="1000" nowrap${i===1?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','周／月限额']:['Tool','Plan','CNY/mo','5h cap','Week/month']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
     const plans=[...p.plans].sort((a,b)=>priceOf(a)-priceOf(b)||a.name.localeCompare(b.name));
     if(!plans.length)plans.push({id:'unverified',name:zh?'待核验':'Unverified',monthlyUsd:null,quota:{amount:null}});
-    plans.forEach(plan=> {
+    plans.forEach((plan,index)=> {
       const tool=toolName(p,lang);
+      const displayTool=zh?tool:tool.replace(/ (China|Global)$/,'\u2009$1');
       let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):zh&&plan.name==='Free'?'免费':plan.name;
       if(zh && name==='Free')name='免费';
       if(zh && p.id==='copilot' && plan.id==='student')name='学生';
-      const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'（桌面）':' (desktop)'):p.id==='copilot' && plan.id==='student'?(zh?'（需认证）':''):'';
-      const label=`${html(tool)}·${html(name)}${access}${p.status==='ok'?'':' ⚠'}`;
-      const verification=p.status==='ok'?'':` title="${zh?'本次核验失败，保留上次数据':'Verification failed; showing last verified data'}"`;
+      const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'·桌面':'·PC'):p.id==='copilot' && plan.id==='student'?(zh?'·认证':''):'';
+      const label=`${html(name)}${access}`;
+      const verification=html(`${p.product}${p.status==='ok'?'':zh?'；本次核验失败，保留上次数据':'; Verification failed; showing last verified data'}`);
+      const brand=index===0?`<td rowspan="${plans.length}" nowrap valign="middle" title="${verification}">${html(displayTool)}${p.status==='ok'?'':' ⚠'}</td>`:'';
       const [short,total]=usageCells(p,plan,lang);
       const note=html(plan.note?.[lang]);
-      lines.push(`<tr><td nowrap${verification}>${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,''))}</td><td nowrap title="${note}">${html(short)}</td><td nowrap title="${note}">${html(total)}</td></tr>`);
+      lines.push(`<tr>${brand}<td nowrap title="${note}">${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,'').replace(/^≈/,'').replaceAll(',',''))}</td><td nowrap title="${note}">${html(short)}</td><td nowrap title="${note}">${html(total)}</td></tr>`);
     });
   }
   lines.push('</tbody>','</table>','',

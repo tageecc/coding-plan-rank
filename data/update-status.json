@@ -1,112 +1,112 @@
 {
-  "attemptedAt": "2026-11-22T08:34:19.579Z",
+  "attemptedAt": "2026-11-22T08:35:24.921Z",
   "providers": [
     {
       "id": "aliyun-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "antigravity",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "codex",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "glm-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "kimi-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "mimo-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "tencent-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "tencent-hy",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     },
     {
       "id": "volc-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T08:34:19.579Z",
+      "checkedAt": "2026-11-22T08:35:24.921Z",
       "changed": false
     }
   ]

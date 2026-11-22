@@ -4,128 +4,128 @@
       "issueNumber": 1,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/1",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "claude": {
       "issueNumber": 2,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/2",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "codex": {
       "issueNumber": 3,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/3",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "copilot": {
       "issueNumber": 4,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/4",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "antigravity": {
       "issueNumber": 5,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/5",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "devin": {
       "issueNumber": 6,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/6",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "glm": {
       "issueNumber": 7,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/7",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "minimax": {
       "issueNumber": 8,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/8",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "minimax-cn": {
       "issueNumber": 9,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/9",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "kimi": {
       "issueNumber": 10,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/10",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "kiro": {
       "issueNumber": 11,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/11",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "aliyun-cn": {
       "issueNumber": 13,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/13",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "volc-cn": {
       "issueNumber": 14,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/14",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "glm-cn": {
       "issueNumber": 15,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/15",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "kimi-cn": {
       "issueNumber": 16,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/16",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "mimo-cn": {
       "issueNumber": 17,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/17",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "tencent-hy": {
       "issueNumber": 18,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/18",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     },
     "tencent-cn": {
       "issueNumber": 19,
       "url": "https://github.com/tageecc/coding-plan-rank/issues/19",
       "count": 0,
-      "checkedAt": "2026-11-22T08:34:23.626Z",
+      "checkedAt": "2026-11-22T08:35:30.108Z",
       "status": "ok"
     }
   },
-  "updatedAt": "2026-11-22T08:34:23.626Z"
+  "updatedAt": "2026-11-22T08:35:30.108Z"
 }

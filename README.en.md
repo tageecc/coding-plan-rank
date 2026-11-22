@@ -1,4 +1,4 @@
-<a id="plans"></a>Updated: 2026-11-22 16:34 (UTC+8)
+<a id="plans"></a>Updated: 2026-11-22 16:35 (UTC+8)
 
 <table width="100%">
 <thead><tr><th width="1000" nowrap>Tool / plan</th><th width="1000" nowrap align="right">/ month</th><th width="1000" nowrap>Allowance</th><th width="1000" nowrap align="right">Value</th><th width="1000" nowrap>Support</th></tr></thead>

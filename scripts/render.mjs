@@ -7,8 +7,11 @@ import {cnyMoney} from './exchange-rate.mjs';
 
 const providers=dataset.providers;
 const html=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const domesticNames={'aliyun-cn':'阿里云','volc-cn':'火山方舟','glm-cn':'智谱','kimi-cn':'Kimi 国内','mimo-cn':'小米 MiMo','tencent-hy':'腾讯混元','tencent-cn':'腾讯通用'};
-const toolNames={'tencent-cn':'Tencent',copilot:'Copilot',antigravity:'Antigravity',glm:'GLM',kimi:'Kimi',minimax:'MiniMax intl','minimax-cn':'MiniMax CN'};
+const toolNames={
+  zh:{'aliyun-cn':'阿里云','volc-cn':'火山方舟','glm-cn':'智谱 中国',glm:'智谱 国际','kimi-cn':'Kimi 中国',kimi:'Kimi 国际','mimo-cn':'小米 MiMo','tencent-hy':'腾讯混元','tencent-cn':'腾讯通用',copilot:'Copilot',antigravity:'Antigravity',minimax:'MiniMax 国际','minimax-cn':'MiniMax 中国'},
+  en:{'glm-cn':'GLM China',glm:'GLM Global','kimi-cn':'Kimi China',kimi:'Kimi Global','mimo-cn':'MiMo','tencent-cn':'Tencent General',copilot:'Copilot',antigravity:'Antigravity',minimax:'MiniMax Global','minimax-cn':'MiniMax China'},
+};
+const toolName=(provider,lang)=>toolNames[lang][provider.id]??provider.product;
 const day=value=>value?new Intl.DateTimeFormat('en-CA',{
   timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',
 }).format(new Date(value)):'—';
@@ -40,11 +43,11 @@ function render(lang) {
     `<thead><tr>${(zh?['工具 / 套餐','月费（元）','重置周期','用量']:['Tool / plan','CNY / month','Reset cycle','Usage']).map((title,i)=>`<th width="1000" nowrap${i===1?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
-  for(const p of [...providers].sort((a,b)=>a.product.localeCompare(b.product,'en'))) {
+  for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
     const plans=[...p.plans].sort((a,b)=>priceOf(a)-priceOf(b)||a.name.localeCompare(b.name));
     if(!plans.length)plans.push({id:'unverified',name:zh?'待核验':'Unverified',monthlyUsd:null,quota:{amount:null}});
     plans.forEach(plan=> {
-      const tool=zh&&domesticNames[p.id]?domesticNames[p.id]:zh&&p.id==='minimax'?'MiniMax 国际':zh&&p.id==='minimax-cn'?'MiniMax 中国':toolNames[p.id]??p.product;
+      const tool=toolName(p,lang);
       let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):zh&&plan.name==='Free'?'免费':plan.name;
       if(zh && name==='Free')name='免费';
       if(zh && p.id==='copilot' && plan.id==='student')name='学生';

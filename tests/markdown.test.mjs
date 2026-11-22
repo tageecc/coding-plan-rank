@@ -29,6 +29,9 @@ test('each README shows every plan in one four-column table with single-line cel
   assert.ok(!/额度效率|Quota value|刷新/.test(body),`${file}: plain usage and reset wording`);
   const rows=[...table.querySelectorAll('tbody tr')];
   const labels=rows.map(row=>row.children[0].textContent);
+  for(const row of rows.filter(row=>row.children[0].textContent.endsWith(' ⚠'))) {
+   assert.match(row.children[0].getAttribute('title'),/本次核验失败|Verification failed/);
+  }
   assert.equal(new Set(labels).size,labels.length,`${file}: no ambiguous duplicate plan labels`);
   assert.ok(labels.every(label=>!/国内|\bCN\b|\bintl\b/.test(label)),`${file}: consistent region names`);
   for(const brand of file==='README.md'?['Kimi','智谱','MiniMax']:['Kimi','GLM','MiniMax']) {

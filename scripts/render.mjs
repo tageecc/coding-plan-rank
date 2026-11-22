@@ -77,10 +77,11 @@ function render(lang) {
       if(zh && name==='Free')name='免费';
       if(zh && p.id==='copilot' && plan.id==='student')name='学生';
       const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'（桌面）':' (desktop)'):p.id==='copilot' && plan.id==='student'?(zh?'（需认证）':''):'';
-      const label=`${html(tool)}·${html(name)}${access}${p.status==='ok'?'':zh?'（待核验）':' (unverified)'}`;
+      const label=`${html(tool)}·${html(name)}${access}${p.status==='ok'?'':' ⚠'}`;
+      const verification=p.status==='ok'?'':` title="${zh?'本次核验失败，保留上次数据':'Verification failed; showing last verified data'}"`;
       const [short,total]=usageCells(p,plan,lang);
       const note=html(plan.note?.[lang]);
-      lines.push(`<tr><td nowrap>${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,''))}</td><td nowrap title="${note}">${html(short)}</td><td nowrap title="${note}">${html(total)}</td></tr>`);
+      lines.push(`<tr><td nowrap${verification}>${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,''))}</td><td nowrap title="${note}">${html(short)}</td><td nowrap title="${note}">${html(total)}</td></tr>`);
     });
   }
   lines.push('</tbody>','</table>','',

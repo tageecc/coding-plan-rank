@@ -13,6 +13,7 @@ One self-contained README per language with one five-column HTML table: tool/pla
 ## Brand Commitments
 Simple and direct. Avoid giant tables or horizontal scrolling.
 ## Product Principles
+- Above the table, show only the update timestamp. Fill the desktop content width; put language links and essential explanations below the table.
 - Show price and quota without unrelated metrics.
 - Distinguish community preference from mathematical value.
 - Never convert unknown quotas into invented token or dollar values.

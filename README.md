@@ -1,21 +1,7 @@
-# AI 编程 Agent 套餐对比
-
-价格、额度、性价比，一张表看完。每日核对官方资料。
-
-[中文](README.md) · [English](README.en.md)
-
-更新：**2026-11-22** · 每日北京时间 **09:23** 自动检查。
-
-**怎么读：** 工具按票数排序，同工具内按月费排列。$ 为美元，¥ 为人民币；均为常规月付，不含税费、首月优惠或年付折算。条指消息，h 指小时；完整名称与限制见本页来源。
-
-**性价比：** 同工具最低价的可比付费档为 1×；数字越高，每元买到的公开额度越多。只在同工具内比较，— 表示无法计算，粗体为同组最优。
-
-**支持：** 票数按工具统计，各档共用；点击 👍 直达投票正文，再点原生 👍。GitHub Markdown 无法在本文内直接提交投票。
-
-<a id="plans"></a>
+<a id="plans"></a>更新时间：2026-11-22 15:40（北京时间）
 
 <table width="100%">
-<thead><tr><th nowrap>工具 / 套餐</th><th nowrap align="right">月费</th><th nowrap>额度</th><th nowrap align="right">性价比</th><th nowrap>支持</th></tr></thead>
+<thead><tr><th width="1000" nowrap>工具 / 套餐</th><th width="1000" nowrap align="right">月费</th><th width="1000" nowrap>额度</th><th width="1000" nowrap align="right">性价比</th><th width="1000" nowrap>支持</th></tr></thead>
 <tbody>
 <tr><td nowrap>Claude Code · Pro<sup><a href="#source-claude">2</a></sup></td><td nowrap align="right">$20</td><td nowrap>1× Pro/周</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/2#issue-body-viewer">👍 0</a></td></tr>
 <tr><td nowrap>Claude Code · Max</td><td nowrap align="right">$100</td><td nowrap>5× Pro/周</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
@@ -62,9 +48,11 @@
 </tbody>
 </table>
 
+月付原价；$ 为美元，¥ 为人民币。性价比仅限同工具比较，基础档为 1×，粗体最优，— 表示无法计算。条指消息，h 指小时。
+
 票数同步：2026-11-22。同票并列；零票时顺序不代表推荐。每账号对同一工具计一票，可支持多个工具，撤回即减票。
 
-**来源与必要说明**（都在本页；工具名链接到官方资料）：
+**来源**
 
 <a id="source-cursor"></a>
 
@@ -112,6 +100,6 @@
 
 每日机器人抓取官方资料、验证并更新本文。解析失败保留原核验日期并标记待核验，不参与性价比计算；积分、请求和各工具的倍数不互相换算。
 
-[纠错](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [更新状态](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [MIT](LICENSE)
+[中文](README.md) · [English](README.en.md) · [纠错](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [更新状态](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [MIT](LICENSE)
 
 比较需求参考 [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan)，数据独立核实，不复用其实测推算。

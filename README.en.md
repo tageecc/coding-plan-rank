@@ -1,21 +1,7 @@
-# AI Coding Agent Plan Comparison
-
-Prices, quotas and value in one table. Official sources checked daily.
-
-[中文](README.md) · [English](README.en.md)
-
-Updated **2026-11-22** · Daily checks at **01:23 UTC**.
-
-**How to read:** Tools are ordered by votes, then plans by monthly price. $ = USD; ¥ = CNY. Standard monthly rates exclude taxes, introductory offers and annual discounts. cr = credits; msg = messages; req = requests; wk/mo = week/month. Full names and limits appear below.
-
-**Value:** Cheapest comparable paid tier = 1×; higher buys more published quota per dollar. Compare within a tool only. — means not comparable; bold marks the best tier in its group.
-
-**Support:** Votes are per tool, shared across its tiers. Click 👍 to reach the vote body, then use GitHub’s native 👍 reaction. GitHub Markdown cannot submit votes inside this file.
-
-<a id="plans"></a>
+<a id="plans"></a>Updated: 2026-11-22 15:40 (UTC+8)
 
 <table width="100%">
-<thead><tr><th nowrap>Tool / plan</th><th nowrap align="right">/ month</th><th nowrap>Allowance</th><th nowrap align="right">Value</th><th nowrap>Support</th></tr></thead>
+<thead><tr><th width="1000" nowrap>Tool / plan</th><th width="1000" nowrap align="right">/ month</th><th width="1000" nowrap>Allowance</th><th width="1000" nowrap align="right">Value</th><th width="1000" nowrap>Support</th></tr></thead>
 <tbody>
 <tr><td nowrap>Claude Code · Pro<sup><a href="#source-claude">2</a></sup></td><td nowrap align="right">$20</td><td nowrap>1× Pro/wk</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/2#issue-body-viewer">👍 0</a></td></tr>
 <tr><td nowrap>Claude Code · Max</td><td nowrap align="right">$100</td><td nowrap>5× Pro/wk</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
@@ -62,9 +48,11 @@ Updated **2026-11-22** · Daily checks at **01:23 UTC**.
 </tbody>
 </table>
 
+Standard monthly prices; $ = USD, ¥ = CNY. Value compares tiers of the same tool only: baseline = 1×, bold = best, — = unavailable. cr/msg/req = credits/messages/requests; wk/mo = week/month.
+
 Votes checked 2026-11-22. Ties share a rank; zero-vote order is not a recommendation. One vote per account per tool; multiple tools allowed. Removing a reaction removes the vote.
 
-**Sources and essential notes** (all below; tool names link to official sources):
+**Sources**
 
 <a id="source-cursor"></a>
 
@@ -112,6 +100,6 @@ Votes checked 2026-11-22. Ties share a rank; zero-vote order is not a recommenda
 
 The daily bot verifies official sources and updates this file. Failed verification preserves the original date and marks historical values unverified; they are excluded from value calculations. Credits, requests and tool-specific multiples are not interchangeable.
 
-[Corrections](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [Automation](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [MIT](LICENSE)
+[中文](README.md) · [English](README.en.md) · [Corrections](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [Automation](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [MIT](LICENSE)
 
 Inspired by [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan); data is independently verified, without reusing its inferred benchmark measurements.

@@ -12,6 +12,9 @@ const toolNames={copilot:'Copilot',antigravity:'Antigravity',glm:'GLM',kimi:'Kim
 const day=value=>value?new Intl.DateTimeFormat('en-CA',{
   timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',
 }).format(new Date(value)):'—';
+const timestamp=value=>value?`${day(value)} ${new Intl.DateTimeFormat('en-GB',{
+  timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hourCycle:'h23',
+}).format(new Date(value))}`:'—';
 const values=new Map();
 for(const group of comparableGroups(providers)) {
   for(const row of group.ranked) {
@@ -40,24 +43,12 @@ function allowance(provider,plan,lang) {
 function render(lang) {
   const zh=lang==='zh';
   const lines=[
-    zh?'# AI 编程 Agent 套餐对比':'# AI Coding Agent Plan Comparison',
-    '',
-    zh?'价格、额度、性价比，一张表看完。每日核对官方资料。':'Prices, quotas and value in one table. Official sources checked daily.',
-    '',
-    `[中文](README.md) · [English](README.en.md)`,
-    '',
-    zh?`更新：**${day(dataset.updatedAt)}** · 每日北京时间 **09:23** 自动检查。`:`Updated **${day(dataset.updatedAt)}** · Daily checks at **01:23 UTC**.`,
-    '',
-    zh?'**怎么读：** 工具按票数排序，同工具内按月费排列。$ 为美元，¥ 为人民币；均为常规月付，不含税费、首月优惠或年付折算。条指消息，h 指小时；完整名称与限制见本页来源。':'**How to read:** Tools are ordered by votes, then plans by monthly price. $ = USD; ¥ = CNY. Standard monthly rates exclude taxes, introductory offers and annual discounts. cr = credits; msg = messages; req = requests; wk/mo = week/month. Full names and limits appear below.',
-    '',
-    zh?'**性价比：** 同工具最低价的可比付费档为 1×；数字越高，每元买到的公开额度越多。只在同工具内比较，— 表示无法计算，粗体为同组最优。':'**Value:** Cheapest comparable paid tier = 1×; higher buys more published quota per dollar. Compare within a tool only. — means not comparable; bold marks the best tier in its group.',
-    '',
-    zh?'**支持：** 票数按工具统计，各档共用；点击 👍 直达投票正文，再点原生 👍。GitHub Markdown 无法在本文内直接提交投票。':'**Support:** Votes are per tool, shared across its tiers. Click 👍 to reach the vote body, then use GitHub’s native 👍 reaction. GitHub Markdown cannot submit votes inside this file.',
-    '',
-    '<a id="plans"></a>',
+    `<a id="plans"></a>${zh?`更新时间：${timestamp(dataset.updatedAt)}（北京时间）`:`Updated: ${timestamp(dataset.updatedAt)} (UTC+8)`}`,
     '',
     '<table width="100%">',
-    `<thead><tr>${(zh?['工具 / 套餐','月费','额度','性价比','支持']:['Tool / plan','/ month','Allowance','Value','Support']).map((title,i)=>`<th nowrap${i===1||i===3?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    // GitHub's width:max-content ignores table width="100%". Preferred cell widths
+    // fill the available space while allowing the columns to shrink on desktop.
+    `<thead><tr>${(zh?['工具 / 套餐','月费','额度','性价比','支持']:['Tool / plan','/ month','Allowance','Value','Support']).map((title,i)=>`<th width="1000" nowrap${i===1||i===3?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const {provider:p,vote:v} of rankedVotes(providers,voting)) {
@@ -77,9 +68,11 @@ function render(lang) {
     });
   }
   lines.push('</tbody>','</table>','',
+    zh?'月付原价；$ 为美元，¥ 为人民币。性价比仅限同工具比较，基础档为 1×，粗体最优，— 表示无法计算。条指消息，h 指小时。':'Standard monthly prices; $ = USD, ¥ = CNY. Value compares tiers of the same tool only: baseline = 1×, bold = best, — = unavailable. cr/msg/req = credits/messages/requests; wk/mo = week/month.',
+    '',
     zh?`票数同步：${day(voting.updatedAt)}。同票并列；零票时顺序不代表推荐。每账号对同一工具计一票，可支持多个工具，撤回即减票。`:`Votes checked ${day(voting.updatedAt)}. Ties share a rank; zero-vote order is not a recommendation. One vote per account per tool; multiple tools allowed. Removing a reaction removes the vote.`,
     '',
-    zh?'**来源与必要说明**（都在本页；工具名链接到官方资料）：':'**Sources and essential notes** (all below; tool names link to official sources):',
+    zh?'**来源**':'**Sources**',
     '',
   );
   for(const p of providers) {
@@ -97,7 +90,7 @@ function render(lang) {
   lines.push(
     zh?'每日机器人抓取官方资料、验证并更新本文。解析失败保留原核验日期并标记待核验，不参与性价比计算；积分、请求和各工具的倍数不互相换算。':'The daily bot verifies official sources and updates this file. Failed verification preserves the original date and marks historical values unverified; they are excluded from value calculations. Credits, requests and tool-specific multiples are not interchangeable.',
     '',
-    `[${zh?'纠错':'Corrections'}](${REPO_URL}/issues/new?template=data-correction.yml) · [${zh?'更新状态':'Automation'}](${REPO_URL}/actions/workflows/update.yml) · [MIT](LICENSE)`,
+    `[中文](README.md) · [English](README.en.md) · [${zh?'纠错':'Corrections'}](${REPO_URL}/issues/new?template=data-correction.yml) · [${zh?'更新状态':'Automation'}](${REPO_URL}/actions/workflows/update.yml) · [MIT](LICENSE)`,
     '',
     zh?'比较需求参考 [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan)，数据独立核实，不复用其实测推算。':'Inspired by [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan); data is independently verified, without reusing its inferred benchmark measurements.',
     '',

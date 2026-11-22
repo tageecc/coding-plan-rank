@@ -8,6 +8,8 @@ test('each README shows every plan in one five-column table with single-line cel
  const expectedRows=data.providers.reduce((sum,p)=>sum+Math.max(p.plans.length,1),0);
  for(const file of ['README.md','README.en.md']) {
   const body=await readFile(file,'utf8');
+  const intro=body.split('<table')[0].replace(/<a id="plans"><\/a>/,'').trim();
+  assert.match(intro,/^(更新时间：|Updated: )\d{4}-\d{2}-\d{2} \d{2}:\d{2}[^\n]*$/,`${file}: only the update timestamp above the table`);
   const {document}=parseHTML(body);
   const tables=document.querySelectorAll('table');
   assert.equal(tables.length,1,`${file}: only one table`);

@@ -1,4 +1,4 @@
-<a id="plans"></a>更新时间：2026-11-22 17:28（北京时间）
+<a id="plans"></a>更新时间：2026-11-22 17:29（北京时间）
 
 <table width="100%">
 <thead><tr><th width="1000" nowrap>工具 / 套餐</th><th width="1000" nowrap align="right">月费（元）</th><th width="1000" nowrap>5小时限额</th><th width="1000" nowrap>周／月限额</th></tr></thead>
@@ -33,9 +33,9 @@
 <tr><td nowrap>Devin / Windsurf·免费</td><td nowrap align="right">0</td><td nowrap title="免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。">未公开</td><td nowrap title="免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。">未公开</td></tr>
 <tr><td nowrap>Devin / Windsurf·Pro</td><td nowrap align="right">≈133.55</td><td nowrap title="按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。">未公开</td><td nowrap title="按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。">未公开/周·日</td></tr>
 <tr><td nowrap>Devin / Windsurf·Max</td><td nowrap align="right">≈1,335.54</td><td nowrap title="按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。">未公开</td><td nowrap title="按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。">未公开/周</td></tr>
-<tr><td nowrap title="本次核验失败，保留上次数据">智谱 中国·Lite ⚠</td><td nowrap align="right">118</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">2,000积分</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">1万积分/周</td></tr>
-<tr><td nowrap title="本次核验失败，保留上次数据">智谱 中国·Pro ⚠</td><td nowrap align="right">538</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">1.2万积分</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">6万积分/周</td></tr>
-<tr><td nowrap title="本次核验失败，保留上次数据">智谱 中国·Max ⚠</td><td nowrap align="right">1,078</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">2.8万积分</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">14万积分/周</td></tr>
+<tr><td nowrap>智谱 中国·Lite</td><td nowrap align="right">118</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">2,000积分</td><td nowrap title="每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。">1万积分/周</td></tr>
+<tr><td nowrap>智谱 中国·Pro</td><td nowrap align="right">538</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">1.2万积分</td><td nowrap title="每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。">6万积分/周</td></tr>
+<tr><td nowrap>智谱 中国·Max</td><td nowrap align="right">1,078</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">2.8万积分</td><td nowrap title="每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。">14万积分/周</td></tr>
 <tr><td nowrap>智谱 国际·Lite</td><td nowrap align="right">≈120.2</td><td nowrap title="常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">2,000积分</td><td nowrap title="常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">1万积分/周</td></tr>
 <tr><td nowrap>智谱 国际·Pro</td><td nowrap align="right">≈534.22</td><td nowrap title="常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">1.2万积分</td><td nowrap title="常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">6万积分/周</td></tr>
 <tr><td nowrap>智谱 国际·Max</td><td nowrap align="right">≈1,121.85</td><td nowrap title="常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">2.8万积分</td><td nowrap title="常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。">14万积分/周</td></tr>

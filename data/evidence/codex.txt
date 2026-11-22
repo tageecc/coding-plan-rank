@@ -99,3 +99,12 @@ features is effective. This currently includes [ChatGPT for
 Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
 GPT-6.1 Sol usage drawn from your subscription has no long-context surcharge
 in Codex or ChatGPT Work.
+
+Pro plans
+Choose from three monthly Pro plans:
+Plan Monthly price (USD) Ultrafast
+Pro 100 $100 Not included
+Pro 200 $200 Not included
+Pro 500 $500 Included
+Pro 200 includes more usage than Pro 100. Pro 500 offers the highest included usage of the three plans.
+See the pricing page for a comparison of the features and usage included in each plan.

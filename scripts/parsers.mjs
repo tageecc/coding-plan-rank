@@ -156,6 +156,12 @@ export function parseCopilot(raws) {
 
 export function parseCodex(raws) {
   const raw = raws[0];
+  const proDetails = normalizeText(raws[1]);
+  const proSection = between(proDetails, '\nPro plans\n', '\nHow do I subscribe?');
+  const proRows = [...proSection.matchAll(/^Pro (\d+) \$(\d+) (Not included|Included)$/gm)];
+  requireFact(proRows.length === 3 && proRows.every(row => row[1] === row[2]) && proRows.map(row => row[1]).join(',') === '100,200,500', 'Codex Pro tier comparison changed');
+  requireFact(/Pro 200 includes more usage than Pro 100/.test(proSection) && /Pro 500 offers the highest included usage/.test(proSection), 'Codex Pro usage ordering changed');
+  requireFact(proRows.every(row => (row[3] === 'Included') === (row[1] === '500')), 'Codex Pro Ultrafast access changed');
   const pricing = between(raw, '## Pricing options', '## Included usage');
   const cards = [...pricing.matchAll(/<PricingCard\b([^>]*)>([\s\S]*?)<\/PricingCard>/g)].map(match => {
     const attributes = Object.fromEntries([...match[1].matchAll(/([\w]+)="([^"]*)"/g)].map(m => [m[1], m[2]]));
@@ -183,7 +189,13 @@ export function parseCodex(raws) {
       requireFact(matches.length === 1 && /^\$\d[\d,]*(?:(?:, |,? or )\$\d[\d,]*)*$/.test(matches[0][1]), 'Codex Pro tier list missing or unsupported');
       const prices = [...matches[0][1].matchAll(/\$([\d,]+)/g)].map(match => Number(match[1].replace(/,/g, '')));
       requireFact(prices.length === new Set(prices).size && Math.min(...prices) === Number(card.price.slice(1)), 'Codex Pro starting price conflicts with tiers');
-      return prices.map(price => makePlan(`Pro $${price}`, price, {...unknown(),window:'week'}, bi('无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。', 'No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work.')));
+      requireFact(prices.join(',') === proRows.map(row => row[2]).join(','), 'Codex Pro prices disagree across official sources');
+      return prices.map(price => ({
+        ...makePlan(`Pro ${price}`, price, {...unknown(),window:'week'}, bi(
+          `无五小时限制；固定周用量未公开，与 ChatGPT Work 共享。${price===100?'低于 Pro 200 和 Pro 500；不含超高速模式。':price===200?'用量高于 Pro 100、低于 Pro 500；不含超高速模式。':'三档中用量最高，包含超高速模式；超高速会加快额度消耗。'}`,
+          `No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. ${price===100?'Less usage than Pro 200 and Pro 500; no Ultrafast.':price===200?'More usage than Pro 100, less than Pro 500; no Ultrafast.':'Highest usage of the three; includes Ultrafast, which consumes allowance faster.'}`)),
+        usageSummary: price===100?bi('未公开','Undisclosed'):price===200?bi('高于100档','More than 100'):bi('最高；含超高速','Most; Ultrafast'),
+      }));
     }
     if (card.name === 'Plus') return [makePlan('Plus', Number(card.price.slice(1)), { amount, max, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' }, bi(`${baselineModel} 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。`, `${baselineModel} estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply.`))];
     requireFact(['Free', 'Go'].includes(card.name), `New Codex card requires usage mapping: ${card.name}`);
@@ -196,7 +208,7 @@ export function parseCodex(raws) {
 export const coreProviders = [
   { id: 'cursor', name: 'Cursor', product: 'Cursor', description: bi('集成 AI 智能体的代码编辑器，订阅额度与 Grok 共享。', 'Code editor with AI agents and a subscription allowance shared with Grok.'), sources: [{ url: 'https://cursor.com/pricing', title: 'Cursor pricing' }], parse: parseCursor },
   { id: 'claude', name: 'Anthropic', product: 'Claude Code', description: bi('终端与开发工具中的编码智能体，与 Claude 订阅共享用量。', 'Coding agent for terminals and development tools, sharing usage with Claude subscriptions.'), sources: [{ url: 'https://claude.com/pricing', title: 'Claude plans and pricing' }], parse: parseClaude },
-  { id: 'codex', name: 'OpenAI', product: 'Codex', description: bi('覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。', 'Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances.'), sources: [{ url: 'https://learn.chatgpt.com/docs/pricing.md', title: 'ChatGPT Work and Codex pricing' }], parse: parseCodex },
+  { id: 'codex', name: 'OpenAI', product: 'Codex', description: bi('覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。', 'Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances.'), sources: [{ url: 'https://learn.chatgpt.com/docs/pricing.md', title: 'ChatGPT Work and Codex pricing' }, { url: 'https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans', title: 'About ChatGPT Pro tiers' }], parse: parseCodex },
   { id: 'copilot', name: 'GitHub', product: 'GitHub Copilot', description: bi('面向编辑器、终端与 GitHub 的编码助手，付费计划按 AI 积分计量。', 'Coding assistant for editors, terminals, and GitHub, with AI credits on paid plans.'), sources: [{ url: 'https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans', title: 'Plans for GitHub Copilot' }], parse: parseCopilot },
 ];
 
@@ -217,7 +229,8 @@ export function evidenceText(id, raws) {
         const a = Object.fromEntries([...attrs.matchAll(/([\w]+)="([^"]*)"/g)].map(m => [m[1], m[2]]));
         return `\n${a.name ?? ''} ${a.price ?? ''} ${a.interval ?? ''}\n`;
       });
-    return `${normalizeText(excerpt)}\n`;
+    const details = normalizeText(raws[1]);
+    return `${normalizeText(excerpt)}\n${between(details, '\nPro plans\n', '\nHow do I subscribe?')}\n`;
   }
   requireFact(text.length <= 16000, `${id}: official evidence needs a bounded excerpt adapter`);
   return `${text}\n`;

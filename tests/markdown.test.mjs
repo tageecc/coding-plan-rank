@@ -21,6 +21,12 @@ test('each README shows every plan in one four-column table with single-line cel
    assert.equal(row.children.length,4,`${file}: four columns`);
    for(const cell of row.children)assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
   }
+  assert.deepEqual([...table.querySelectorAll('th')].map(cell=>cell.textContent),file==='README.md'?['工具 / 套餐','月费（元）','重置周期','用量']:['Tool / plan','CNY / month','Reset cycle','Usage']);
+  assert.ok(!/额度效率|Quota value|刷新/.test(body),`${file}: plain usage and reset wording`);
+  const rows=[...table.querySelectorAll('tbody tr')];
+  const proRows=rows.filter(row=>/^Codex · Pro /.test(row.children[0].textContent));
+  assert.deepEqual(proRows.map(row=>row.children[0].textContent),['Codex · Pro 100','Codex · Pro 200','Codex · Pro 500']);
+  assert.ok(rows.every(row=>!/(?:\/月|\/周|\/5小时|\/mo|\/wk|\/5h)$/.test(row.children[3].textContent)),`${file}: period belongs in its own column`);
   assert.ok(!/👍|支持<|Support<|community-vote|issue-body-viewer/.test(body),`${file}: no voting UI`);
   const priceCells=[...table.querySelectorAll('tbody tr')].map(row=>row.children[1].textContent);
   assert.ok(priceCells.every(value=>/^(?:(?:≈)?[\d,.]+元|汇率待核验)$/.test(value)),`${file}: every price in CNY`);

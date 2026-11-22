@@ -12,19 +12,13 @@
 
 按工具名称排列，同工具按原币月费递增。此排列不表示跨工具推荐顺序。
 
-## 额度与效率
+## 重置周期与用量
 
-只使用官方公开的额度、单位和刷新周期。官方未公布固定数量时写「未公开」，不填 0、无限量或根据价格猜出的倍数。免费访问、限模型、分批开放和身份要求不等于完整付费权限；关键访问限制直接标在套餐名，详细条款可悬停额度查看。
+周期与用量分列：周期写「每5小时」「每周」「每月」，用量写该周期的数量与单位。多重上限同时生效，悬停周期或用量查看完整限制。相对倍数保留官方基准套餐名，例如「5× Pro」表示 Pro 的五倍用量。
 
-额度效率只比较**同工具、同市场、同币种、同额度单位、同周期**的套餐：
+官方未公布固定数量时写「未公开」，不填 0、无限量或根据价格猜倍数。关键访问限制直接标在套餐名。各平台的积分、请求数和自定义倍数互不换算，不计算额度效率，也不以用量数量代替能力或综合性价比。
 
-```text
-额度效率 = (该套餐额度 / 月费) / (最低付费档额度 / 月费)
-```
-
-基础档为 1×，粗体为本组最优，— 表示无法比较。免费档、估算区间和未公开数量不计算效率。统一汇率不会改变同组的效率。
-
-积分、请求数与各工具自定义倍数互不换算。效率不是模型能力、质量、速度或综合推荐分。不同工具的 1.50× 不可直接比较。多个限额可同时生效；月额度不代表能持续满速使用。
+Codex 使用官方名称 Pro 100、Pro 200、Pro 500，与定价页和 Pro 帮助页交叉核对。Pro 200 用量高于 Pro 100，Pro 500 在三档中用量最高且包含超高速模式；固定数量未公开，不推算各档倍数。超高速会加快额度消耗。这里的 100、200、500 是官方档位名称，月费列仍统一显示人民币。
 
 Codex Plus 显示 GPT-6.1 Sol 在标准速度下的消息预估范围，实际用量受模型、任务复杂度、上下文、推理和工具调用影响。其他模型可能有不同范围。Codex 免费及 Go 档按当前定价文档仅展示桌面应用中分批开放的受限访问，不包含 Codex Cloud。Pro 没有五小时限制，不代表没有所有使用限制；固定周额度未公开。
 
@@ -32,12 +26,12 @@ Codex Plus 显示 GPT-6.1 Sol 在标准速度下的消息预估范围，实际�
 
 每日北京时间 **09:23** 自动抓取价格、额度和汇率，重新生成中英文 README 并提交主干。GitHub 定时任务可能延迟。
 
-不执行远程脚本或让语言模型猜数值。遇到套餐消失、额度下降、规则或页面结构变化，保留原核验日期并标记待核验，不参与效率计算。官方原文摘录、原币价格与详细限制保留在 `data/` 中，变更可通过 Git 历史核对。README 保持四列表格和单行单元格；桌面端检查满宽与无横向滚动。
+不执行远程脚本或让语言模型猜数值。遇到套餐消失、额度下降、规则或页面结构变化，保留原核验日期并标记待核验。官方原文摘录、原币价格与详细限制保留在 `data/` 中，变更可通过 Git 历史核对。README 保持四列表格和单行单元格；桌面端检查满宽与无横向滚动。
 
 ## English
 
 The table lists standard monthly individual plans and verified free access. All displayed prices are in CNY; USD prices use the latest ECB reference rates, rounded to two decimals. The rate's trading date is shown, including on weekends. Converted prices exclude payment fees and tax. Failed or stale FX verification suspends conversion.
 
-Tools are ordered by name; tiers are ordered by original monthly price. Quota value compares only tiers within the same tool, market, currency, unit and reset window. Unknown quantities, free plans and estimated ranges are unranked. It is not a cross-provider quality ranking. Hover over allowances for restrictions. Codex Free/Go indicate limited desktop rollout, not cloud access; Plus message counts are model-specific estimates.
+Tools are ordered by name; tiers are ordered by original monthly price. Reset cycles and included usage are separate columns. Relative allowances name their reference tier. Provider units are not interchangeable; no efficiency score is shown. Hover over cycles or usage for restrictions. Pro 100, Pro 200 and Pro 500 keep their official tier names. Pro 200 has more usage than Pro 100; Pro 500 has the most and includes Ultrafast. Fixed quantities are undisclosed. Codex Free/Go indicate limited desktop rollout, not cloud access; Plus message counts are model-specific estimates.
 
 Daily deterministic parsers refresh official pricing, usage and exchange rates. Unsupported changes preserve the last verified timestamp and remain visibly unverified. Detailed evidence and original currencies are retained in data files.

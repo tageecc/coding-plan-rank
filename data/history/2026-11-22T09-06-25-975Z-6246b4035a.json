@@ -1,0 +1,793 @@
+{
+  "changedAt": "2026-11-22T09:06:25.975Z",
+  "changes": [
+    {
+      "id": "antigravity",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "免费基础额度按周刷新，固定数量未公开；无付费计划的优先额度。",
+            "en": "Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority."
+          }
+        },
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "免费基础额度按周重置，固定数量未公开；无付费计划的优先额度。",
+            "en": "Free baseline allowance refreshes weekly; fixed quantity undisclosed, without paid-plan priority."
+          }
+        },
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时重置，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时重置，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时重置，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro $100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro $200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro $500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费/Go 仅桌面应用中的 GPT-6 Luna Standard，分批开放；不含 Codex Cloud，固定额度未公开。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; excludes Codex Cloud, fixed allowance undisclosed."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro 100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；固定周用量未公开，与 ChatGPT Work 共享。低于 Pro 200 和 Pro 500；不含超高速模式。",
+            "en": "No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. Less usage than Pro 200 and Pro 500; no Ultrafast."
+          },
+          "usageSummary": {
+            "zh": "未公开",
+            "en": "Undisclosed"
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro 200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；固定周用量未公开，与 ChatGPT Work 共享。用量高于 Pro 100、低于 Pro 500；不含超高速模式。",
+            "en": "No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. More usage than Pro 100, less than Pro 500; no Ultrafast."
+          },
+          "usageSummary": {
+            "zh": "高于100档",
+            "en": "More than 100"
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro 500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；固定周用量未公开，与 ChatGPT Work 共享。三档中用量最高，包含超高速模式；超高速会加快额度消耗。",
+            "en": "No five-hour limit; fixed weekly quantity undisclosed, shared with ChatGPT Work. Highest usage of the three; includes Ultrafast, which consumes allowance faster."
+          },
+          "usageSummary": {
+            "zh": "最高；含超高速",
+            "en": "Most; Ultrafast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "devin",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm",
+      "before": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "monthlyUsd": 18,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 80,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 12,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 168,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 28,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "monthlyUsd": 18,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 80,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 12,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 168,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天重置；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 28,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm-cn",
+      "before": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 118,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 2,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 538,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 12,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1078,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 28,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 118,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天重置；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 2,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 538,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天重置；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 12,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1078,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天重置；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 28,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kiro",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": 50,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 40,
+          "quota": {
+            "amount": 2000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-max",
+          "name": "Pro Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "power",
+          "name": "Power",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": 50,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 40,
+          "quota": {
+            "amount": 2000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-max",
+          "name": "Pro Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "power",
+          "name": "Power",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时重置；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        }
+      ]
+    }
+  ]
+}

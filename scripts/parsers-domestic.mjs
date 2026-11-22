@@ -78,7 +78,7 @@ export function parseGlmChina(raws) {
   return ['Lite','Pro','Max'].map(name=> {
     const row=one(prices,new RegExp(`^${name} CNY ([\\d.]+) month$`,'gm'),'GLM China monthly price');
     const amount=one(limits,new RegExp(`^${name} 套餐 ([\\d,]+) ([\\d,]+)$`,'gm'),'GLM China credits');
-    return plan(name,number(row[1]),quota(number(amount[2]),'glm-cn','week'),bi(`每七天刷新；另受每五小时 ${amount[1]} 积分上限约束；按模型和缓存抵扣。`,`Resets every seven days; also capped at ${amount[1]} credits per five hours, with model/cache-dependent deductions.`));
+    return plan(name,number(row[1]),quota(number(amount[2]),'glm-cn','week'),bi(`每七天重置；另受每五小时 ${amount[1]} 积分上限约束；按模型和缓存抵扣。`,`Resets every seven days; also capped at ${amount[1]} credits per five hours, with model/cache-dependent deductions.`));
   });
 }
 

@@ -10,7 +10,7 @@ import { updateExchangeRate } from './exchange-rate.mjs';
 
 export const OFFICIAL_HOSTS = new Set([
   'cursor.com', 'www.cursor.com', 'claude.com', 'www.claude.com',
-  'learn.chatgpt.com', 'docs.github.com',
+  'learn.chatgpt.com', 'help.openai.com', 'docs.github.com',
   'windsurf.com', 'www.windsurf.com', 'docs.windsurf.com',
   'zed.dev', 'www.zed.dev', 'docs.zed.dev',
   'augmentcode.com', 'www.augmentcode.com', 'docs.augmentcode.com',
@@ -99,6 +99,7 @@ export function validatePlans(plans) {
     requireFact(typeof plan.id === 'string' && /^[a-z0-9][a-z0-9-]*$/.test(plan.id) && !ids.has(plan.id), 'Invalid or duplicate plan ID');
     ids.add(plan.id);
     requireFact(typeof plan.name === 'string' && plan.name.length > 0 && validBi(plan.note), `Invalid plan name or note: ${plan.id}`);
+    requireFact(plan.usageSummary === undefined || validBi(plan.usageSummary), `Invalid usage summary: ${plan.id}`);
     const currency = plan.currency ?? 'USD';
     requireFact(currency === 'USD' || currency === 'CNY', `Unsupported currency: ${currency}`);
     const price = currency === 'CNY' ? plan.monthlyPrice : plan.monthlyUsd;
@@ -126,7 +127,7 @@ export function guardChanges(previous, next) {
 }
 
 export const sha256 = text => createHash('sha256').update(text).digest('hex');
-const stablePlans = plans => [...plans].sort((a, b) => a.id.localeCompare(b.id)).map(p => ({ id: p.id, name: p.name, currency: p.currency ?? 'USD', price: p.currency === 'CNY' ? p.monthlyPrice : p.monthlyUsd, quota: { amount: p.quota.amount, unit: p.quota.unit, window: p.quota.window, group: p.quota.group, ...(p.quota.max === undefined ? {} : { max: p.quota.max }) }, note: p.note }));
+const stablePlans = plans => [...plans].sort((a, b) => a.id.localeCompare(b.id)).map(p => ({ id: p.id, name: p.name, currency: p.currency ?? 'USD', price: p.currency === 'CNY' ? p.monthlyPrice : p.monthlyUsd, quota: { amount: p.quota.amount, unit: p.quota.unit, window: p.quota.window, group: p.quota.group, ...(p.quota.max === undefined ? {} : { max: p.quota.max }) }, note: p.note, ...(p.usageSummary ? {usageSummary:p.usageSummary} : {}) }));
 
 export async function updateData({ providers, previous = { providers: [] }, load, now = new Date().toISOString(), evidence = evidenceText }) {
   requireFact(new Set(providers.map(p => p.id)).size === providers.length, 'Duplicate provider ID in registry');

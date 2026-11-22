@@ -1,6 +1,6 @@
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {dirname} from 'node:path';
-import {REPO_URL,priceOf,money,comparableGroups,md,quotaText} from './model.mjs';
+import {REPO_URL,priceOf,money,md,quotaText} from './model.mjs';
 
 const dataset=JSON.parse(await readFile('data/plans.json','utf8'));
 import {cnyMoney} from './exchange-rate.mjs';
@@ -15,33 +15,18 @@ const day=value=>value?new Intl.DateTimeFormat('en-CA',{
 const timestamp=value=>value?`${day(value)} ${new Intl.DateTimeFormat('en-GB',{
   timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hourCycle:'h23',
 }).format(new Date(value))}`:'—';
-const values=new Map();
-for(const group of comparableGroups(providers)) {
-  for(const row of group.ranked) {
-    values.set(`${group.provider.id}:${row.plan.id}`,{
-      ratio:row.ratio,
-      best:group.winners.length<group.ranked.length && group.winners.includes(row),
-    });
-  }
-}
-
 function allowance(provider,plan,lang) {
   const q=plan.quota;
-  if(q.amount==null){
-    const period=lang==='zh'?{'5h':'5小时',week:'周',day:'日',month:'月',dynamic:'动态'}:{'5h':'5h',week:'Weekly',day:'Daily',month:'Monthly',dynamic:'Dynamic'};
-    return lang==='zh'?`${period[q.window]??''}·未公开`:`${period[q.window]??''} · N/A`;
-  }
+  if(q.amount==null)return plan.usageSummary?.[lang]??(lang==='zh'?'未公开':'Undisclosed');
   const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n);
   const compact=n=>n>=1e8?(lang==='zh'?`${number(n/1e8)}亿`:`${number(n/1e9)}B`):number(n);
   const amount=q.max==null?compact(q.amount):`${compact(q.amount)}–${compact(q.max)}`;
-  const period=lang==='zh'?{week:'周',month:'月',day:'天','5h':'5小时',dynamic:'动态'}:{week:'wk',month:'mo',day:'day','5h':'5h',dynamic:'dynamic'};
-  const window=period[q.window]??q.window;
   if(q.unit==='relative') {
     const base=provider.plans.find(p=>p.quota.group===q.group && p.quota.amount===1);
-    return `${amount}× ${base?.name??(lang==='zh'?'基础档':'base')}/${window}`;
+    return `${amount}× ${base?.name??(lang==='zh'?'基础档':'base')}`;
   }
   const unit=lang==='zh'?{credits:'积分',messages:'条',requests:'次'}:{credits:'cr',messages:'msg',requests:'req'};
-  return `${q.max==null?'':lang==='zh'?'约':'~'}${amount}${unit[q.unit]??q.unit}/${window}`;
+  return `${q.max==null?'':lang==='zh'?'约':'~'}${amount}${unit[q.unit]??q.unit}`;
 }
 
 function render(lang) {
@@ -52,7 +37,7 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具 / 套餐','月费（元）','额度','额度效率']:['Tool / plan','CNY / month','Allowance','Quota value']).map((title,i)=>`<th width="1000" nowrap${i===1||i===3?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具 / 套餐','月费（元）','重置周期','用量']:['Tool / plan','CNY / month','Reset cycle','Usage']).map((title,i)=>`<th width="1000" nowrap${i===1?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>a.product.localeCompare(b.product,'en'))) {
@@ -60,21 +45,20 @@ function render(lang) {
     if(!plans.length)plans.push({id:'unverified',name:zh?'待核验':'Unverified',monthlyUsd:null,quota:{amount:null}});
     plans.forEach(plan=> {
       const tool=zh&&domesticNames[p.id]?domesticNames[p.id]:zh&&p.id==='minimax'?'MiniMax 国际':zh&&p.id==='minimax-cn'?'MiniMax 中国':toolNames[p.id]??p.product;
-      let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):p.id==='codex'?plan.name.replace(/ \$\d+$/,''):zh&&plan.name==='Free'?'免费':plan.name;
+      let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):zh&&plan.name==='Free'?'免费':plan.name;
       if(zh && name==='Free')name='免费';
       if(zh && p.id==='copilot' && plan.id==='student')name='学生';
       const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'（桌面）':' (desktop)'):p.id==='copilot' && plan.id==='student'?(zh?'（需认证）':''):'';
       const label=`${html(tool)} · ${html(name)}${access}${p.status==='ok'?'':zh?'（待核验）':' (unverified)'}`;
-      const value=values.get(`${p.id}:${plan.id}`);
-      let ratio=value?`${value.ratio.toFixed(2)}×`:'—';
-      if(value?.best)ratio=`<strong>${ratio}</strong>`;
-      lines.push(`<tr><td nowrap>${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate))}</td><td nowrap title="${html(plan.note?.[lang])}">${html(allowance(p,plan,lang))}</td><td nowrap align="right">${ratio}</td></tr>`);
+      const period=(zh?{'5h':'每5小时',week:'每周',day:'每天',month:'每月',dynamic:'未公开'}:{'5h':'Every 5h',week:'Weekly',day:'Daily',month:'Monthly',dynamic:'Undisclosed'})[plan.quota.window]??(zh?'未公开':'Undisclosed');
+      const note=html(plan.note?.[lang]);
+      lines.push(`<tr><td nowrap>${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate))}</td><td nowrap title="${note}">${html(period)}</td><td nowrap title="${note}">${html(allowance(p,plan,lang))}</td></tr>`);
     });
   }
   lines.push('</tbody>','</table>','',
-    zh?`人民币参考月费；1 美元 ≈ ${dataset.exchangeRate?.rate?.toFixed(4)??'待核验'} 元（${dataset.exchangeRate?.rateDate??'未核验'}）。额度效率仅限同工具比较，粗体最优。`:`Monthly reference prices in CNY; USD 1 ≈ CNY ${dataset.exchangeRate?.rate?.toFixed(4)??'unverified'} (${dataset.exchangeRate?.rateDate??'unverified'}). Quota value compares tiers within one tool; bold = best.`,
+    zh?`人民币参考月费；1 美元 ≈ ${dataset.exchangeRate?.rate?.toFixed(4)??'待核验'} 元（${dataset.exchangeRate?.rateDate??'未核验'}）。各平台用量口径不同。`:`Monthly reference prices in CNY; USD 1 ≈ CNY ${dataset.exchangeRate?.rate?.toFixed(4)??'unverified'} (${dataset.exchangeRate?.rateDate??'unverified'}). Usage units differ across providers.`,
     '',
-    zh?'Codex 免费/Go 限桌面灰度，不含 Cloud；Plus 为 GPT-6.1 Sol 消息预估。悬停额度查看限制。':'Codex Free/Go: desktop rollout, no Cloud. Plus: GPT-6.1 Sol estimates at Standard speed. Hover over allowances for restrictions.',
+    zh?'Codex 免费/Go 限桌面灰度，不含 Cloud；Plus 为 GPT-6.1 Sol 消息预估。Pro 固定数量未公开；悬停用量查看限制。':'Codex Free/Go: desktop rollout, no Cloud. Plus: GPT-6.1 Sol estimates at Standard speed. Pro quantities are undisclosed. Hover over usage for restrictions.',
     '',
     `[中文](README.md) · [English](README.en.md) · [${zh?'比较规则':'Methodology'}](docs/methodology.md) · [${zh?'纠错':'Corrections'}](${REPO_URL}/issues/new?template=data-correction.yml)`,
     '',
@@ -99,6 +83,8 @@ for(const filename of histories) {
       else {
         if(money(old)!==money(plan))details.push(`${money(old)} → ${money(plan)}`);
         if(JSON.stringify(old.quota)!==JSON.stringify(plan.quota))details.push(`${quotaText(old.quota)} → ${quotaText(plan.quota)}`);
+        if(old.name!==plan.name)details.push(`${old.name} → ${plan.name}`);
+        if(JSON.stringify(old.usageSummary)!==JSON.stringify(plan.usageSummary))details.push('用量说明更新 / Usage summary updated');
         if(JSON.stringify(old.note)!==JSON.stringify(plan.note))details.push('说明更新 / Notes updated');
       }
       if(details.length)historyLines.push(`- **${md(name)} · ${md(plan.name)}**：${md(details.join('; '))}`);

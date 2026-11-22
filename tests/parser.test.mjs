@@ -5,6 +5,7 @@ import { coreProviders, normalizeText, parseCursor, parseClaude, parseCodex, par
 import { fetchOfficial, FetchError, officialUrl, validatePlans, guardChanges, sha256, updateData } from '../scripts/update.mjs';
 
 const fixtures = Object.fromEntries(await Promise.all(['cursor.txt', 'claude.txt', 'codex.md', 'copilot.md'].map(async name => [name.split('.')[0], await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8')])));
+const proDetails = await readFile(new URL('fixtures/codex-pro.txt', import.meta.url), 'utf8');
 const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const html = s => `<main>${s.split('\n').map(line => `<p>${escape(line)}</p>`).join('')}</main>`;
 
@@ -51,7 +52,7 @@ test('Copilot rejects a newly advertised individual plan without a total-credit 
 });
 
 test('Codex preserves model-specific five-hour range, Pro tiers and limited Go access', () => {
-  const plans = parseCodex([fixtures.codex]);
+  const plans = parseCodex([fixtures.codex, proDetails]);
   assert.deepEqual(plans.map(p => p.monthlyUsd), [0, 8, 20, 100, 200, 500]);
   assert.deepEqual(plans.find(p => p.id === 'plus').quota, { amount: 15, max: 160, unit: 'messages', window: '5h', group: 'codex-gpt-6.1-sol' });
   for (const p of plans.filter(p => p.id.startsWith('pro-'))) {
@@ -59,11 +60,15 @@ test('Codex preserves model-specific five-hour range, Pro tiers and limited Go a
     assert.equal(p.quota.group, null);
     assert.match(p.note.en, /No five-hour limit/);
   }
+  assert.deepEqual(plans.filter(p=>p.id.startsWith('pro-')).map(p=>p.name), ['Pro 100','Pro 200','Pro 500']);
+  assert.match(plans.find(p=>p.id==='pro-200').usageSummary.en, /More than 100/);
+  assert.match(plans.find(p=>p.id==='pro-500').usageSummary.en, /Ultrafast/);
+  assert.throws(()=>parseCodex([fixtures.codex, proDetails.replace('Pro 500 $500 Included','Pro 500 $500 Not included')]), /Ultrafast/);
   assert.match(plans.find(p => p.id === 'go').note.en, /Limited to GPT-6 Luna/);
-  assert.equal(parseCodex([fixtures.codex.replace('$100, $200, or $500 USD', '$100, $200, $500, or $1000 USD')]).find(p => p.id === 'pro-1000').monthlyUsd, 1000);
-  assert.throws(() => parseCodex([fixtures.codex.replace('Pro plans currently have no five-hour limit', 'Pro plans have a five-hour limit')]), /semantics/);
-  assert.throws(() => parseCodex([fixtures.codex.replace('15-160', 'unknown')]), /range missing/);
-  assert.throws(() => parseCodex([fixtures.codex.replace('name="Go"', 'name="New"')]), /New Codex card/);
+  assert.throws(() => parseCodex([fixtures.codex.replace('$100, $200, or $500 USD', '$100, $200, $500, or $1000 USD'), proDetails]), /disagree/);
+  assert.throws(() => parseCodex([fixtures.codex.replace('Pro plans currently have no five-hour limit', 'Pro plans have a five-hour limit'), proDetails]), /semantics/);
+  assert.throws(() => parseCodex([fixtures.codex.replace('15-160', 'unknown'), proDetails]), /range missing/);
+  assert.throws(() => parseCodex([fixtures.codex.replace('name="Go"', 'name="New"'), proDetails]), /New Codex card/);
 });
 
 test('normalization strips executable, hidden-template and navigation text without executing remote content', () => {
@@ -72,14 +77,15 @@ test('normalization strips executable, hidden-template and navigation text witho
   assert.equal(normalizeText(`${poison}<main><h2>Safe</h2><p>A&nbsp;B<br>C</p></main>`), 'Safe\nA B\nC');
   assert.deepEqual(parseCursor([poison + html(fixtures.cursor)]), parseCursor([fixtures.cursor]));
   assert.equal(globalThis.__remoteExecuted, undefined);
-  assert.throws(() => parseCodex(['<script>return [{monthlyUsd:1}]</script>']), /Missing section/);
+  assert.throws(() => parseCodex(['<script>return [{monthlyUsd:1}]</script>', proDetails]), /Missing section/);
 });
 
 test('current fixtures produce compact evidence and valid schema', () => {
   for (const provider of coreProviders) {
     const raw = fixtures[provider.id];
-    validatePlans(provider.parse([raw]));
-    const evidence = evidenceText(provider.id, [raw]);
+    const raws=provider.id==='codex'?[raw,proDetails]:[raw];
+    validatePlans(provider.parse(raws));
+    const evidence = evidenceText(provider.id, raws);
     assert.ok(evidence.length > 100 && Buffer.byteLength(evidence) < 24000);
     assert.match(sha256(evidence), /^[a-f0-9]{64}$/);
   }

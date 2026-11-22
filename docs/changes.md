@@ -6,6 +6,31 @@
 
 ## 2026-11-22
 
+- **Google Antigravity · Free**：说明更新 / Notes updated
+- **Google Antigravity · Google AI Pro**：说明更新 / Notes updated
+- **Google Antigravity · Google AI Ultra 5x**：说明更新 / Notes updated
+- **Google Antigravity · Google AI Ultra 20x**：说明更新 / Notes updated
+- **Codex · Pro 100**：Pro $100 → Pro 100; 用量说明更新 / Usage summary updated; 说明更新 / Notes updated
+- **Codex · Pro 200**：Pro $200 → Pro 200; 用量说明更新 / Usage summary updated; 说明更新 / Notes updated
+- **Codex · Pro 500**：Pro $500 → Pro 500; 用量说明更新 / Usage summary updated; 说明更新 / Notes updated
+- **Devin / Windsurf · Pro**：说明更新 / Notes updated
+- **Devin / Windsurf · Max**：说明更新 / Notes updated
+- **GLM Coding Plan · Lite**：说明更新 / Notes updated
+- **GLM Coding Plan · Pro**：说明更新 / Notes updated
+- **GLM Coding Plan · Max**：说明更新 / Notes updated
+- **GLM CN · Lite**：说明更新 / Notes updated
+- **GLM CN · Pro**：说明更新 / Notes updated
+- **GLM CN · Max**：说明更新 / Notes updated
+- **Kiro · Free**：说明更新 / Notes updated
+- **Kiro · Pro**：说明更新 / Notes updated
+- **Kiro · Pro+**：说明更新 / Notes updated
+- **Kiro · Pro Max**：说明更新 / Notes updated
+- **Kiro · Power**：说明更新 / Notes updated
+
+[核验快照 / Snapshot](../data/history/2026-11-22T09-06-25-975Z-6246b4035a.json)
+
+## 2026-11-22
+
 - **Google Antigravity · Free**：新增 / New
 - **Codex · Free**：说明更新 / Notes updated
 - **Codex · Go**：说明更新 / Notes updated

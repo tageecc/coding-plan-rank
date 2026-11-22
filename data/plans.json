@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T07:06:28.628Z",
+  "updatedAt": "2026-11-22T07:16:39.019Z",
   "providers": [
     {
       "id": "cursor",
@@ -15,7 +15,7 @@
           "title": "Cursor pricing"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
       "plans": [
@@ -110,7 +110,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -175,7 +175,7 @@
           "title": "ChatGPT Work and Codex pricing"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "d667808e14faf07284827654f34c4495011a2ae94512adad9282027d1db05e43",
       "plans": [
@@ -286,7 +286,7 @@
           "title": "Plans for GitHub Copilot"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
       "plans": [
@@ -385,7 +385,7 @@
           "title": "Antigravity plans and usage limits"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "0e06aa3d7edd2ee8cb5abe7d717276605dc30066ae9ae70ea94ed21fb3bcf407",
       "plans": [
@@ -454,7 +454,7 @@
           "title": "Devin self-serve billing and quotas"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "2999e45c21381a20c353738be6ee430eab03bcd69b179228a01f707e8973f57d",
       "plans": [
@@ -508,7 +508,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
       "plans": [
@@ -577,7 +577,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -646,7 +646,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -721,7 +721,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -805,7 +805,7 @@
           "title": "Kiro billing-cycle reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T07:06:28.628Z",
+      "checkedAt": "2026-11-22T07:16:39.019Z",
       "status": "ok",
       "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
       "plans": [

@@ -35,28 +35,25 @@ function allowance(provider,plan,lang,q=plan.quota) {
   return `${q.max==null?'':lang==='zh'?'约':'~'}${amount}${provider.id==='volc-cn'?'AFP':unit[q.unit]??q.unit}`;
 }
 
-function usageCells(provider,plan,lang) {
+function usageDisplay(provider,plan,lang) {
   const zh=lang==='zh';
   const caps=[{...plan.quota,status:'limited'},...(plan.caps??[])];
   const hour=caps.find(q=>q.window==='5h');
-  const short=hour?.status==='none'
-    ? zh ? `${hour.condition?.zh??''}不限` : hour.condition?'ID: no cap':'No cap'
-    : hour ? hour.amount==null ? (zh?'有，未公开':'Set; unpub.') : allowance(provider,plan,lang,hour)
-    : zh?'未公开':'Unpub.';
-  const periods=zh?{week:'周',month:'月',day:'日'}:{week:'w',month:'m',day:'d'};
-  const longer=['week','month','day'].flatMap(window=>caps.filter(q=>q.window===window));
-  const total=longer.length>1 && longer.every(q=>q.amount==null&&q.status==='limited') && !plan.usageSummary
-    ? `${zh?'未公开':'Unpub.'}/${longer.map(q=>periods[q.window]).join('·')}`
-    : longer.map(q=>{
-    const amount=q.status==='possible'?(zh?'可能限额':'May apply')
-      : q.amount==null ? (q===caps[0]&&plan.usageSummary?plan.usageSummary[lang]:(zh?'未公开':'Unpub.'))
-      : allowance(provider,plan,lang,q);
-    return `${amount}/${periods[q.window]}`;
-  }).join('·');
-  const compactTotal=provider.id==='volc-cn'
-    ? total.replaceAll('AFP','').split('·').map(value=>{const [amount,period]=value.split('/');return `${period}${amount}`;}).join('·')
-    : total.replace('More than 100/','>100/').replace('Most; Ultrafast/','Most/').replace('最高；含超高速/','最高/');
-  return [short,compactTotal||(zh?'未公开':'Unpub.')];
+  const status=!hour?'❓':hour.status==='none'?`❌${hour.condition?(zh?hour.condition.zh:'w/ID'):''}`:hour.status==='possible'?'❓':'✅';
+  const statusTitle=!hour?(zh?'官方未说明是否有5小时限制':'Official docs do not state whether a five-hour cap applies')
+    :hour.status==='none'?(zh?`${hour.condition?.zh??''}无5小时限制`:`No five-hour cap${hour.condition?' after verification':''}`)
+    :hour.status==='possible'?(zh?'可能有5小时限制':'A five-hour cap may apply')
+    :zh?'有5小时限制':'Five-hour cap applies';
+  const periods=zh?{'5h':'5小时',week:'每周',month:'每月',day:'每天'}:{'5h':'5h',week:'Weekly',month:'Monthly',day:'Daily'};
+  const rows=['5h','day','week','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&(window!=='5h'||q.amount!==null))).map(q=>{
+    const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
+    const amount=q.status==='possible'?(zh?'可能另限':'May apply')
+      :q.amount!==null?allowance(provider,plan,lang,q)
+      :summary?summary.replace('More than 100','>100').replace('Most; Ultrafast','Most').replace('最高；含超高速','最高').replace('Undisclosed','Not stated').replace('未公开','未公布')
+      :zh?'未公布':'Not stated';
+    return `${periods[q.window]} ${amount}`;
+  });
+  return {status,statusTitle,rows:rows.length?rows:[zh?'额度未公布':'Not stated']};
 }
 
 function render(lang) {
@@ -67,25 +64,28 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','周／月限额']:['Tool','Plan','CNY/mo','5h cap','Week/month']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限制','用量']:['Tool','Plan','CNY/mo','5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
     const plans=[...p.plans].sort((a,b)=>priceOf(a)-priceOf(b)||a.name.localeCompare(b.name));
     if(!plans.length)plans.push({id:'unverified',name:zh?'待核验':'Unverified',monthlyUsd:null,quota:{amount:null}});
-    plans.forEach((plan,index)=> {
+    const entries=plans.map(plan=>({plan,usage:usageDisplay(p,plan,lang)}));
+    const groupRows=entries.reduce((sum,{usage})=>sum+usage.rows.length,0);
+    entries.forEach(({plan,usage},index)=> {
       const tool=toolName(p,lang);
       const displayTool=zh?tool:tool.replace(/ (China|Global)$/,'\u2009$1');
       let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):zh&&plan.name==='Free'?'免费':plan.name;
-      if(zh && name==='Free')name='免费';
       if(zh && p.id==='copilot' && plan.id==='student')name='学生';
       const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'·桌面':'·PC'):p.id==='copilot' && plan.id==='student'?(zh?'·认证':''):'';
       const label=`${html(name)}${access}`;
       const verification=html(`${p.product}${p.status==='ok'?'':zh?'；本次核验失败，保留上次数据':'; Verification failed; showing last verified data'}`);
-      const brand=index===0?`<td rowspan="${plans.length}" nowrap valign="middle" title="${verification}">${html(displayTool)}${p.status==='ok'?'':' ⚠'}</td>`:'';
-      const [short,total]=usageCells(p,plan,lang);
+      const brand=index===0?`<td rowspan="${groupRows}" nowrap valign="middle" title="${verification}">${html(displayTool)}${p.status==='ok'?'':' ⚠'}</td>`:'';
       const note=html(plan.note?.[lang]);
-      lines.push(`<tr>${brand}<td nowrap title="${note}">${label}</td><td nowrap align="right">${html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,'').replace(/^≈/,'').replaceAll(',',''))}</td><td nowrap title="${note}">${html(short)}</td><td nowrap title="${note}">${html(total)}</td></tr>`);
+      const span=usage.rows.length;
+      const price=html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,'').replace(/^≈/,'').replaceAll(',',''));
+      const fixed=`${brand}<td rowspan="${span}" nowrap valign="middle" title="${note}">${label}</td><td rowspan="${span}" nowrap valign="middle" align="right">${price}</td><td rowspan="${span}" nowrap valign="middle" align="center" title="${html(usage.statusTitle)}; ${note}">${html(usage.status)}</td>`;
+      usage.rows.forEach((row,i)=>lines.push(`<tr>${i===0?fixed:''}<td nowrap title="${note}">${html(row)}</td></tr>`));
     });
   }
   lines.push('</tbody>','</table>','',

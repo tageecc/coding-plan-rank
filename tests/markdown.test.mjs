@@ -19,28 +19,44 @@ test('each README groups plans under merged tool cells in one single-line table'
   const tables=document.querySelectorAll('table');
   assert.equal(tables.length,1,`${file}: only one table`);
   const table=tables[0];
-  assert.equal(table.querySelectorAll('tbody tr').length,expectedRows,`${file}: every plan must be visible`);
+  assert.ok(table.querySelectorAll('tbody tr').length>=expectedRows,`${file}: every plan must be visible`);
   assert.ok(!body.includes('<details>'),`${file}: no collapsed plans`);
   assert.equal(table.querySelectorAll('br').length,0,`${file}: no forced line breaks`);
   for(const cell of table.querySelectorAll('th,td'))assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
-  assert.deepEqual([...table.querySelectorAll('thead th')].map(cell=>cell.textContent),zh?['工具','套餐','月费/元','5小时限额','周／月限额']:['Tool','Plan','CNY/mo','5h cap','Week/month']);
+  assert.deepEqual([...table.querySelectorAll('thead th')].map(cell=>cell.textContent),zh?['工具','套餐','月费/元','5小时限制','用量']:['Tool','Plan','CNY/mo','5h cap','Allowance']);
   assert.ok(!/额度效率|Quota value|刷新/.test(body),`${file}: plain usage and reset wording`);
-  let tool,remaining=0;
-  const rows=[...table.querySelectorAll('tbody tr')].map(row=>{
+  let tool,toolRemaining=0,planRemaining=0,current;
+  const toolCells=[];
+  const rows=[];
+  const physicalRows=[...table.querySelectorAll('tbody tr')];
+  for(const row of physicalRows) {
    const cells=[...row.children];
-   if(remaining===0) {
-    assert.equal(cells.length,5,`${file}: each tool starts a five-column group`);
+   if(toolRemaining===0) {
+    assert.equal(planRemaining,0,`${file}: plan stays within its tool`);
     tool=cells.shift();
-    remaining=Number(tool.getAttribute('rowspan'));
-    assert.ok(Number.isInteger(remaining)&&remaining>0,`${file}: tool spans its plan rows`);
+    toolCells.push(tool);
+    toolRemaining=Number(tool.getAttribute('rowspan'));
+    assert.ok(Number.isInteger(toolRemaining)&&toolRemaining>0,`${file}: valid tool rowspan`);
     if(tool.textContent.endsWith(' ⚠'))assert.match(tool.getAttribute('title'),/本次核验失败|Verification failed/);
-   } else assert.equal(cells.length,4,`${file}: following rows inherit the merged tool cell`);
-   remaining--;
-   const [plan,price,short,total]=cells;
-   return {tool:tool.textContent.replaceAll('\u2009',' ').replace(/ ⚠$/,''),plan:plan.textContent,price:price.textContent,short:short.textContent,total:total.textContent};
-  });
-  assert.equal(remaining,0,`${file}: rowspan ends at the final plan`);
-  assert.equal(table.querySelectorAll('td[rowspan]').length,data.providers.length,`${file}: one merged tool cell per provider`);
+   }
+   if(planRemaining===0) {
+    assert.equal(cells.length,4,`${file}: each plan has price, status and allowance`);
+    const [plan,price,status]=cells.splice(0,3);
+    planRemaining=Number(plan.getAttribute('rowspan'));
+    assert.ok(Number.isInteger(planRemaining)&&planRemaining>0,`${file}: valid plan rowspan`);
+    for(const cell of [price,status])assert.equal(Number(cell.getAttribute('rowspan')),planRemaining,`${file}: plan fields span identical period rows`);
+    current={tool:tool.textContent.replaceAll('\u2009',' ').replace(/ ⚠$/,''),plan:plan.textContent,price:price.textContent,status:status.textContent,statusTitle:status.getAttribute('title'),allowances:[],physicalRows:planRemaining};
+    rows.push(current);
+   }
+   assert.equal(cells.length,1,`${file}: each physical row contains exactly one period's allowance`);
+   current.allowances.push(cells[0].textContent);
+   toolRemaining--;planRemaining--;
+   assert.ok(toolRemaining>=0&&planRemaining>=0,`${file}: no rowspan overlaps`);
+  }
+  assert.equal(toolRemaining,0,`${file}: tool rowspan ends at final row`);
+  assert.equal(planRemaining,0,`${file}: plan rowspan ends at final row`);
+  assert.equal(rows.length,expectedRows,`${file}: every plan appears exactly once`);
+  assert.equal(toolCells.length,data.providers.length,`${file}: each provider has one merged tool cell`);
   const labels=rows.map(row=>`${row.tool}·${row.plan}`);
   assert.equal(new Set(labels).size,labels.length,`${file}: no duplicate plans in a tool`);
   assert.ok(labels.every(label=>!/国内|\bCN\b|\bintl\b/.test(label)),`${file}: consistent region names`);
@@ -51,7 +67,7 @@ test('each README groups plans under merged tool cells in one single-line table'
    assert.equal(indices.at(-1)-indices[0]+1,indices.length,`${file}: regional plans grouped by brand`);
   }
   for(const tool of new Set(rows.map(row=>row.tool))) {
-   const count=rows.filter(row=>row.tool===tool).length;
+   const count=rows.filter(row=>row.tool===tool).reduce((sum,row)=>sum+row.physicalRows,0);
    const cell=[...table.querySelectorAll('td[rowspan]')].find(cell=>cell.textContent.replaceAll('\u2009',' ').replace(/ ⚠$/,'')===tool);
    assert.equal(Number(cell.getAttribute('rowspan')),count,`${file}: ${tool} spans exactly its own plans`);
   }
@@ -59,21 +75,33 @@ test('each README groups plans under merged tool cells in one single-line table'
   assert.deepEqual(rows.filter(row=>row.tool==='Codex'&&row.plan.startsWith('Pro ')).map(row=>row.plan),['Pro 100','Pro 200','Pro 500']);
   const rowFor=(tool,plan)=>rows.find(row=>row.tool===tool&&row.plan===plan);
   const volc=rowFor(zh?'火山方舟':'Volcengine','Small');
-  assert.match(volc.short,/2(?:,000|k)AFP/);
-  assert.match(volc.total,zh?/周7,000.*月2万/:/w7k.*m20k/);
+  assert.equal(volc.status,'✅');
+  assert.deepEqual(volc.allowances,zh?['5小时 2,000AFP','每周 7,000AFP','每月 2万AFP']:['5h 2kAFP','Weekly 7kAFP','Monthly 20kAFP']);
   const plus=rowFor('Codex','Plus');
-  assert.match(plus.short,/15[–-]160/);
-  assert.match(plus.total,zh?/可能限额\/周/:/May apply\/w/);
-  assert.equal(rowFor('Codex','Pro 100').short,zh?'不限':'No cap');
-  assert.equal(rowFor(zh?'阿里云':'Aliyun','Lite').short,zh?'未公开':'Unpub.');
+  assert.equal(plus.status,'✅');
+  assert.match(plus.allowances[0],/15[–-]160/);
+  assert.equal(plus.allowances[1],zh?'每周 可能另限':'Weekly May apply');
+  assert.equal(rowFor('Codex','Pro 100').status,'❌');
+  const unknown=rowFor(zh?'阿里云':'Aliyun','Lite');
+  assert.equal(unknown.status,'❓');
+  assert.match(unknown.statusTitle,/未说明是否有|do not state whether/);
+  assert.equal(rowFor('Claude Code','Ultra').status,zh?'❌认证后':'❌w/ID');
+  assert.match(rowFor('Claude Code','Ultra').statusTitle,/认证后无|after verification/);
   const glm=rowFor(zh?'智谱 国际':'GLM Global','Lite');
-  assert.match(glm.short,/2(?:,000|k)/);
-  assert.match(glm.total,zh?/1万积分\/周/:/10kcr\/w/);
+  assert.equal(glm.status,'✅');
+  assert.deepEqual(glm.allowances,zh?['5小时 2,000积分','每周 1万积分']:['5h 2kcr','Weekly 10kcr']);
   const tencent=rowFor(zh?'腾讯通用':'Tencent','Max');
-  assert.match(tencent.total,zh?/11,980积分\/月/:/11.98kcr\/m/);
+  assert.equal(tencent.allowances[0],zh?'每月 11,980积分':'Monthly 11.98kcr');
   const kimi=rowFor(zh?'Kimi 中国':'Kimi China','Plus');
-  assert.equal(kimi.short,zh?'有，未公开':'Set; unpub.');
-  assert.match(kimi.total,zh?/未公开\/月/:/Unpub.\/m/);
+  assert.equal(kimi.status,'✅');
+  assert.equal(kimi.allowances[0],zh?'每月 未公布':'Monthly Not stated');
+  assert.equal(rowFor('Devin','Max').status,'❌');
+  const devin=rowFor('Devin','Pro');
+  assert.deepEqual(devin.allowances,zh?['每天 未公布','每周 未公布']:['Daily Not stated','Weekly Not stated']);
+  for(const row of rows) {
+   assert.match(row.status,/^[✅❌❓]/,`${file}: five-hour column shows existence, not a quota`);
+   assert.ok(!row.allowances.some(value=>/[·／/]/.test(value)),`${file}: periods are separate rows, not slash-separated codes`);
+  }
   assert.match(rowFor('Codex',zh?'免费·桌面':'Free·PC').plan,zh?/桌面/:/PC/);
   assert.ok(!/👍|支持<|Support<|community-vote|issue-body-viewer/.test(body),`${file}: no voting UI`);
   assert.ok(rows.every(row=>/^(?:[\d.]+|汇率待核验)$/.test(row.price)),`${file}: every price in CNY`);

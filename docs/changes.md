@@ -6,6 +6,12 @@
 
 ## 2026-11-22
 
+- **Devin / Windsurf · Max**：周期限额更新 / Window caps updated
+
+[核验快照 / Snapshot](../data/history/2026-11-22T13-00-32-842Z-c6af22ceac.json)
+
+## 2026-11-22
+
 - **Google Antigravity · Google AI Pro**：周期限额更新 / Window caps updated
 - **Google Antigravity · Google AI Ultra 5x**：周期限额更新 / Window caps updated
 - **Google Antigravity · Google AI Ultra 20x**：周期限额更新 / Window caps updated

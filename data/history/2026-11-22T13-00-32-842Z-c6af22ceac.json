@@ -1,0 +1,129 @@
+{
+  "changedAt": "2026-11-22T13:00:32.842Z",
+  "changes": [
+    {
+      "id": "devin",
+      "before": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          },
+          "caps": []
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          },
+          "caps": [
+            {
+              "window": "day",
+              "amount": null,
+              "unit": "unknown",
+              "status": "limited"
+            }
+          ]
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          },
+          "caps": []
+        }
+      ],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费 Agent 用量有限，固定数量未公开；模型及云端访问受限。",
+            "en": "Limited free agent usage, fixed quantity undisclosed; restricted models and cloud access."
+          },
+          "caps": []
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          },
+          "caps": [
+            {
+              "window": "day",
+              "amount": null,
+              "unit": "unknown",
+              "status": "limited"
+            }
+          ]
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          },
+          "caps": [
+            {
+              "window": "5h",
+              "amount": null,
+              "unit": "unknown",
+              "status": "none"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

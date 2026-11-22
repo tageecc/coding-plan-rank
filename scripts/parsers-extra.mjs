@@ -54,7 +54,7 @@ export function parseDevin(raws) {
     const price = matchOne(limits, new RegExp(`^${name} [^\\n$]+\\$([\\d,.]+)\\/month 1$`, 'gm'), `Devin ${name} monthly price`);
     const publicPrice = matchOne(prices, new RegExp(`^${name}(?:POPULAR|NEW)?\\n\\$([\\d,.]+)\\s*per month$`, 'gm'), `Devin ${name} public price`);
     requireFact(number(publicPrice[1]) === number(price[1]), `Devin ${name}: pricing and billing sources disagree`);
-    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'), name==='Pro'?[usageCap('day')]:[]);
+    return plan(name, number(price[1]), unknown('week'), bi(name === 'Pro' ? '按日历周及日历日重置；数值与时区未公开。桌面、CLI、云端共享；超额另付费。' : '按日历周重置，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。', name === 'Pro' ? 'Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.' : 'Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.'), name==='Pro'?[usageCap('day')]:[usageCap('5h',null,'unknown','none')]);
   });
   const freeCard = section(prices, '\nFree\n', '\nPro', 'Devin free card');
   const freePrice = matchOne(freeCard, /^\$([\d,.]+)$/gm, 'Devin Free price');

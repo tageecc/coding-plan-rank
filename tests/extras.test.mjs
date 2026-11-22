@@ -43,6 +43,10 @@ test('Google footnote numbers do not become plan names or coding-quota multiplie
 });
 
 test('Devin prices must agree across independent official pricing and billing pages', () => {
+  assert.deepEqual(parse('devin').find(p=>p.name==='Max').caps,[{window:'5h',amount:null,unit:'unknown',status:'none'}]);
+  const changed=raws('devin');
+  changed[1]=changed[1].replace('Max has a weekly allowance only, with no daily cap.','Max may have additional windows.');
+  assert.throws(()=>provider('devin').parse(changed),/calendar quota rules changed/);
   const input = raws('devin');
   input[0] = input[0].replace('$20per month', '$25per month');
   assert.throws(() => provider('devin').parse(input), /pricing and billing sources disagree/);

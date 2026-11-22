@@ -77,8 +77,6 @@
 </tbody>
 </table>
 
-人民币参考月费；1 美元 ≈ 6.6777 元（2026-11-20）。各平台用量口径不同。
-
-Codex 免费/Go 限桌面灰度，不含 Cloud；Plus 为 GPT-6.1 Sol 消息预估。Pro 固定数量未公开；悬停用量查看限制。
+汇率：1 美元 ≈ 6.6777 元（2026-11-20）
 
 [中文](README.md) · [English](README.en.md) · [比较规则](docs/methodology.md) · [纠错](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml)

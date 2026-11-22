@@ -56,9 +56,7 @@ function render(lang) {
     });
   }
   lines.push('</tbody>','</table>','',
-    zh?`人民币参考月费；1 美元 ≈ ${dataset.exchangeRate?.rate?.toFixed(4)??'待核验'} 元（${dataset.exchangeRate?.rateDate??'未核验'}）。各平台用量口径不同。`:`Monthly reference prices in CNY; USD 1 ≈ CNY ${dataset.exchangeRate?.rate?.toFixed(4)??'unverified'} (${dataset.exchangeRate?.rateDate??'unverified'}). Usage units differ across providers.`,
-    '',
-    zh?'Codex 免费/Go 限桌面灰度，不含 Cloud；Plus 为 GPT-6.1 Sol 消息预估。Pro 固定数量未公开；悬停用量查看限制。':'Codex Free/Go: desktop rollout, no Cloud. Plus: GPT-6.1 Sol estimates at Standard speed. Pro quantities are undisclosed. Hover over usage for restrictions.',
+    zh?`汇率：1 美元 ≈ ${dataset.exchangeRate?.rate?.toFixed(4)??'待核验'} 元（${dataset.exchangeRate?.rateDate??'未核验'}）`:`USD 1 ≈ CNY ${dataset.exchangeRate?.rate?.toFixed(4)??'unverified'} (${dataset.exchangeRate?.rateDate??'unverified'})`,
     '',
     `[中文](README.md) · [English](README.en.md) · [${zh?'比较规则':'Methodology'}](docs/methodology.md) · [${zh?'纠错':'Corrections'}](${REPO_URL}/issues/new?template=data-correction.yml)`,
     '',

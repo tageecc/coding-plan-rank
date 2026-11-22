@@ -77,8 +77,6 @@
 </tbody>
 </table>
 
-Monthly reference prices in CNY; USD 1 ≈ CNY 6.6777 (2026-11-20). Usage units differ across providers.
-
-Codex Free/Go: desktop rollout, no Cloud. Plus: GPT-6.1 Sol estimates at Standard speed. Pro quantities are undisclosed. Hover over usage for restrictions.
+USD 1 ≈ CNY 6.6777 (2026-11-20)
 
 [中文](README.md) · [English](README.en.md) · [Methodology](docs/methodology.md) · [Corrections](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml)

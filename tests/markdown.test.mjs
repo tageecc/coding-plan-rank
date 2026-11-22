@@ -10,6 +10,10 @@ test('each README shows every plan in one four-column table with single-line cel
   const body=await readFile(file,'utf8');
   const intro=body.split('<table')[0].replace(/<a id="plans"><\/a>/,'').trim();
   assert.match(intro,/^(更新时间：|Updated: )\d{4}-\d{2}-\d{2} \d{2}:\d{2}[^\n]*$/,`${file}: only the update timestamp above the table`);
+  const footer=body.split('</table>')[1].trim().split(/\n\s*\n/);
+  assert.equal(footer.length,2,`${file}: footer contains only exchange rate and navigation`);
+  assert.match(footer[0],file==='README.md'?/^汇率：1 美元 ≈ /:/^USD 1 ≈ CNY /);
+  assert.match(footer[1],/^\[中文\]/);
   const {document}=parseHTML(body);
   const tables=document.querySelectorAll('table');
   assert.equal(tables.length,1,`${file}: only one table`);

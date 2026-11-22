@@ -1,52 +1,52 @@
 {
-  "attemptedAt": "2026-11-22T09:11:05.487Z",
+  "attemptedAt": "2026-11-22T09:13:16.370Z",
   "providers": [
     {
       "id": "aliyun-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "antigravity",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "codex",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
@@ -59,55 +59,55 @@
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "kimi-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "mimo-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "tencent-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "tencent-hy",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     },
     {
       "id": "volc-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "changed": false
     }
   ],
@@ -116,7 +116,7 @@
     "quote": "CNY",
     "rate": 6.677707,
     "rateDate": "2026-11-20",
-    "checkedAt": "2026-11-22T09:11:05.487Z",
+    "checkedAt": "2026-11-22T09:13:16.370Z",
     "referenceRates": {
       "USD": 1.099,
       "CNY": 7.3388

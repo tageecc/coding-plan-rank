@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T09:11:05.487Z",
+  "updatedAt": "2026-11-22T09:13:16.370Z",
   "providers": [
     {
       "id": "cursor",
@@ -15,7 +15,7 @@
           "title": "Cursor pricing"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
       "plans": [
@@ -110,7 +110,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -179,7 +179,7 @@
           "title": "About ChatGPT Pro tiers"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "7b4e32d3efea1869cb3673e1b453030a2c43811c6b76cafbbdace8b40890ee00",
       "plans": [
@@ -302,7 +302,7 @@
           "title": "Plans for GitHub Copilot"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
       "plans": [
@@ -405,7 +405,7 @@
           "title": "Antigravity free individual access"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "5a6ca6a70d08cd7b32b775543e472de39e75ce3b03491068fff13bb8d7c94ecc",
       "plans": [
@@ -489,9 +489,9 @@
           "title": "Devin self-serve billing and quotas"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
-      "sourceHash": "7b70b825555d99cacce605f97c129c0bc17baed6ae09f9412accfccb40605dc2",
+      "sourceHash": "41a99036a0e397833c94a5bfacc20efebe3dd6bdeacb5c0162423a2f43bbbd3f",
       "plans": [
         {
           "id": "free",
@@ -558,7 +558,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
       "plans": [
@@ -627,7 +627,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -696,7 +696,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -771,7 +771,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -855,7 +855,7 @@
           "title": "Kiro billing-cycle reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
       "plans": [
@@ -949,7 +949,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "065ea341d8849ba8dd041f9dc7974b5f526af1e4d7b0adb24585777851f80491",
       "plans": [
@@ -1036,7 +1036,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "218f0c1e117b554004a134b514e85573cad4a2381026cccc2b6986ba68ad82e7",
       "plans": [
@@ -1202,7 +1202,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "db8fb122eaaf58659200c23170aea82e84456746fd81a1d1590c2856794b7c80",
       "plans": [
@@ -1289,7 +1289,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "01e53ebdb7ff1cd2d2db1fc568758d201a9f0e278a062abd23ab33f4da9c013b",
       "plans": [
@@ -1376,7 +1376,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "976effc9d98734b082a437dd122949ef67d536410c3737977266a2ad4ebc8675",
       "plans": [
@@ -1463,7 +1463,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-22T09:11:05.487Z",
+      "checkedAt": "2026-11-22T09:13:16.370Z",
       "status": "ok",
       "sourceHash": "325ef55965a651e7910806c8b53ac3f3c8ea07dd79f185f575e063fb30bb50d1",
       "plans": [
@@ -1543,7 +1543,7 @@
     "quote": "CNY",
     "rate": 6.677707,
     "rateDate": "2026-11-20",
-    "checkedAt": "2026-11-22T09:11:05.487Z",
+    "checkedAt": "2026-11-22T09:13:16.370Z",
     "referenceRates": {
       "USD": 1.099,
       "CNY": 7.3388

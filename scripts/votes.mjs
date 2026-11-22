@@ -1,7 +1,10 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
-import {REPO} from './model.mjs';
+import {REPO,REPO_URL} from './model.mjs';
 let cachedToken;
+export function voteIssueBody(provider) {
+  return `<!-- coding-plan-vote:${provider.id} -->\n\n给 **${provider.product}** 点下方的 **👍** 即可投票。 / Vote with **👍** on this post.\n\n每个普通账号对本工具计一票，可支持多个工具；每天同步到 [总表](${REPO_URL}#plans)。仅统计正文 +1，撤回即减票。 / One vote per user per tool; daily sync, issue-body +1 only.\n`;
+}
 export function countVotes(reactions) {
   return new Set(reactions.filter(r=>r.content==='+1' && r.user?.type==='User' && typeof r.user.login==='string').map(r=>r.user.login.toLowerCase())).size;
 }
@@ -39,14 +42,17 @@ async function main() {
     const old=voting.providers[p.id];
     try{
       const marker=`<!-- coding-plan-vote:${p.id} -->`;
+      const title=`[投票 / Vote] ${p.product}`;
+      const body=voteIssueBody(p);
       let issue=old?.issueNumber ? await github(`/issues/${old.issueNumber}`) : issues.find(x=>x.body?.includes(marker) && !x.pull_request);
       if(issue && (!issue.body?.includes(marker) || issue.pull_request || !issue.labels.some(l=>l.name==='community-vote')))throw new Error('Voting issue identity or label changed; review required');
       if(!issue) {
         if(!process.argv.includes('--init'))throw new Error('Voting issue missing; run npm run votes -- --init');
-        issue=await github('/issues',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:`[投票 / Vote] ${p.product}`,labels:['community-vote'],body:`${marker}\n\n支持 **${p.product}**，请点击本帖正文下方的 👍（+1）反应。\n\nVote for **${p.product}** with a **👍 (+1) reaction on this issue body**.\n\n- 每个 GitHub 真人账号对本工具计一票，可以支持多个工具。\n- One vote per human account per tool; you may support multiple tools.\n- 评论的点赞、其他表情和机器人账号不计票；撤回 👍 会在下次更新时减票。\n- Only issue-body +1 reactions count; comments, other reactions and bot accounts are excluded.\n- 票数每日同步到 [README](https://github.com/${REPO}#社区票选)。这是社区偏好，不代表客观性能或价格性价比。\n- Daily sync. This is community preference, not a benchmark or a price-value score.`})});
+        issue=await github('/issues',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,labels:['community-vote'],body})});
       }
       if(old?.issueNumber && issue.number!==old.issueNumber)throw new Error('Voting issue mapping changed; review required');
       if(issue.state!=='open')throw new Error('Voting issue is closed');
+      if(issue.title!==title || issue.body!==body)await github(`/issues/${issue.number}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,body})});
       const reactions=await pages(`/issues/${issue.number}/reactions`);
       voting.providers[p.id]={issueNumber:issue.number,url:issue.html_url,count:countVotes(reactions),checkedAt:now,status:'ok'};
     }catch(error){failure=true;voting.providers[p.id]={...old,status:'unavailable',error:error.message};console.error(`${p.id}: ${error.message}`);}

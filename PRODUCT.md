@@ -9,7 +9,7 @@ Developers comparing AI coding-agent subscription prices and quotas.
 ## Product Purpose
 A clear, narrow, sourced comparison with daily updates and a community ranking.
 ## Capabilities and Constraints
-Three-column tables, collapsible plan details, official evidence, comparable-unit value rankings, transparent voting. User approved coding-agent scope. Bilingual README supports discovery. Website deferred by user.
+One self-contained README per language with one five-column table: tool/plan, monthly price, quota, within-tool quota value and support. Show every plan without expanding sections or opening other Markdown files. Put source notes in the same file. Support counts and vote links belong in the table; GitHub requires leaving Markdown to submit a reaction. User approved coding-agent scope. Website deferred by user.
 ## Brand Commitments
 Simple and direct. Avoid giant tables or horizontal scrolling.
 ## Product Principles

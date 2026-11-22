@@ -2,11 +2,17 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
-test('all comparison tables stay within three columns',async()=>{
- for(const file of ['README.md','README.en.md',...(await readdir('docs/providers')).map(n=>`docs/providers/${n}`)]) {
+test('each README shows every plan in exactly one five-column table without collapsed details',async()=>{
+ const data=JSON.parse(await readFile('data/plans.json','utf8'));
+ const expectedRows=data.providers.reduce((sum,p)=>sum+Math.max(p.plans.length,1),0);
+ for(const file of ['README.md','README.en.md']) {
   const body=await readFile(file,'utf8');
-  for(const line of body.split('\n').filter(l=>l.startsWith('|'))) {
-   assert.ok(line.replaceAll('\\|','').split('|').length-2<=3,`${file}: wide table`);
+  const rows=body.split('\n').filter(l=>l.startsWith('|'));
+  assert.equal(rows.length,expectedRows+2,`${file}: every plan must be visible`);
+  assert.equal(rows.filter(l=>l.startsWith('| :--')).length,1,`${file}: only one table`);
+  assert.ok(!body.includes('<details>'),`${file}: no collapsed plans`);
+  for(const line of rows) {
+   assert.equal(line.replaceAll('\\|','').split('|').length-2,5,`${file}: five columns`);
   }
  }
 });

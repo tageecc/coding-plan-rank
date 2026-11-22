@@ -1,292 +1,92 @@
-# AI Coding Agent Plan Rankings
+# AI Coding Agent Plan Comparison
 
-Official prices and quotas, checked daily. Separate rankings for price, quota value and community preference.
+Prices, quotas and value in one table. Official sources checked daily.
 
-Compare Claude Code, Codex, Cursor, GitHub Copilot, Google Antigravity, GLM, MiniMax and Kimi.
+[中文](README.md) · [English](README.en.md)
 
-[中文](README.md) · [English](README.en.md) · [Methodology](docs/methodology.md) · [Changes](docs/changes.md) · [Data](data/plans.json)
+Updated **2026-11-22** · Daily checks at **01:23 UTC**.
 
-Refresh scheduled daily at 01:23 UTC; last run: **2026-11-22** (Asia/Shanghai). Each provider has its own verification date.
+**How to read:** Tools are ordered by votes, then plans by monthly price. $ = USD; ¥ = CNY. Standard monthly rates exclude taxes, introductory offers and annual discounts.
 
-Individual plans at standard monthly prices. USD and CNY stay separate. No first-month deals, annualized rates or inferred quotas.
+**Value:** Cheapest comparable paid tier = 1×; higher buys more published quota per dollar. Compare within a tool only. — means not comparable; bold marks the best tier in its group.
 
-## Starting monthly price
+**Support:** Votes are per tool, shared across its tiers. Click 👍 to reach the vote body, then use GitHub’s native 👍 reaction. GitHub Markdown cannot submit votes inside this file.
 
-Sorted by each tool’s cheapest verified paid tier; free tiers appear in plan details.
+<a id="plans"></a>
 
-### USD
+| Tool / plan | / month | Allowance | Value | Support |
+| :-- | --: | :-- | --: | :-- |
+| Claude Code<br>Pro[^claude] | $20 | 1× Pro / week | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/2#issue-body-viewer) |
+| Claude Code<br>Max | $100 | 5× Pro / week | 1.00× |  |
+| Claude Code<br>Ultra | $200 | 10× Pro / week | 1.00× |  |
+| Codex<br>Free[^codex] | $0 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/3#issue-body-viewer) |
+| Codex<br>Go | $8 | Undisclosed | — |  |
+| Codex<br>Plus | $20 | Est. 15–160 messages / 5h | — |  |
+| Codex<br>Pro $100 | $100 | Undisclosed | — |  |
+| Codex<br>Pro $200 | $200 | Undisclosed | — |  |
+| Codex<br>Pro $500 | $500 | Undisclosed | — |  |
+| Cursor<br>Free[^cursor] | $0 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/1#issue-body-viewer) |
+| Cursor<br>Plus | $8 | 1× Plus / week | 1.00× |  |
+| Cursor<br>Premium | $30 | 4× Plus / week | 1.07× |  |
+| Cursor<br>Super | $100 | 15× Plus / week | 1.20× |  |
+| Cursor<br>Ultra | $200 | 50× Plus / week | **2.00×** |  |
+| Devin / Windsurf<br>Pro[^devin] | $20 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/6#issue-body-viewer) |
+| Devin / Windsurf<br>Max | $200 | Undisclosed | — |  |
+| GitHub Copilot<br>Free[^copilot] | $0 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/4#issue-body-viewer) |
+| GitHub Copilot<br>Student | $0 | Undisclosed | — |  |
+| GitHub Copilot<br>Pro | $10 | 1,500 credits / month | 1.00× |  |
+| GitHub Copilot<br>Pro+ | $39 | 7,000 credits / month | 1.20× |  |
+| GitHub Copilot<br>Max | $100 | 20,000 credits / month | **1.33×** |  |
+| GLM Coding Plan<br>Lite[^glm] | $18 | 10,000 credits / week | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/7#issue-body-viewer) |
+| GLM Coding Plan<br>Pro | $80 | 60,000 credits / week | 1.35× |  |
+| GLM Coding Plan<br>Max | $168 | 140,000 credits / week | **1.50×** |  |
+| Google Antigravity<br>Google AI Pro[^antigravity] | $19.99 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/5#issue-body-viewer) |
+| Google Antigravity<br>Google AI Ultra 5x | $99.99 | Undisclosed | — |  |
+| Google Antigravity<br>Google AI Ultra 20x | $199.99 | Undisclosed | — |  |
+| Kimi Code<br>Plus[^kimi] | $19 | Undisclosed | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/10#issue-body-viewer) |
+| Kimi Code<br>Pro | $39 | Undisclosed | — |  |
+| Kimi Code<br>Max | $99 | Undisclosed | — |  |
+| Kimi Code<br>Ultra | $199 | Undisclosed | — |  |
+| Kiro<br>Free[^kiro] | $0 | 50 credits / month | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/11#issue-body-viewer) |
+| Kiro<br>Pro | $20 | 1,000 credits / month | 1.00× |  |
+| Kiro<br>Pro+ | $40 | 2,000 credits / month | 1.00× |  |
+| Kiro<br>Pro Max | $100 | 5,000 credits / month | 1.00× |  |
+| Kiro<br>Power | $200 | 10,000 credits / month | 1.00× |  |
+| MiniMax M Plan<br>Go[^minimax] | $22 | 1× Go / week | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/8#issue-body-viewer) |
+| MiniMax M Plan<br>Explore | $55 | 3× Go / week | 1.20× |  |
+| MiniMax M Plan<br>Build | $132 | 7.5× Go / week | **1.25×** |  |
+| MiniMax M Plan 中国版<br>Go[^minimax-cn] | ¥49 | 1× Go / week | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/9#issue-body-viewer) |
+| MiniMax M Plan 中国版<br>Explore | ¥119 | 3× Go / week | 1.24× |  |
+| MiniMax M Plan 中国版<br>Build | ¥469 | 12× Go / week | **1.25×** |  |
 
-| Tool | From / mo | Plans |
-| :-- | --: | :-- |
-| Codex | $8 | [Go](#codex) |
-| Cursor | $8 | [Plus](#cursor) |
-| GitHub Copilot | $10 | [Pro](#copilot) |
-| GLM Coding Plan | $18 | [Lite](#glm) |
-| Kimi Code | $19 | [Plus](#kimi) |
-| Google Antigravity | $19.99 | [Google AI Pro](#antigravity) |
-| Claude Code | $20 | [Pro](#claude) |
-| Devin / Windsurf | $20 | [Pro](#devin) |
-| Kiro | $20 | [Pro](#kiro) |
-| MiniMax M Plan | $22 | [Go](#minimax) |
+Votes checked 2026-11-22. Ties share a rank; zero-vote order is not a recommendation. One vote per account per tool; multiple tools allowed. Removing a reaction removes the vote.
 
-### CNY
+**Sources and essential notes** (all below; tool names link to official sources):
 
-| Tool | From / mo | Plans |
-| :-- | --: | :-- |
-| MiniMax M Plan 中国版 | ¥49 | [Go](#minimax-cn) |
+[^cursor]: [Cursor](https://cursor.com/pricing) · Verified 2026-11-22. **Free:** Limited free usage; no comparable allowance published. **Plus / Premium / Super / Ultra:** Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately.
 
-## Quota value
+[^claude]: [Claude Code](https://claude.com/pricing) · Verified 2026-11-22. **Pro / Max:** Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply. **Ultra:** Pro = 1×; weekly allowance shared by Claude and Claude Code. Verified accounts have no five-hour limit.
 
-Compare only within a provider, quota unit, reset window and currency. The cheapest tier is 1×; efficiency is published quota divided by monthly price. Unknown allowances stay unranked.
+[^codex]: [Codex](https://learn.chatgpt.com/docs/pricing.md) · Verified 2026-11-22. **Free / Go:** Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access. **Plus:** GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply. **Pro $100 / Pro $200 / Pro $500:** No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work.
 
-| Tool | Best quota value | Relative value |
-| :-- | :-- | --: |
-| [Cursor](#cursor) | Ultra | 2.00× |
-| [Claude Code](#claude) | All tiers tie | 1.00× |
-| [GitHub Copilot](#copilot) | Max | 1.33× |
-| [GLM Coding Plan](#glm) | Max | 1.50× |
-| [MiniMax M Plan](#minimax) | Build | 1.25× |
-| [MiniMax M Plan 中国版](#minimax-cn) | Build | 1.25× |
-| [Kiro](#kiro) | All tiers tie | 1.00× |
+[^copilot]: [GitHub Copilot](https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans) · Verified 2026-11-22. **Student:** Verified students only; credit allowance not published. **Free:** Free credit allowance not published. **Pro / Pro+ / Max:** Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model.
 
-Do not compare ratios across rows. Ratios do not measure model quality. See provider details for shared pools, additional caps and extra charges.
+[^antigravity]: [Google Antigravity](https://gemini.google/us/subscriptions/) · [Usage rules](https://antigravity.google/docs/plans) · Verified 2026-11-22. Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples.
 
-## Community votes
+[^devin]: [Devin / Windsurf](https://devin.ai/pricing) · [Usage rules](https://docs.devin.ai/admin/billing/self-serve) · Verified 2026-11-22. **Pro:** Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra. **Max:** Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.
 
-Open a tool’s issue and react to the **issue body** with 👍. One vote per human account per tool; multiple tools allowed. Removing the reaction removes the vote on the next daily sync.
+[^glm]: [GLM Coding Plan](https://zcode.z.ai/en) · [Usage rules](https://docs.z.ai/devpack/overview) · Verified 2026-11-22. **Lite:** Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance. **Pro:** Regular list price; also capped at 12,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance. **Max:** Regular list price; also capped at 28,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance.
 
-| Rank | Tool / vote | Votes |
-| --: | :-- | --: |
-| — | [Claude Code](https://github.com/tageecc/coding-plan-rank/issues/2) | 0 |
-| — | [Codex](https://github.com/tageecc/coding-plan-rank/issues/3) | 0 |
-| — | [Cursor](https://github.com/tageecc/coding-plan-rank/issues/1) | 0 |
-| — | [Devin / Windsurf](https://github.com/tageecc/coding-plan-rank/issues/6) | 0 |
-| — | [GitHub Copilot](https://github.com/tageecc/coding-plan-rank/issues/4) | 0 |
-| — | [GLM Coding Plan](https://github.com/tageecc/coding-plan-rank/issues/7) | 0 |
-| — | [Google Antigravity](https://github.com/tageecc/coding-plan-rank/issues/5) | 0 |
-| — | [Kimi Code](https://github.com/tageecc/coding-plan-rank/issues/10) | 0 |
-| — | [Kiro](https://github.com/tageecc/coding-plan-rank/issues/11) | 0 |
-| — | [MiniMax M Plan](https://github.com/tageecc/coding-plan-rank/issues/8) | 0 |
-| — | [MiniMax M Plan 中国版](https://github.com/tageecc/coding-plan-rank/issues/9) | 0 |
+[^minimax]: [MiniMax M Plan](https://platform.minimax.io/docs/m-plan/monthly-offer) · [Usage rules](https://platform.minimax.io/docs/m-plan/faq) · Verified 2026-11-22. Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.
 
-No valid votes yet; no winners are assigned.
-Last vote sync: 2026-11-22. Bot accounts, comment reactions and other emoji do not count. Public voting cannot fully prevent manipulation.
+[^minimax-cn]: [MiniMax M Plan 中国版](https://platform.minimax.cn/docs/m-plan/monthly-offer) · [Usage rules](https://platform.minimax.cn/docs/m-plan/faq) · Verified 2026-11-22. Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.
 
-## Plan details
+[^kimi]: [Kimi Code](https://www.kimi.ai/resources/coding-plan) · [Usage rules](https://www.kimi.com/en/help/kimi-code/benefits) · Verified 2026-11-22. International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded.
 
-Expand one tool at a time. Each table has three columns; quota units retain their official meaning.
+[^kiro]: [Kiro](https://kiro.dev/pricing/) · [Usage rules](https://kiro.dev/docs/billing/) · Verified 2026-11-22. Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded.
 
-<a id="cursor"></a>
-<details>
-<summary><strong>Cursor</strong></summary>
+The daily bot verifies official sources and updates this file. Failed verification preserves the original date and marks historical values unverified; they are excluded from value calculations. Credits, requests and tool-specific multiples are not interchangeable.
 
-Verified: 2026-11-22 · Verified
+[Corrections](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [Automation](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [MIT](LICENSE)
 
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Free | $0 | Undisclosed |
-| Plus | $8 | 1× base / week |
-| Premium | $30 | 4× base / week |
-| Super | $100 | 15× base / week |
-| Ultra | $200 | 50× base / week |
-
-**Plus:** Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately.
-
-[Official source](https://cursor.com/pricing) · [Limits & billing notes](docs/providers/cursor.md)
-
-</details>
-
-<a id="claude"></a>
-<details>
-<summary><strong>Claude Code</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Pro | $20 | 1× base / week |
-| Max | $100 | 5× base / week |
-| Ultra | $200 | 10× base / week |
-
-**Pro:** Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply.
-
-[Official source](https://claude.com/pricing) · [Limits & billing notes](docs/providers/claude.md)
-
-</details>
-
-<a id="codex"></a>
-<details>
-<summary><strong>Codex</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Free | $0 | Undisclosed |
-| Go | $8 | Undisclosed |
-| Plus | $20 | Est. 15–160 messages / 5h |
-| Pro $100 | $100 | Undisclosed |
-| Pro $200 | $200 | Undisclosed |
-| Pro $500 | $500 | Undisclosed |
-
-**Go:** Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access.
-
-[Official source](https://learn.chatgpt.com/docs/pricing.md) · [Limits & billing notes](docs/providers/codex.md)
-
-</details>
-
-<a id="copilot"></a>
-<details>
-<summary><strong>GitHub Copilot</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Student | $0 | Undisclosed |
-| Free | $0 | Undisclosed |
-| Pro | $10 | 1,500 credits / month |
-| Pro+ | $39 | 7,000 credits / month |
-| Max | $100 | 20,000 credits / month |
-
-**Pro:** Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model.
-
-[Official source](https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans) · [Limits & billing notes](docs/providers/copilot.md)
-
-</details>
-
-<a id="antigravity"></a>
-<details>
-<summary><strong>Google Antigravity</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Google AI Pro | $19.99 | Undisclosed |
-| Google AI Ultra 5x | $99.99 | Undisclosed |
-| Google AI Ultra 20x | $199.99 | Undisclosed |
-
-**Google AI Pro:** Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples.
-
-[Official source](https://gemini.google/us/subscriptions/) · [Limits & billing notes](docs/providers/antigravity.md)
-
-</details>
-
-<a id="devin"></a>
-<details>
-<summary><strong>Devin / Windsurf</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Pro | $20 | Undisclosed |
-| Max | $200 | Undisclosed |
-
-**Pro:** Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra.
-
-[Official source](https://devin.ai/pricing) · [Limits & billing notes](docs/providers/devin.md)
-
-</details>
-
-<a id="glm"></a>
-<details>
-<summary><strong>GLM Coding Plan</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Lite | $18 | 10,000 credits / week |
-| Pro | $80 | 60,000 credits / week |
-| Max | $168 | 140,000 credits / week |
-
-**Lite:** Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance.
-
-[Official source](https://zcode.z.ai/en) · [Limits & billing notes](docs/providers/glm.md)
-
-</details>
-
-<a id="minimax"></a>
-<details>
-<summary><strong>MiniMax M Plan</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Go | $22 | 1× base / week |
-| Explore | $55 | 3× base / week |
-| Build | $132 | 7.5× base / week |
-
-**Go:** Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.
-
-[Official source](https://platform.minimax.io/docs/m-plan/monthly-offer) · [Limits & billing notes](docs/providers/minimax.md)
-
-</details>
-
-<a id="minimax-cn"></a>
-<details>
-<summary><strong>MiniMax M Plan 中国版</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Go | ¥49 | 1× base / week |
-| Explore | ¥119 | 3× base / week |
-| Build | ¥469 | 12× base / week |
-
-**Go:** Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window.
-
-[Official source](https://platform.minimax.cn/docs/m-plan/monthly-offer) · [Limits & billing notes](docs/providers/minimax-cn.md)
-
-</details>
-
-<a id="kimi"></a>
-<details>
-<summary><strong>Kimi Code</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Plus | $19 | Undisclosed |
-| Pro | $39 | Undisclosed |
-| Max | $99 | Undisclosed |
-| Ultra | $199 | Undisclosed |
-
-**Plus:** International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded.
-
-[Official source](https://www.kimi.ai/resources/coding-plan) · [Limits & billing notes](docs/providers/kimi.md)
-
-</details>
-
-<a id="kiro"></a>
-<details>
-<summary><strong>Kiro</strong></summary>
-
-Verified: 2026-11-22 · Verified
-
-| Plan | / month | Allowance |
-| :-- | --: | :-- |
-| Free | $0 | 50 credits / month |
-| Pro | $20 | 1,000 credits / month |
-| Pro+ | $40 | 2,000 credits / month |
-| Pro Max | $100 | 5,000 credits / month |
-| Power | $200 | 10,000 credits / month |
-
-**Pro:** Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded.
-
-[Official source](https://kiro.dev/pricing/) · [Limits & billing notes](docs/providers/kiro.md)
-
-</details>
-
-## Updates & corrections
-
-GitHub Actions fetches official sources, validates prices and quotas, counts votes, then generates these documents daily. Failed parsing keeps prior values marked for review. Changes are traceable in Git history.
-
-[Report an error](https://github.com/tageecc/coding-plan-rank/issues/new?template=data-correction.yml) · [Automation status](https://github.com/tageecc/coding-plan-rank/actions/workflows/update.yml) · [Contribute](CONTRIBUTING.md)
-
-Inspired by the comparison use case in [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan). Official data is independently verified; its benchmark measurements are not reused. Code and original compilation: [MIT](LICENSE).
+Inspired by [awesome-coding-plan](https://github.com/mahonzhan/awesome-coding-plan); data is independently verified, without reusing its inferred benchmark measurements.

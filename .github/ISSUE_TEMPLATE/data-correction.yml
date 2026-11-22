@@ -1,0 +1,26 @@
+name: 数据纠错 / Data correction
+description: 报告价格、额度或官方规则的变化 / Correct prices, quotas or rules
+title: '[数据] '
+labels: ['data-correction']
+body:
+  - type: input
+    id: provider
+    attributes:
+      label: 工具、套餐与地区 / Tool, plan and market
+      placeholder: 例如 Claude Code / Pro / US
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 官方链接 / Official source
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: 哪一项有变化 / What changed?
+      description: 写清新旧价格、币种、额度单位与刷新周期。
+    validations:
+      required: true

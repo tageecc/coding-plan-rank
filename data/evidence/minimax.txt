@@ -1,0 +1,21 @@
+Regular renewal prices; first-month launch offer ended.
+Tier First-month discount Regular price
+Go 50% off $22/month
+Explore 50% off $55/month
+Build 50% off $132/month
+
+Tier Intended usage Usage quota relative to Go
+Go Getting started 1×
+Explore Everyday use 3×
+Build Intensive use 7.5×
+
+Do text, speech, video, and image models have separate usage limits?
+No. All models included in M Plan share the same weekly quota, which you can use however you need. Image and video models are subject only to the weekly window, not the 5-hour window; text, speech, and other models are also subject to the 5-hour window.
+
+How is usage reset?
+M Plan usage is shown through the console usage bar and controlled by usage windows:
+Image and video models: Subject only to a weekly window, with no 5-hour window.
+Text, speech, and other models: Subject to a 5-hour window and a weekly window.
+Subscription cycle: Unused M Plan quota does not carry over to the next billing cycle.
+Credits: Valid for one year from the date of purchase. This validity period is not reset when usage windows reset.
+Both windows start with your first use: the 5-hour window lasts 5 hours, and the weekly window lasts 7 days. When a window ends, your full usage quota becomes available again, and your next use starts a new window. The two windows reset independently, so a 5-hour reset does not reset your weekly usage.

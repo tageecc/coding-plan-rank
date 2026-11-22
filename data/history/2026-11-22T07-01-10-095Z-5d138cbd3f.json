@@ -1,0 +1,347 @@
+{
+  "changedAt": "2026-11-22T07:01:10.095Z",
+  "changes": [
+    {
+      "id": "devin",
+      "before": [],
+      "after": [
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "monthlyUsd": 18,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 80,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 12,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 168,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 28,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kimi",
+      "before": [],
+      "after": [
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 19,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 39,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 199,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kiro",
+      "before": [],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": 50,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 40,
+          "quota": {
+            "amount": 2000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-max",
+          "name": "Pro Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "power",
+          "name": "Power",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "minimax",
+      "before": [],
+      "after": [
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 22,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        },
+        {
+          "id": "explore",
+          "name": "Explore",
+          "monthlyUsd": 55,
+          "quota": {
+            "amount": 3,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        },
+        {
+          "id": "build",
+          "name": "Build",
+          "monthlyUsd": 132,
+          "quota": {
+            "amount": 7.5,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        }
+      ]
+    },
+    {
+      "id": "minimax-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 49
+        },
+        {
+          "id": "explore",
+          "name": "Explore",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 3,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 119
+        },
+        {
+          "id": "build",
+          "name": "Build",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 12,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 469
+        }
+      ]
+    }
+  ]
+}

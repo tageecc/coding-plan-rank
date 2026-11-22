@@ -1,0 +1,101 @@
+## Pricing options
+Free $0 /month
+- GPT-6 Luna at Standard speed in the desktop app, subject to rollout
+Go $8 /month
+- GPT-6 Luna at Standard speed in the desktop app, subject to rollout
+Plus $20 /month
+- Codex on the web, in the CLI, in the IDE extension, and on iOS
+- Cloud-based integrations like automatic code review and Slack
+integration
+- GPT-6.1 Sol and GPT-6 Luna
+- Flexibly extend usage with [ChatGPT credits](#credits-overview)
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+Plus plan
+Pro $100 /month
+- Plans at $100, $200, or $500 USD per month
+- [Ultrafast mode](https://learn.chatgpt.com/docs/agent-configuration/speed#ultrafast-mode)
+access on Pro $500
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+Pro plan
+API Key
+- Codex in the CLI, SDK, or IDE extension
+- No cloud-based features (GitHub code review, Slack, etc.)
+- Model availability follows the API models available to your key
+- Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
+Business $20 / user / month*
+- Access ChatGPT and Codex across desktop and mobile apps
+- Larger virtual machines to run cloud chats faster
+- Flexibly extend usage with [ChatGPT credits](#credits-overview)
+- A secure, dedicated workspace with essential admin controls, SAML SSO,
+and MFA
+- No training on your business data by default. [Learn
+more](https://openai.com/business-data/)
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+Business plan
+Enterprise & Edu
+- Priority request processing
+- Enterprise-level security and controls, including SCIM, EKM, user
+analytics, domain verification, and role-based access control
+([RBAC](https://help.openai.com/en/articles/11750701-rbac))
+- Audit logs and usage monitoring via the [Compliance
+API](https://chatgpt.com/public/admin/api-reference#tag/Codex%20Tasks)
+- Data retention and data residency controls
+- Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
+Enterprise plan
+API Key
+- Codex in the CLI, SDK, or IDE extension
+- No cloud-based features (GitHub code review, Slack, etc.)
+- Model availability follows the API models available to your key
+- Pay for Codex usage based on [API pricing](https://developers.openai.com/api/docs/pricing)
+## Included usage
+The number of messages you can send depends on the model used, size and
+complexity of your tasks, and whether you run them locally or in the cloud.
+Small scripts or routine functions may consume only a fraction of your
+allowance, while larger projects, long-running tasks, or extended sessions that
+require the agent to hold more context will use significantly more per message.
+Tasks that look similar can consume different amounts of your allowance. Model
+choice, context, reasoning, tool use, retrieval, and caching all affect usage,
+so prompt length alone isn't a reliable estimate.
+For model guidance, see [GPT-6.1 Sol](https://learn.chatgpt.com/docs/models#gpt-61-sol),
+[GPT-6.2 Sol](https://learn.chatgpt.com/docs/models#app-gpt-62-sol), and [Models](https://learn.chatgpt.com/docs/models).
+The estimates below show local messages per five-hour period for Plus and
+Standard Business. Pro plans currently have no five-hour limit. Cloud tasks
+may use more of your allowance than local messages. Usage depends on the model
+and task. These estimates are not fixed message limits; check your
+[usage dashboard](#where-can-i-see-my-current-usage-limits) for current limits
+and reset times.
+Model
+Plus
+Standard Business
+GPT-6.2 Astra
+6-50
+6-50
+GPT-6.2 Sol
+17-180
+17-180
+GPT-6 Astra
+5-45
+5-45
+GPT-6.1 Sol
+15-160
+15-160
+GPT-6.1 Terra
+35-285
+35-285
+GPT-6 Sol
+15-150
+15-150
+GPT-6 Luna
+350-3,000
+350-3,000
+Local messages and cloud chats share your plan's usage allowance. Weekly
+limits may also apply.
+Enterprise/Edu users with flexible pricing have no fixed rate limits.
+Usage scales with [credits](#credits-overview).
+Enterprise and Edu plans without flexible pricing have the same per-seat
+usage limits as Plus for most features.
+Usage limits are shared with other agentic features once pricing for those
+features is effective. This currently includes [ChatGPT for
+Excel](https://help.openai.com/articles/20001063) on Plus and Pro.
+GPT-6.1 Sol usage drawn from your subscription has no long-context surcharge
+in Codex or ChatGPT Work.

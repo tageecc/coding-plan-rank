@@ -1,0 +1,82 @@
+{
+  "providers": {
+    "cursor": {
+      "issueNumber": 1,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/1",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "claude": {
+      "issueNumber": 2,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/2",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "codex": {
+      "issueNumber": 3,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/3",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "copilot": {
+      "issueNumber": 4,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/4",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "antigravity": {
+      "issueNumber": 5,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/5",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "devin": {
+      "issueNumber": 6,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/6",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "glm": {
+      "issueNumber": 7,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/7",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "minimax": {
+      "issueNumber": 8,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/8",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "minimax-cn": {
+      "issueNumber": 9,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/9",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "kimi": {
+      "issueNumber": 10,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/10",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    },
+    "kiro": {
+      "issueNumber": 11,
+      "url": "https://github.com/tageecc/coding-plan-rank/issues/11",
+      "count": 0,
+      "checkedAt": "2026-11-22T07:04:09.821Z",
+      "status": "ok"
+    }
+  },
+  "updatedAt": "2026-11-22T07:04:09.821Z"
+}

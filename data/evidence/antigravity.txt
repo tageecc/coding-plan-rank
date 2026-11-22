@@ -1,0 +1,30 @@
+
+Google AI Pro
+Get higher access to new and powerful features to boost your productivity and creativity.
+$19.99/ month
+Get 4x higher usage access than Free
+
+Google AI Ultra
+Unlock the highest level of access to the best of Google AI and exclusive features.
+Starting at:
+$99.99/ month
+$99.99/ month: 5x higher usage limits vs. AI Pro
+$199.99 / month: 20x higher usage limits vs. AI Pro
+Baseline quota
+Section titled “Baseline quota”
+All plans receive the following baseline features:
+Use of Gemini models, including Gemini 3.8 Flash and other offered Gemini Enterprise models as the core agent model
+Unlimited Tab completions
+Access to all product features, such as scheduled tasks and the CLI
+Users on Google AI Ultra receive the following benefits:
+The highest, most generous quota, refreshed every five hours
+The highest weekly rate limits
+Access to third-party models
+Users on Google AI Pro receive the following benefits:
+A high, generous quota, refreshed every five hours until the weekly limit is reached
+A higher weekly rate limit
+Users not on Google AI Pro or Ultra plans receive the following benefits:
+A meaningful quota, refreshed weekly
+A weekly rate limit
+The baseline rate limits are primarily determined by available capacity and exist to prevent abuse. Under the hood, the rate limits correlate with the amount of work done by the agent, which can differ from prompt to prompt. As a result, you receive more prompts when your tasks are straightforward and the agent can complete the work quickly, while more complex tasks consume more quota.
+Usage limits for this service are subject to modification. These adjustments may be necessary to manage system capacity and maintain service stability.

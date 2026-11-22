@@ -1,0 +1,56 @@
+
+Free
+Try Claude
+$0
+Free for everyone
+Try Claude
+Limited usage every 5 hours and every week*
+Chat on web, desktop, and mobile
+Search the web, create files, and run code
+Memory across conversations
+Connect your apps and tools
+Create Artifacts
+Claude Design, Slides, Docs
+Pro
+For everyday work
+$17
+Per month with annual subscription discount ($200 billed up front). $20 if billed monthly.
+Try Claude
+Everything in Free, plus:
+More usage than Free, every 5 hours and every week*
+Fable, paid with usage credits New
+Hand off and schedule tasks
+Claude Data, plus Sheets and Whiteboards (beta)
+Claude Code
+Claude Science
+Projects
+More Claude models
+Claude in Chrome and Microsoft 365
+Max
+For all-day work
+$100
+Per month
+Try Claude
+Everything in Pro, plus:
+5x Pro usage every 5 hours and every week*
+Fable included, up to half your weekly limit New
+$100 a month in API credits to build on the Claude Platform† New
+Early access to advanced Claude features
+Priority access at high traffic times
+Ultra
+For your longest tasks
+$200
+Per month
+Try Claude
+Everything in Max, plus:
+No 5-hour limit‡
+10x Pro usage every week*
+$200 a month in API credits, up from $100 on Max† New
+*Usage limits apply. How fast you reach a limit depends on the model you use, how long your chats are, and how large your files are.
+‡No 5-hour limit for verified accounts.
+Prices shown don’t include applicable tax. Price and plans are subject to change at Anthropic's discretion.
+Price and plans are subject to change at Anthropic's discretion.
+
+Compare features across plans
+Every plan has usage limits. Most accounts have a limit that resets on a rolling five-hour session window, and paid plans add weekly limits on top. Your activity across Claude on web, desktop, mobile, and Claude Code all draws from the same pool. How much you can do depends on the length and complexity of your conversations, the model you choose, and the features you use, so there's no fixed message count. Free covers everyday questions. Pro gives you at least 5x more usage per 5-hour session than Free. Max gives you 5x the usage of Pro every 5 hours and every week. Ultra gives you 10x the weekly usage of Pro, with no 5-hour limit for verified accounts. On Team plans, Standard seats give more than Pro and Premium seats give 5x more than Standard. To manage capacity and make sure all users have fair access, we may limit your usage in other ways, such as weekly and monthly caps or model and feature usage, at our discretion. When you reach a limit, you can wait for it to reset, move to a higher plan, or, on paid plans, turn on usage credits to keep working at standard API rates. You can see where you stand anytime in Settings > Usage.
+Claude Code is included in all paid plans. It shares the same usage limits as the rest of your plan, so your work in the terminal and your chats draw from one pool. For heavy coding sessions, you can also switch to pay-as-you-go API credits through a Console account.

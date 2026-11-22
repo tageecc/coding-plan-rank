@@ -1,0 +1,39 @@
+
+KIRO FREE
+$0
+per month
+50 credits
+Open-weight models
+and Claude Sonnet 4.5
+Download now
+KIRO PRO
+$20
+per user / month
+1,000 credits
+Premium models
+Add-on credits ($0.04/credit)
+Sign up / upgrade
+KIRO PRO+
+$40
+per user / month
+2,000 credits
+Premium models
+Add-on credits ($0.04/credit)
+Sign up / upgrade
+KIRO PRO MAX
+$100
+per user / month
+5,000 credits
+Premium models
+Add-on credits ($0.04/credit)
+Sign up / upgrade
+KIRO POWER
+$200
+per user / month
+10,000 credits
+Premium models
+Add-on credits ($0.04/credit)
+Sign up / upgrade
+Credits are consumed fractionally based on each request. Simple edits and shorter prompts will use fewer credits than complex, lengthy tasks. This means that fractional credits allow you to get more value from your credit allocation.
+Credit reset
+For all tiers, your plan credits renew at the beginning of the next billing cycle. Trial credits don't reset at the end of the month. They stay available until they expire, 12 months after you receive them.

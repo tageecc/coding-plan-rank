@@ -1,0 +1,56 @@
+{
+  "changedAt": "2026-11-22T07:04:07.170Z",
+  "changes": [
+    {
+      "id": "antigravity",
+      "before": [],
+      "after": [
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ]
+    }
+  ]
+}

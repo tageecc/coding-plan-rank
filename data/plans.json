@@ -1,0 +1,890 @@
+{
+  "updatedAt": "2026-11-22T07:04:07.170Z",
+  "providers": [
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "product": "Cursor",
+      "description": {
+        "zh": "集成 AI 智能体的代码编辑器，订阅额度与 Grok 共享。",
+        "en": "Code editor with AI agents and a subscription allowance shared with Grok."
+      },
+      "sources": [
+        {
+          "url": "https://cursor.com/pricing",
+          "title": "Cursor pricing"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费用量有限，未公布可比额度。",
+            "en": "Limited free usage; no comparable allowance published."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "premium",
+          "name": "Premium",
+          "monthlyUsd": 30,
+          "quota": {
+            "amount": 4,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "super",
+          "name": "Super",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 15,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 50,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "name": "Anthropic",
+      "product": "Claude Code",
+      "description": {
+        "zh": "终端与开发工具中的编码智能体，与 Claude 订阅共享用量。",
+        "en": "Coding agent for terminals and development tools, sharing usage with Claude subscriptions."
+      },
+      "sources": [
+        {
+          "url": "https://claude.com/pricing",
+          "title": "Claude plans and pricing"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
+      "plans": [
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。已验证账户无五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Verified accounts have no five-hour limit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "name": "OpenAI",
+      "product": "Codex",
+      "description": {
+        "zh": "覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。",
+        "en": "Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances."
+      },
+      "sources": [
+        {
+          "url": "https://learn.chatgpt.com/docs/pricing.md",
+          "title": "ChatGPT Work and Codex pricing"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "d667808e14faf07284827654f34c4495011a2ae94512adad9282027d1db05e43",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro $100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro $200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro $500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        }
+      ]
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub",
+      "product": "GitHub Copilot",
+      "description": {
+        "zh": "面向编辑器、终端与 GitHub 的编码助手，付费计划按 AI 积分计量。",
+        "en": "Coding assistant for editors, terminals, and GitHub, with AI credits on paid plans."
+      },
+      "sources": [
+        {
+          "url": "https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans",
+          "title": "Plans for GitHub Copilot"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
+      "plans": [
+        {
+          "id": "student",
+          "name": "Student",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅限已验证学生；积分额度未公布。",
+            "en": "Verified students only; credit allowance not published."
+          }
+        },
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费积分额度未公布。",
+            "en": "Free credit allowance not published."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 10,
+          "quota": {
+            "amount": 1500,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 39,
+          "quota": {
+            "amount": 7000,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        }
+      ]
+    },
+    {
+      "id": "antigravity",
+      "name": "Google",
+      "product": "Google Antigravity",
+      "description": {
+        "zh": "Google AI 订阅包含的编码智能体；不沿用已停止销售的 Code Assist 套餐。",
+        "en": "Coding agent included with Google AI subscriptions; excludes discontinued Code Assist plans."
+      },
+      "sources": [
+        {
+          "url": "https://gemini.google/us/subscriptions/",
+          "title": "Google AI US monthly subscriptions"
+        },
+        {
+          "url": "https://antigravity.google/docs/plans",
+          "title": "Antigravity plans and usage limits"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "0e06aa3d7edd2ee8cb5abe7d717276605dc30066ae9ae70ea94ed21fb3bcf407",
+      "plans": [
+        {
+          "id": "google-ai-pro",
+          "name": "Google AI Pro",
+          "monthlyUsd": 19.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-5x",
+          "name": "Google AI Ultra 5x",
+          "monthlyUsd": 99.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        },
+        {
+          "id": "google-ai-ultra-20x",
+          "name": "Google AI Ultra 20x",
+          "monthlyUsd": 199.99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。",
+            "en": "Refreshes every five hours with a weekly cap; fixed quantity undisclosed and consumption depends on work. Tier names do not establish coding-quota multiples."
+          }
+        }
+      ]
+    },
+    {
+      "id": "devin",
+      "name": "Cognition",
+      "product": "Devin / Windsurf",
+      "description": {
+        "zh": "Windsurf 官网现指向 Devin；涵盖桌面、CLI 与云端。",
+        "en": "Windsurf pricing now redirects to Devin, covering Desktop, CLI and cloud."
+      },
+      "sources": [
+        {
+          "url": "https://devin.ai/pricing",
+          "title": "Devin plans and pricing"
+        },
+        {
+          "url": "https://docs.devin.ai/admin/billing/self-serve",
+          "title": "Devin self-serve billing and quotas"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "2999e45c21381a20c353738be6ee430eab03bcd69b179228a01f707e8973f57d",
+      "plans": [
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week and calendar-day allowances; quantities and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "week",
+            "group": null
+          },
+          "note": {
+            "zh": "按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。",
+            "en": "Calendar-week allowance, no daily cap; quantity and timezone undisclosed. Shared across Desktop, CLI and cloud; overages cost extra."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm",
+      "name": "Z.ai",
+      "product": "GLM Coding Plan",
+      "description": {
+        "zh": "GLM 编码订阅国际版，支持多种智能体工具。",
+        "en": "International GLM coding subscription for multiple agent tools."
+      },
+      "sources": [
+        {
+          "url": "https://zcode.z.ai/en",
+          "title": "ZCode GLM regular and discounted plan prices"
+        },
+        {
+          "url": "https://docs.z.ai/devpack/overview",
+          "title": "GLM Coding Plan credit allowances and reset rules"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "monthlyUsd": 18,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 2,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 80,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 12,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 168,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-coding-credits"
+          },
+          "note": {
+            "zh": "常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。",
+            "en": "Regular list price; also capped at 28,000 credits per five hours. Weekly credits reset every seven days from subscription; model/cache-dependent, not requests. Off-peak discounts excluded from allowance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "product": "MiniMax M Plan",
+      "description": {
+        "zh": "MiniMax 国际版编码与多模态共享订阅。",
+        "en": "MiniMax international subscription shared by coding and multimodal tools."
+      },
+      "sources": [
+        {
+          "url": "https://platform.minimax.io/docs/m-plan/monthly-offer",
+          "title": "M Plan regular renewal prices; launch offer ended"
+        },
+        {
+          "url": "https://platform.minimax.io/docs/m-plan/faq",
+          "title": "M Plan international tiers and usage windows"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
+      "plans": [
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 22,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        },
+        {
+          "id": "explore",
+          "name": "Explore",
+          "monthlyUsd": 55,
+          "quota": {
+            "amount": 3,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        },
+        {
+          "id": "build",
+          "name": "Build",
+          "monthlyUsd": 132,
+          "quota": {
+            "amount": 7.5,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-intl-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          }
+        }
+      ]
+    },
+    {
+      "id": "minimax-cn",
+      "name": "MiniMax 中国",
+      "product": "MiniMax M Plan 中国版",
+      "description": {
+        "zh": "人民币计价的 MiniMax 中国版；价格和档位倍数与国际版不同。",
+        "en": "CNY-billed MiniMax China plans; prices and tier multipliers differ from international plans."
+      },
+      "sources": [
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/monthly-offer",
+          "title": "M Plan 中国版常规续费价；首月活动已结束"
+        },
+        {
+          "url": "https://platform.minimax.cn/docs/m-plan/faq",
+          "title": "M Plan 中国版档位与用量规则"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
+      "plans": [
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 49
+        },
+        {
+          "id": "explore",
+          "name": "Explore",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 3,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 119
+        },
+        {
+          "id": "build",
+          "name": "Build",
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 12,
+            "unit": "relative",
+            "window": "week",
+            "group": "minimax-cn-go"
+          },
+          "note": {
+            "zh": "官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。",
+            "en": "Published regular monthly price; first-month offer ended. Regional Go = 1×; shared weekly allowance across models/tools with a five-hour window too. Windows start on first use; next use after expiry starts a new window."
+          },
+          "currency": "CNY",
+          "monthlyPrice": 469
+        }
+      ]
+    },
+    {
+      "id": "kimi",
+      "name": "Moonshot AI",
+      "product": "Kimi Code",
+      "description": {
+        "zh": "Kimi 国际版会员中的编码权益，与其他会员服务共享额度。",
+        "en": "Coding benefits in international Kimi membership, sharing allowance with other member services."
+      },
+      "sources": [
+        {
+          "url": "https://www.kimi.ai/resources/coding-plan",
+          "title": "Kimi international monthly plan prices"
+        },
+        {
+          "url": "https://www.kimi.com/en/help/kimi-code/benefits",
+          "title": "Kimi Code new and legacy membership limits"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
+      "plans": [
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 19,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 39,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 99,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 199,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。",
+            "en": "International new plan: rolling five-hour limit plus shared monthly pool, quantities undisclosed; no weekly cap for new subscribers. Legacy rules differ; annual equivalents and paid Extra Usage excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kiro",
+      "name": "AWS",
+      "product": "Kiro",
+      "description": {
+        "zh": "AWS 编码智能体，按月提供可按小数消耗的积分。",
+        "en": "AWS coding agent with monthly, fractionally consumed credits."
+      },
+      "sources": [
+        {
+          "url": "https://kiro.dev/pricing/",
+          "title": "Kiro individual monthly prices and credits"
+        },
+        {
+          "url": "https://kiro.dev/docs/billing/",
+          "title": "Kiro billing-cycle reset rules"
+        }
+      ],
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "status": "ok",
+      "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
+      "plans": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": 50,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 40,
+          "quota": {
+            "amount": 2000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "pro-max",
+          "name": "Pro Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        },
+        {
+          "id": "power",
+          "name": "Power",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "month",
+            "group": "kiro-credits"
+          },
+          "note": {
+            "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
+            "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        }
+      ]
+    }
+  ]
+}

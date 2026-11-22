@@ -1,0 +1,315 @@
+{
+  "changedAt": "2026-11-22T06:58:36.944Z",
+  "changes": [
+    {
+      "id": "claude",
+      "before": [],
+      "after": [
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 5,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Five-hour limits also apply."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 10,
+            "unit": "relative",
+            "window": "week",
+            "group": "claude-pro"
+          },
+          "note": {
+            "zh": "以 Pro 为 1×；Claude 与 Claude Code 共享周额度。已验证账户无五小时限制。",
+            "en": "Pro = 1×; weekly allowance shared by Claude and Claude Code. Verified accounts have no five-hour limit."
+          }
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "before": [],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "go",
+          "name": "Go",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。",
+            "en": "Limited to GPT-6 Luna at Standard speed in the desktop app, subject to rollout; no fixed allowance published. Does not include full Plus access."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 20,
+          "quota": {
+            "amount": 15,
+            "max": 160,
+            "unit": "messages",
+            "window": "5h",
+            "group": "codex-gpt-6.1-sol"
+          },
+          "note": {
+            "zh": "GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。",
+            "en": "GPT-6.1 Sol estimated local message range, not a guaranteed limit; cloud tasks share usage and may consume more. Weekly limits may apply."
+          }
+        },
+        {
+          "id": "pro-100",
+          "name": "Pro $100",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-200",
+          "name": "Pro $200",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        },
+        {
+          "id": "pro-500",
+          "name": "Pro $500",
+          "monthlyUsd": 500,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。",
+            "en": "No five-hour limit; this page publishes no fixed weekly allowance per tier. Do not infer multipliers from price. Usage is shared with ChatGPT Work."
+          }
+        }
+      ]
+    },
+    {
+      "id": "copilot",
+      "before": [],
+      "after": [
+        {
+          "id": "student",
+          "name": "Student",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "仅限已验证学生；积分额度未公布。",
+            "en": "Verified students only; credit allowance not published."
+          }
+        },
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费积分额度未公布。",
+            "en": "Free credit allowance not published."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "monthlyUsd": 10,
+          "quota": {
+            "amount": 1500,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        },
+        {
+          "id": "pro-plus",
+          "name": "Pro+",
+          "monthlyUsd": 39,
+          "quota": {
+            "amount": 7000,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "github-ai-credits"
+          },
+          "note": {
+            "zh": "每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。",
+            "en": "Total monthly GitHub AI Credits, including Base and Flex; consumption varies by model."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cursor",
+      "before": [],
+      "after": [
+        {
+          "id": "free",
+          "name": "Free",
+          "monthlyUsd": 0,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "dynamic",
+            "group": null
+          },
+          "note": {
+            "zh": "免费用量有限，未公布可比额度。",
+            "en": "Limited free usage; no comparable allowance published."
+          }
+        },
+        {
+          "id": "plus",
+          "name": "Plus",
+          "monthlyUsd": 8,
+          "quota": {
+            "amount": 1,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "premium",
+          "name": "Premium",
+          "monthlyUsd": 30,
+          "quota": {
+            "amount": 4,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "super",
+          "name": "Super",
+          "monthlyUsd": 100,
+          "quota": {
+            "amount": 15,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "monthlyUsd": 200,
+          "quota": {
+            "amount": 50,
+            "unit": "relative",
+            "window": "week",
+            "group": "cursor-grok-plus"
+          },
+          "note": {
+            "zh": "以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。",
+            "en": "Plus = 1×; weekly allowance shared by Cursor and Grok. Third-party models and Grok API billed separately."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+### GitHub AI Credits allowance by plan
+The following table shows what's included with each paid plan.
+| Plan | Price per month | Base credits | Flex allotment | Total monthly AI credits |
+| ------------ | --------------- | ------------ | -------------- | ------------------------ |
+| Copilot Pro | $10 USD | 1,000 | 500 | 1,500 |
+| Copilot Pro+ | $39 USD | 3,900 | 3,100 | 7,000 |
+| Copilot Max | $100 USD | 10,000 | 10,000 | 20,000 |
+Copilot Free and Copilot Student both have an allowance of AI credits.
+For more information on how GitHub AI Credits work, see [Usage-based billing for individuals](/en/copilot/concepts/billing-and-usage/individuals/billing)

@@ -1,0 +1,6 @@
+{
+  "name": "coding-plan-rank", "version": "1.0.0", "private": true, "type": "module",
+  "description": "Daily verified AI coding agent plans, quotas and community votes. Markdown first.",
+  "scripts": {"update":"node scripts/update.mjs", "votes":"node scripts/votes.mjs", "render":"node scripts/render.mjs", "test":"node --test tests/*.test.mjs"},
+  "dependencies": {"linkedom":"^0.18.12"}, "engines":{"node":">=22.12.0"}
+}

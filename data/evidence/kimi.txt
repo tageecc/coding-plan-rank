@@ -1,0 +1,13 @@
+Item Plus Pro Max Ultra
+Monthly billing $19/month $39/month $99/month $199/month
+Annual billing (monthly equivalent) $15/month ($180/year) $31/month ($372/year) $79/month ($948/year) $159/month ($1,908/year)
+Kimi Code access Included Included Included Included
+Key benefits Access to Kimi Code and supported coding models Adds Kimi K3.1 Pro Highspeed access and higher usage allowances Larger usage allowances for demanding coding workflows Highest usage allowances for intensive development workflows
+Annual subscriptions are charged upfront for the full year, with the monthly figures shown above representing the equivalent cost. Prices exclude applicable taxes and may vary by region or purchase conditions. Kimi Code usage is subject to membership-specific limits, so check the official pricing page for the latest details.
+
+Quota and Limits
+Quota rules differ between new and existing members:
+New members: the weekly quota limit is removed — quota no longer refreshes every 7 days. The rolling 5-hour rate window still applies: too many requests in a short time trigger rate limiting, which recovers automatically once the window rolls over.
+Existing members on legacy plans: rules are unchanged — quota refreshes automatically every 7 days from your subscription date, unused quota does not roll over, and the same 5-hour rolling rate window applies.
+Both groups share the Kimi membership monthly total quota: if the monthly total is reached, Kimi Code quota is frozen until the monthly quota resets or you upgrade. Monthly usage can be viewed on the Subscription page.
+All logged-in devices and API Keys share the same quota; devices inactive for over 30 days are automatically unbound and can be restored by running /login again. Log in to the Kimi Code Console at any time to check remaining quota and rate-limit status and to manage API Keys and devices.

@@ -1,0 +1,50 @@
+GLM Coding
+Lite
+Built for lightweight iteration on small repo
+$12.6/ month$18
+10,000 Credits / week
+Rolling access to the latest flagship models and features
+Supports 20+ agent tools, including ZCode, Claude Code, and more
+Default data privacy
+GLM Coding
+Pro
+Popular
+Built for day-to-day development on mid-sized repo
+$56/ month$80
+6× Lite usage
+All Lite benefits
+Priority access to the latest flagship models and features
+Includes a curated selection of MCP tools
+Faster generation speeds
+GLM Coding
+Max
+Max Usage
+Built for advanced users working on mid-to-large repo
+$117.6/ month$168
+14× Lite usage
+All Pro benefits
+First access to the latest flagship models and features
+Dedicated resources during peak times
+Prices and plan benefits may change. Final details are shown on z.ai.
+Usage Credit Allowance
+Each plan is subject to both a 5-hour usage limit and a weekly usage limit.
+Plan Type 5-Hour Credits Weekly Credits
+Lite 2,000 10,000
+Pro 12,000 60,000
+Max 28,000 140,000
+Credit Reset Rules
+5-hour credits: Dynamically refreshed; credit quota resets 5 hours after consumption.
+Weekly credits: Activated upon subscription; resets every 7 days.
+Credit Calculation
+Model credit usage = (Input tokens × Input multiplier + Cached Input tokens × Cached Input multiplier + Output tokens × Output multiplier) / 10,000
+MCP tool credit usage = Number of calls × Output multiplier
+You can view the number of tokens consumed under each pricing type and the number of tool calls on the Charge Type page.
+Product Type Product Input Multiplier Cached Input Multiplier Output Multiplier
+Model GLM-5.3 6.9 1.7 24
+GLM-5.3-Flash
+(Including MCP for visual understanding) 2.3 0.56 8
+MCP Server Web Search — — 1.2
+Web Reader — — 1.2
+Zread — — 1.2
+During off-peak hours, model usage is charged at 50% of the standard credit rate.
+Peak hours: Monday to Friday, 14:00–18:00 Singapore Standard Time (UTC+8).

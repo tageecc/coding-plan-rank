@@ -1,0 +1,71 @@
+{
+  "attemptedAt": "2026-11-22T07:04:07.170Z",
+  "providers": [
+    {
+      "id": "antigravity",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": true
+    },
+    {
+      "id": "claude",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "codex",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "copilot",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "cursor",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "devin",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "glm",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "kimi",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "kiro",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "minimax",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    },
+    {
+      "id": "minimax-cn",
+      "status": "ok",
+      "checkedAt": "2026-11-22T07:04:07.170Z",
+      "changed": false
+    }
+  ]
+}

@@ -6,7 +6,7 @@
 
 更新：**2026-11-22** · 每日北京时间 **09:23** 自动检查。
 
-**怎么读：** 工具按票数排序，同工具内按月费排列。$ 为美元，¥ 为人民币；均为常规月付，不含税费、首月优惠或年付折算。
+**怎么读：** 工具按票数排序，同工具内按月费排列。$ 为美元，¥ 为人民币；均为常规月付，不含税费、首月优惠或年付折算。条指消息，h 指小时；完整名称与限制见本页来源。
 
 **性价比：** 同工具最低价的可比付费档为 1×；数字越高，每元买到的公开额度越多。只在同工具内比较，— 表示无法计算，粗体为同组最优。
 
@@ -14,76 +14,101 @@
 
 <a id="plans"></a>
 
-| 工具 / 套餐 | 月费 | 额度 | 性价比 | 支持 |
-| :-- | --: | :-- | --: | :-- |
-| Claude Code<br>Pro[^claude] | $20 | 1× Pro / 周 | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/2#issue-body-viewer) |
-| Claude Code<br>Max | $100 | 5× Pro / 周 | 1.00× |  |
-| Claude Code<br>Ultra | $200 | 10× Pro / 周 | 1.00× |  |
-| Codex<br>Free[^codex] | $0 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/3#issue-body-viewer) |
-| Codex<br>Go | $8 | 未公开 | — |  |
-| Codex<br>Plus | $20 | 约 15–160 条消息 / 5 小时 | — |  |
-| Codex<br>Pro $100 | $100 | 未公开 | — |  |
-| Codex<br>Pro $200 | $200 | 未公开 | — |  |
-| Codex<br>Pro $500 | $500 | 未公开 | — |  |
-| Cursor<br>Free[^cursor] | $0 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/1#issue-body-viewer) |
-| Cursor<br>Plus | $8 | 1× Plus / 周 | 1.00× |  |
-| Cursor<br>Premium | $30 | 4× Plus / 周 | 1.07× |  |
-| Cursor<br>Super | $100 | 15× Plus / 周 | 1.20× |  |
-| Cursor<br>Ultra | $200 | 50× Plus / 周 | **2.00×** |  |
-| Devin / Windsurf<br>Pro[^devin] | $20 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/6#issue-body-viewer) |
-| Devin / Windsurf<br>Max | $200 | 未公开 | — |  |
-| GitHub Copilot<br>Free[^copilot] | $0 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/4#issue-body-viewer) |
-| GitHub Copilot<br>Student | $0 | 未公开 | — |  |
-| GitHub Copilot<br>Pro | $10 | 1,500 credits / 月 | 1.00× |  |
-| GitHub Copilot<br>Pro+ | $39 | 7,000 credits / 月 | 1.20× |  |
-| GitHub Copilot<br>Max | $100 | 20,000 credits / 月 | **1.33×** |  |
-| GLM Coding Plan<br>Lite[^glm] | $18 | 10,000 credits / 周 | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/7#issue-body-viewer) |
-| GLM Coding Plan<br>Pro | $80 | 60,000 credits / 周 | 1.35× |  |
-| GLM Coding Plan<br>Max | $168 | 140,000 credits / 周 | **1.50×** |  |
-| Google Antigravity<br>Google AI Pro[^antigravity] | $19.99 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/5#issue-body-viewer) |
-| Google Antigravity<br>Google AI Ultra 5x | $99.99 | 未公开 | — |  |
-| Google Antigravity<br>Google AI Ultra 20x | $199.99 | 未公开 | — |  |
-| Kimi Code<br>Plus[^kimi] | $19 | 未公开 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/10#issue-body-viewer) |
-| Kimi Code<br>Pro | $39 | 未公开 | — |  |
-| Kimi Code<br>Max | $99 | 未公开 | — |  |
-| Kimi Code<br>Ultra | $199 | 未公开 | — |  |
-| Kiro<br>Free[^kiro] | $0 | 50 credits / 月 | — | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/11#issue-body-viewer) |
-| Kiro<br>Pro | $20 | 1,000 credits / 月 | 1.00× |  |
-| Kiro<br>Pro+ | $40 | 2,000 credits / 月 | 1.00× |  |
-| Kiro<br>Pro Max | $100 | 5,000 credits / 月 | 1.00× |  |
-| Kiro<br>Power | $200 | 10,000 credits / 月 | 1.00× |  |
-| MiniMax M Plan<br>Go[^minimax] | $22 | 1× Go / 周 | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/8#issue-body-viewer) |
-| MiniMax M Plan<br>Explore | $55 | 3× Go / 周 | 1.20× |  |
-| MiniMax M Plan<br>Build | $132 | 7.5× Go / 周 | **1.25×** |  |
-| MiniMax M Plan 中国版<br>Go[^minimax-cn] | ¥49 | 1× Go / 周 | 1.00× | [👍 0](https://github.com/tageecc/coding-plan-rank/issues/9#issue-body-viewer) |
-| MiniMax M Plan 中国版<br>Explore | ¥119 | 3× Go / 周 | 1.24× |  |
-| MiniMax M Plan 中国版<br>Build | ¥469 | 12× Go / 周 | **1.25×** |  |
+<table width="100%">
+<thead><tr><th nowrap>工具 / 套餐</th><th nowrap align="right">月费</th><th nowrap>额度</th><th nowrap align="right">性价比</th><th nowrap>支持</th></tr></thead>
+<tbody>
+<tr><td nowrap>Claude Code · Pro<sup><a href="#source-claude">2</a></sup></td><td nowrap align="right">$20</td><td nowrap>1× Pro/周</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/2#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Claude Code · Max</td><td nowrap align="right">$100</td><td nowrap>5× Pro/周</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Claude Code · Ultra</td><td nowrap align="right">$200</td><td nowrap>10× Pro/周</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Codex · Free<sup><a href="#source-codex">3</a></sup></td><td nowrap align="right">$0</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/3#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Codex · Go</td><td nowrap align="right">$8</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Codex · Plus</td><td nowrap align="right">$20</td><td nowrap>约15–160条/5h</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Codex · Pro</td><td nowrap align="right">$100</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Codex · Pro</td><td nowrap align="right">$200</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Codex · Pro</td><td nowrap align="right">$500</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Cursor · Free<sup><a href="#source-cursor">1</a></sup></td><td nowrap align="right">$0</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/1#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Cursor · Plus</td><td nowrap align="right">$8</td><td nowrap>1× Plus/周</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Cursor · Premium</td><td nowrap align="right">$30</td><td nowrap>4× Plus/周</td><td nowrap align="right">1.07×</td><td nowrap></td></tr>
+<tr><td nowrap>Cursor · Super</td><td nowrap align="right">$100</td><td nowrap>15× Plus/周</td><td nowrap align="right">1.20×</td><td nowrap></td></tr>
+<tr><td nowrap>Cursor · Ultra</td><td nowrap align="right">$200</td><td nowrap>50× Plus/周</td><td nowrap align="right"><strong>2.00×</strong></td><td nowrap></td></tr>
+<tr><td nowrap>Devin / Windsurf · Pro<sup><a href="#source-devin">6</a></sup></td><td nowrap align="right">$20</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/6#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Devin / Windsurf · Max</td><td nowrap align="right">$200</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Copilot · Free<sup><a href="#source-copilot">4</a></sup></td><td nowrap align="right">$0</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/4#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Copilot · Student</td><td nowrap align="right">$0</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Copilot · Pro</td><td nowrap align="right">$10</td><td nowrap>1,500积分/月</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Copilot · Pro+</td><td nowrap align="right">$39</td><td nowrap>7,000积分/月</td><td nowrap align="right">1.20×</td><td nowrap></td></tr>
+<tr><td nowrap>Copilot · Max</td><td nowrap align="right">$100</td><td nowrap>20,000积分/月</td><td nowrap align="right"><strong>1.33×</strong></td><td nowrap></td></tr>
+<tr><td nowrap>GLM · Lite<sup><a href="#source-glm">7</a></sup></td><td nowrap align="right">$18</td><td nowrap>10,000积分/周</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/7#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>GLM · Pro</td><td nowrap align="right">$80</td><td nowrap>60,000积分/周</td><td nowrap align="right">1.35×</td><td nowrap></td></tr>
+<tr><td nowrap>GLM · Max</td><td nowrap align="right">$168</td><td nowrap>140,000积分/周</td><td nowrap align="right"><strong>1.50×</strong></td><td nowrap></td></tr>
+<tr><td nowrap>Antigravity · Pro<sup><a href="#source-antigravity">5</a></sup></td><td nowrap align="right">$19.99</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/5#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Antigravity · Ultra 5x</td><td nowrap align="right">$99.99</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Antigravity · Ultra 20x</td><td nowrap align="right">$199.99</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Kimi · Plus<sup><a href="#source-kimi">10</a></sup></td><td nowrap align="right">$19</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/10#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Kimi · Pro</td><td nowrap align="right">$39</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Kimi · Max</td><td nowrap align="right">$99</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Kimi · Ultra</td><td nowrap align="right">$199</td><td nowrap>未公开</td><td nowrap align="right">—</td><td nowrap></td></tr>
+<tr><td nowrap>Kiro · Free<sup><a href="#source-kiro">11</a></sup></td><td nowrap align="right">$0</td><td nowrap>50积分/月</td><td nowrap align="right">—</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/11#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>Kiro · Pro</td><td nowrap align="right">$20</td><td nowrap>1,000积分/月</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Kiro · Pro+</td><td nowrap align="right">$40</td><td nowrap>2,000积分/月</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Kiro · Pro Max</td><td nowrap align="right">$100</td><td nowrap>5,000积分/月</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>Kiro · Power</td><td nowrap align="right">$200</td><td nowrap>10,000积分/月</td><td nowrap align="right">1.00×</td><td nowrap></td></tr>
+<tr><td nowrap>MiniMax 国际 · Go<sup><a href="#source-minimax">8</a></sup></td><td nowrap align="right">$22</td><td nowrap>1× Go/周</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/8#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>MiniMax 国际 · Explore</td><td nowrap align="right">$55</td><td nowrap>3× Go/周</td><td nowrap align="right">1.20×</td><td nowrap></td></tr>
+<tr><td nowrap>MiniMax 国际 · Build</td><td nowrap align="right">$132</td><td nowrap>7.5× Go/周</td><td nowrap align="right"><strong>1.25×</strong></td><td nowrap></td></tr>
+<tr><td nowrap>MiniMax 中国 · Go<sup><a href="#source-minimax-cn">9</a></sup></td><td nowrap align="right">¥49</td><td nowrap>1× Go/周</td><td nowrap align="right">1.00×</td><td nowrap><a href="https://github.com/tageecc/coding-plan-rank/issues/9#issue-body-viewer">👍 0</a></td></tr>
+<tr><td nowrap>MiniMax 中国 · Explore</td><td nowrap align="right">¥119</td><td nowrap>3× Go/周</td><td nowrap align="right">1.24×</td><td nowrap></td></tr>
+<tr><td nowrap>MiniMax 中国 · Build</td><td nowrap align="right">¥469</td><td nowrap>12× Go/周</td><td nowrap align="right"><strong>1.25×</strong></td><td nowrap></td></tr>
+</tbody>
+</table>
 
 票数同步：2026-11-22。同票并列；零票时顺序不代表推荐。每账号对同一工具计一票，可支持多个工具，撤回即减票。
 
 **来源与必要说明**（都在本页；工具名链接到官方资料）：
 
-[^cursor]: [Cursor](https://cursor.com/pricing) · 核验 2026-11-22. **Free:** 免费用量有限，未公布可比额度。 **Plus / Premium / Super / Ultra:** 以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。
+<a id="source-cursor"></a>
 
-[^claude]: [Claude Code](https://claude.com/pricing) · 核验 2026-11-22. **Pro / Max:** 以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。 **Ultra:** 以 Pro 为 1×；Claude 与 Claude Code 共享周额度。已验证账户无五小时限制。
+**1.** [Cursor](https://cursor.com/pricing) · 核验 2026-11-22. **Free:** 免费用量有限，未公布可比额度。 **Plus / Premium / Super / Ultra:** 以 Plus 为 1×；Cursor 与 Grok 共享周额度。第三方模型及 Grok API 另计费。
 
-[^codex]: [Codex](https://learn.chatgpt.com/docs/pricing.md) · 核验 2026-11-22. **Free / Go:** 仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。 **Plus:** GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。 **Pro $100 / Pro $200 / Pro $500:** 无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。
+<a id="source-claude"></a>
 
-[^copilot]: [GitHub Copilot](https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans) · 核验 2026-11-22. **Student:** 仅限已验证学生；积分额度未公布。 **Free:** 免费积分额度未公布。 **Pro / Pro+ / Max:** 每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。
+**2.** [Claude Code](https://claude.com/pricing) · 核验 2026-11-22. **Pro / Max:** 以 Pro 为 1×；Claude 与 Claude Code 共享周额度。另有五小时限制。 **Ultra:** 以 Pro 为 1×；Claude 与 Claude Code 共享周额度。已验证账户无五小时限制。
 
-[^antigravity]: [Google Antigravity](https://gemini.google/us/subscriptions/) · [补充来源](https://antigravity.google/docs/plans) · 核验 2026-11-22. 每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。
+<a id="source-codex"></a>
 
-[^devin]: [Devin / Windsurf](https://devin.ai/pricing) · [补充来源](https://docs.devin.ai/admin/billing/self-serve) · 核验 2026-11-22. **Pro:** 按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。 **Max:** 按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。
+**3.** [Codex](https://learn.chatgpt.com/docs/pricing.md) · 核验 2026-11-22. **Free / Go:** 仅桌面应用中的 GPT-6 Luna Standard，分批开放；未公布固定额度，并非 Plus 的完整访问权限。 **Plus:** GPT-6.1 Sol 本地消息参考范围，非保证上限；云端任务共享用量且消耗可能更高，另可能有周限制。 **Pro $100 / Pro $200 / Pro $500:** 无五小时限制；官方此页未公布各档固定周额度，不能按价格推算倍数。与 ChatGPT Work 共享用量。
 
-[^glm]: [GLM Coding Plan](https://zcode.z.ai/en) · [补充来源](https://docs.z.ai/devpack/overview) · 核验 2026-11-22. **Lite:** 常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。 **Pro:** 常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。 **Max:** 常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。
+<a id="source-copilot"></a>
 
-[^minimax]: [MiniMax M Plan](https://platform.minimax.io/docs/m-plan/monthly-offer) · [补充来源](https://platform.minimax.io/docs/m-plan/faq) · 核验 2026-11-22. 官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。
+**4.** [GitHub Copilot](https://docs.github.com/api/article/body?pathname=/en/copilot/get-started/plans) · 核验 2026-11-22. **Student:** 仅限已验证学生；积分额度未公布。 **Free:** 免费积分额度未公布。 **Pro / Pro+ / Max:** 每月 GitHub AI Credits 总额，包含 Base 与 Flex；不同模型消耗不同。
 
-[^minimax-cn]: [MiniMax M Plan 中国版](https://platform.minimax.cn/docs/m-plan/monthly-offer) · [补充来源](https://platform.minimax.cn/docs/m-plan/faq) · 核验 2026-11-22. 官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。
+<a id="source-antigravity"></a>
 
-[^kimi]: [Kimi Code](https://www.kimi.ai/resources/coding-plan) · [补充来源](https://www.kimi.com/en/help/kimi-code/benefits) · 核验 2026-11-22. 国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。
+**5.** [Google Antigravity](https://gemini.google/us/subscriptions/) · [补充来源](https://antigravity.google/docs/plans) · 核验 2026-11-22. 每五小时刷新，另受周上限约束；固定额度未公开，按任务消耗。名称中的倍数不代表已验证的编码额度。
 
-[^kiro]: [Kiro](https://kiro.dev/pricing/) · [补充来源](https://kiro.dev/docs/billing/) · 核验 2026-11-22. 订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。
+<a id="source-devin"></a>
+
+**6.** [Devin / Windsurf](https://devin.ai/pricing) · [补充来源](https://docs.devin.ai/admin/billing/self-serve) · 核验 2026-11-22. **Pro:** 按日历周及日历日刷新；数值与时区未公开。桌面、CLI、云端共享；超额另付费。 **Max:** 按日历周刷新，无每日上限；数值与时区未公开。桌面、CLI、云端共享；超额另付费。
+
+<a id="source-glm"></a>
+
+**7.** [GLM Coding Plan](https://zcode.z.ai/en) · [补充来源](https://docs.z.ai/devpack/overview) · 核验 2026-11-22. **Lite:** 常规标价；另有每五小时 2,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。 **Pro:** 常规标价；另有每五小时 12,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。 **Max:** 常规标价；另有每五小时 28,000 积分上限。周额度自订阅起每七天刷新；按模型及缓存计费，非请求数，非高峰优惠不计入额度。
+
+<a id="source-minimax"></a>
+
+**8.** [MiniMax M Plan](https://platform.minimax.io/docs/m-plan/monthly-offer) · [补充来源](https://platform.minimax.io/docs/m-plan/faq) · 核验 2026-11-22. 官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。
+
+<a id="source-minimax-cn"></a>
+
+**9.** [MiniMax M Plan 中国版](https://platform.minimax.cn/docs/m-plan/monthly-offer) · [补充来源](https://platform.minimax.cn/docs/m-plan/faq) · 核验 2026-11-22. 官网列明的常规月价；首月活动已结束。以本区 Go 为 1×，所有模型及工具共享周额度；另有五小时窗口。窗口从首次使用起算，到期后下次使用开启新窗口。
+
+<a id="source-kimi"></a>
+
+**10.** [Kimi Code](https://www.kimi.ai/resources/coding-plan) · [补充来源](https://www.kimi.com/en/help/kimi-code/benefits) · 核验 2026-11-22. 国际区新计划；滚动五小时限制，另有共享月额度，数值未公开；新订阅无周上限。旧计划规则不同，年付折算价及额外付费不计入。
+
+<a id="source-kiro"></a>
+
+**11.** [Kiro](https://kiro.dev/pricing/) · [补充来源](https://kiro.dev/docs/billing/) · 核验 2026-11-22. 订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。
 
 每日机器人抓取官方资料、验证并更新本文。解析失败保留原核验日期并标记待核验，不参与性价比计算；积分、请求和各工具的倍数不互相换算。
 

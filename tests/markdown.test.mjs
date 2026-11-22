@@ -2,17 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
-test('each README shows every plan in exactly one five-column table without collapsed details',async()=>{
+import {parseHTML} from 'linkedom';
+test('each README shows every plan in one five-column table with single-line cells',async()=>{
  const data=JSON.parse(await readFile('data/plans.json','utf8'));
  const expectedRows=data.providers.reduce((sum,p)=>sum+Math.max(p.plans.length,1),0);
  for(const file of ['README.md','README.en.md']) {
   const body=await readFile(file,'utf8');
-  const rows=body.split('\n').filter(l=>l.startsWith('|'));
-  assert.equal(rows.length,expectedRows+2,`${file}: every plan must be visible`);
-  assert.equal(rows.filter(l=>l.startsWith('| :--')).length,1,`${file}: only one table`);
+  const {document}=parseHTML(body);
+  const tables=document.querySelectorAll('table');
+  assert.equal(tables.length,1,`${file}: only one table`);
+  const table=tables[0];
+  assert.equal(table.querySelectorAll('tbody tr').length,expectedRows,`${file}: every plan must be visible`);
   assert.ok(!body.includes('<details>'),`${file}: no collapsed plans`);
-  for(const line of rows) {
-   assert.equal(line.replaceAll('\\|','').split('|').length-2,5,`${file}: five columns`);
+  assert.equal(table.querySelectorAll('br').length,0,`${file}: no forced line breaks`);
+  for(const row of table.querySelectorAll('tr')) {
+   assert.equal(row.children.length,5,`${file}: five columns`);
+   for(const cell of row.children)assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
+  }
+  for(const link of table.querySelectorAll('a[href^="#"]')) {
+   assert.ok(document.getElementById(link.getAttribute('href').slice(1)),`${file}: source link must resolve`);
   }
  }
 });

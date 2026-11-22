@@ -1,70 +1,70 @@
 {
-  "attemptedAt": "2026-11-22T07:16:39.019Z",
+  "attemptedAt": "2026-11-22T07:40:24.701Z",
   "providers": [
     {
       "id": "antigravity",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "codex",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T07:16:39.019Z",
+      "checkedAt": "2026-11-22T07:40:24.701Z",
       "changed": false
     }
   ]

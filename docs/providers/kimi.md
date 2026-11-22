@@ -5,7 +5,7 @@
 Kimi 国际版会员中的编码权益，与其他会员服务共享额度。
 Coding benefits in international Kimi membership, sharing allowance with other member services.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

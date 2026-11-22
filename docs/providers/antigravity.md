@@ -5,7 +5,7 @@
 Google AI 订阅包含的编码智能体；不沿用已停止销售的 Code Assist 套餐。
 Coding agent included with Google AI subscriptions; excludes discontinued Code Assist plans.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

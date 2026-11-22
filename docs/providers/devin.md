@@ -5,7 +5,7 @@
 Windsurf 官网现指向 Devin；涵盖桌面、CLI 与云端。
 Windsurf pricing now redirects to Devin, covering Desktop, CLI and cloud.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

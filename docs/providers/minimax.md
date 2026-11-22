@@ -5,7 +5,7 @@
 MiniMax 国际版编码与多模态共享订阅。
 MiniMax international subscription shared by coding and multimodal tools.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

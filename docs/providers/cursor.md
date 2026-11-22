@@ -5,7 +5,7 @@
 集成 AI 智能体的代码编辑器，订阅额度与 Grok 共享。
 Code editor with AI agents and a subscription allowance shared with Grok.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

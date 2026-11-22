@@ -5,7 +5,7 @@
 GLM 编码订阅国际版，支持多种智能体工具。
 International GLM coding subscription for multiple agent tools.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

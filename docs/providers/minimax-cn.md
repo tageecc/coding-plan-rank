@@ -5,7 +5,7 @@
 人民币计价的 MiniMax 中国版；价格和档位倍数与国际版不同。
 CNY-billed MiniMax China plans; prices and tier multipliers differ from international plans.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

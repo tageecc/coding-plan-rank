@@ -5,7 +5,7 @@
 面向编辑器、终端与 GitHub 的编码助手，付费计划按 AI 积分计量。
 Coding assistant for editors, terminals, and GitHub, with AI credits on paid plans.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

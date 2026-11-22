@@ -5,7 +5,7 @@
 覆盖桌面、命令行和云端的编码智能体，使用 ChatGPT 订阅额度。
 Coding agent across desktop, CLI, and cloud, using ChatGPT subscription allowances.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

@@ -5,7 +5,7 @@
 终端与开发工具中的编码智能体，与 Claude 订阅共享用量。
 Coding agent for terminals and development tools, sharing usage with Claude subscriptions.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

@@ -5,7 +5,7 @@
 AWS 编码智能体，按月提供可按小数消耗的积分。
 AWS coding agent with monthly, fractionally consumed credits.
 
-最近成功核验 / Last verified: **2026-11-22T07:04:07.170Z**
+最近成功核验 / Last verified: **2026-11-22T07:06:28.628Z**
 
 状态 / Status: **ok**
 

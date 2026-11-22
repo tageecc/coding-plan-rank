@@ -1,113 +1,114 @@
 {
-  "attemptedAt": "2026-11-22T09:18:40.897Z",
+  "attemptedAt": "2026-11-22T09:28:00.780Z",
   "providers": [
     {
       "id": "aliyun-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "antigravity",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "codex",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "glm-cn",
-      "status": "ok",
+      "status": "unavailable",
       "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "error": "FetchError: Official source unavailable: bigmodel.cn (fetch failed)",
+      "changed": false
     },
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "kimi-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "mimo-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     },
     {
       "id": "tencent-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "tencent-hy",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
+      "checkedAt": "2026-11-22T09:28:00.780Z",
       "changed": false
     },
     {
       "id": "volc-cn",
       "status": "ok",
-      "checkedAt": "2026-11-22T09:18:40.897Z",
-      "changed": true
+      "checkedAt": "2026-11-22T09:28:00.780Z",
+      "changed": false
     }
   ],
   "exchangeRate": {
@@ -115,7 +116,7 @@
     "quote": "CNY",
     "rate": 6.677707,
     "rateDate": "2026-11-20",
-    "checkedAt": "2026-11-22T09:18:40.897Z",
+    "checkedAt": "2026-11-22T09:28:00.780Z",
     "referenceRates": {
       "USD": 1.099,
       "CNY": 7.3388

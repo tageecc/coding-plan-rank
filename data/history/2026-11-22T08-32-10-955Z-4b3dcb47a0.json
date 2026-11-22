@@ -1,0 +1,506 @@
+{
+  "changedAt": "2026-11-22T08:32:10.955Z",
+  "changes": [
+    {
+      "id": "aliyun-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "essential",
+          "name": "Essential",
+          "currency": "CNY",
+          "monthlyPrice": 79,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 45000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 139,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 80000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 312,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 200000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 118,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 2,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 538,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 12,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1078,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 28,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kimi-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "plus",
+          "name": "Plus",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 199,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 699,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "currency": "CNY",
+          "monthlyPrice": 1399,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mimo-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 4100000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 11000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 329,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 38000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 659,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 82000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tencent-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 780,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 299,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 5980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 599,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 11980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tencent-hy",
+      "before": [],
+      "after": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 28,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 560,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 78,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1560,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 238,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 4760,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 468,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 9360,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        }
+      ]
+    },
+    {
+      "id": "volc-cn",
+      "before": [],
+      "after": [
+        {
+          "id": "small",
+          "name": "Small",
+          "currency": "CNY",
+          "monthlyPrice": 40,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 7,000、每五小时 2,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 7,000 AFP/week and 2,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "medium",
+          "name": "Medium",
+          "currency": "CNY",
+          "monthlyPrice": 200,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 100000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 35,000、每五小时 10,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 35,000 AFP/week and 10,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "large",
+          "name": "Large",
+          "currency": "CNY",
+          "monthlyPrice": 500,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 250000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 87,500、每五小时 25,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 87,500 AFP/week and 25,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1000,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 500000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 175,000、每五小时 50,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 175,000 AFP/week and 50,000 AFP/five hours, not tokens."
+          }
+        }
+      ]
+    }
+  ]
+}

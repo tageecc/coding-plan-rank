@@ -1,0 +1,31 @@
+Pricing and Quotas for Individual Edition
+Monthly Plan
+Lite
+Standard
+Pro
+Max
+Pricing
+$6/month, ¥39/month
+$16/month, ¥99/month
+$50/month, ¥329/month
+$100/month, ¥659/month
+Monthly Quota
+4.1 billion Credits
+11 billion Credits
+38 billion Credits
+82 billion Credits
+Annual Package
+Lite
+Standard
+Pro
+Max
+Pricing
+$63.36/year, ¥408/year
+USD 168.96/year, CNY 1044/year
+USD 528.00/year, CNY 3468/year
+USD 1,056.00/year, CNY 6,948/year
+Annual Quota
+49.2 billion Credits
+132 billion Credits
+456 billion Credits
+984 billion Credits

@@ -4,6 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { coreProviders, evidenceText, ReviewError, requireFact } from './parsers.mjs';
 import { extraProviders, evidenceExtraText } from './parsers-extra.mjs';
+import { domesticProviders, evidenceDomesticText } from './parsers-domestic.mjs';
+import { loadGlmPricing } from './glm-pricing.mjs';
 
 export const OFFICIAL_HOSTS = new Set([
   'cursor.com', 'www.cursor.com', 'claude.com', 'www.claude.com',
@@ -18,6 +20,7 @@ export const OFFICIAL_HOSTS = new Set([
   'qoder.com', 'www.qoder.com', 'docs.qoder.com',
   'qwen.ai', 'www.qwen.ai', 'qwenlm.github.io',
   'gemini.google', 'antigravity.google', 'devin.ai', 'docs.devin.ai',
+  'help.aliyun.com', 'docs.volcengine.com', 'docs.bigmodel.cn', 'static.bigmodel.cn', 'mimo.mi.com', 'cloud.tencent.com',
   'zcode.z.ai', 'platform.minimax.cn', 'kimi.ai', 'www.kimi.ai', 'kiro.dev',
 ]);
 export const MAX_BYTES = 3 * 1024 * 1024;
@@ -35,7 +38,7 @@ export function officialUrl(value, allowedHosts = OFFICIAL_HOSTS) {
 
 export async function fetchOfficial(source, {
   fetchImpl = fetch, timeoutMs = 15000, retries = 2, maxBytes = MAX_BYTES,
-  allowedHosts = OFFICIAL_HOSTS, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)),
+  allowedHosts = OFFICIAL_HOSTS, allowScriptText = false, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)),
 } = {}) {
   const initial = officialUrl(source, allowedHosts);
   let lastError;
@@ -62,7 +65,7 @@ export async function fetchOfficial(source, {
           throw new FetchError(`Official source returned HTTP ${response.status}: ${url.hostname}`);
         }
         const type = response.headers.get('content-type')?.split(';')[0].trim().toLowerCase();
-        requireFact(!type || ['text/html', 'text/plain', 'text/markdown', 'text/x-markdown', 'application/xhtml+xml'].includes(type), `Unsupported official response type: ${type}`);
+        requireFact(!type || ['text/html', 'text/plain', 'text/markdown', 'text/x-markdown', 'application/xhtml+xml', ...(allowScriptText ? ['application/javascript', 'text/javascript'] : [])].includes(type), `Unsupported official response type: ${type}`);
         requireFact(Number(response.headers.get('content-length') || 0) <= maxBytes, 'Official response exceeds 3 MB');
         requireFact(response.body, 'Empty official response body');
         const chunks = [];
@@ -173,7 +176,7 @@ async function atomicWrite(filename, value) {
 }
 
 export async function run({ root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), fromDir } = {}) {
-  const providers = [...coreProviders, ...extraProviders];
+  const providers = [...coreProviders, ...extraProviders, ...domesticProviders];
   for (const provider of providers) for (const source of provider.sources) officialUrl(source.url);
   let previous;
   try { previous = JSON.parse(await readFile(path.join(root, 'data/plans.json'), 'utf8')); }
@@ -185,9 +188,10 @@ export async function run({ root = path.resolve(path.dirname(fileURLToPath(impor
       catch (error) { if (error.code !== 'ENOENT') throw error; }
     }
     throw new FetchError(`No captured official source for ${id} (${url})`);
-  } : url => fetchOfficial(url);
+  } : url => url === 'https://bigmodel.cn/glm-coding' ? loadGlmPricing(fetchOfficial) : fetchOfficial(url);
+  const domesticIds = new Set(domesticProviders.map(provider => provider.id));
   const extraIds = new Set(extraProviders.map(provider => provider.id));
-  const result = await updateData({ providers, previous, load, evidence: (id, raws) => extraIds.has(id) ? evidenceExtraText(id, raws) : evidenceText(id, raws) });
+  const result = await updateData({ providers, previous, load, evidence: (id, raws) => domesticIds.has(id) ? evidenceDomesticText(id, raws) : extraIds.has(id) ? evidenceExtraText(id, raws) : evidenceText(id, raws) });
   for (const [name, value] of result.writes) await atomicWrite(path.join(root, 'data', name), value);
   if (result.snapshot) {
     const content = `${JSON.stringify(result.snapshot, null, 2)}\n`;

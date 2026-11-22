@@ -21,9 +21,8 @@ test('each README shows every plan in one five-column table with single-line cel
    assert.equal(row.children.length,5,`${file}: five columns`);
    for(const cell of row.children)assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
   }
-  for(const link of table.querySelectorAll('a[href^="#"]')) {
-   assert.ok(document.getElementById(link.getAttribute('href').slice(1)),`${file}: source link must resolve`);
-  }
+  assert.equal(document.querySelectorAll('sup, [id^="source-"]').length,0,`${file}: no source footnotes`);
+  assert.ok(!/\*\*(来源|Sources)\*\*/.test(body),`${file}: no sources section`);
  }
 });
 test('generated Markdown links resolve to existing local files and provider anchors',async()=>{

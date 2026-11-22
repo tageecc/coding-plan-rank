@@ -6,6 +6,18 @@
 
 ## 2026-11-22
 
+- **Aliyun**：首次收录 / First listed (4 plans).
+- **GLM CN**：首次收录 / First listed (3 plans).
+- **Kimi CN**：首次收录 / First listed (4 plans).
+- **MiMo CN**：首次收录 / First listed (4 plans).
+- **Tencent General**：首次收录 / First listed (4 plans).
+- **Tencent Hy**：首次收录 / First listed (4 plans).
+- **Volcengine**：首次收录 / First listed (4 plans).
+
+[核验快照 / Snapshot](../data/history/2026-11-22T08-32-10-955Z-4b3dcb47a0.json)
+
+## 2026-11-22
+
 - **Google Antigravity**：首次收录 / First listed (3 plans).
 
 [核验快照 / Snapshot](../data/history/2026-11-22T07-04-07-170Z-103b4a221c.json)

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T08:00:46.075Z",
+  "updatedAt": "2026-11-22T08:33:33.912Z",
   "providers": [
     {
       "id": "cursor",
@@ -15,7 +15,7 @@
           "title": "Cursor pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "31ca5fc59595228cffc6a19db91a533d87e393db755ddc61e0852b62be6738bd",
       "plans": [
@@ -110,7 +110,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -175,7 +175,7 @@
           "title": "ChatGPT Work and Codex pricing"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "d667808e14faf07284827654f34c4495011a2ae94512adad9282027d1db05e43",
       "plans": [
@@ -286,7 +286,7 @@
           "title": "Plans for GitHub Copilot"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "b217e4c30c62797ad0342ac07676e9a9ac5fcec6ba41a9762b75082e1c93103d",
       "plans": [
@@ -385,7 +385,7 @@
           "title": "Antigravity plans and usage limits"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "0e06aa3d7edd2ee8cb5abe7d717276605dc30066ae9ae70ea94ed21fb3bcf407",
       "plans": [
@@ -454,7 +454,7 @@
           "title": "Devin self-serve billing and quotas"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "2999e45c21381a20c353738be6ee430eab03bcd69b179228a01f707e8973f57d",
       "plans": [
@@ -508,7 +508,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "fdfdcbbc689bb9f12560fd6900bda82a2a578c116273a9a0a77e0b6fbaced044",
       "plans": [
@@ -577,7 +577,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -646,7 +646,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -721,7 +721,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -805,7 +805,7 @@
           "title": "Kiro billing-cycle reset rules"
         }
       ],
-      "checkedAt": "2026-11-22T08:00:46.075Z",
+      "checkedAt": "2026-11-22T08:33:33.912Z",
       "status": "ok",
       "sourceHash": "8ab9e583809176008eb69ffed01df2d8f4a4f507a37dd9dac6452704c4676a95",
       "plans": [
@@ -882,6 +882,606 @@
           "note": {
             "zh": "订阅积分于下一账期开始时刷新；按任务消耗小数积分，不等于请求数。试用赠送及另购积分未计入。",
             "en": "Plan credits renew at the next billing cycle; tasks consume fractional credits, not a one-credit-per-request allowance. Trial and purchased credits excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "aliyun-cn",
+      "product": "Aliyun",
+      "sources": [
+        {
+          "url": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "065ea341d8849ba8dd041f9dc7974b5f526af1e4d7b0adb24585777851f80491",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "essential",
+          "name": "Essential",
+          "currency": "CNY",
+          "monthlyPrice": 79,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 45000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 139,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 80000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 312,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 200000,
+            "unit": "credits",
+            "window": "month",
+            "group": "aliyun-personal"
+          },
+          "note": {
+            "zh": "订阅月额度；模型、缓存与工具按不同系数抵扣，非 Token 数；不含限时折扣及加油包。",
+            "en": "Subscription-month credits, with model/cache/tool-based deductions; not tokens. Promotions and add-ons excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "volc-cn",
+      "product": "Volcengine",
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "218f0c1e117b554004a134b514e85573cad4a2381026cccc2b6986ba68ad82e7",
+      "plans": [
+        {
+          "id": "small",
+          "name": "Small",
+          "currency": "CNY",
+          "monthlyPrice": 40,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 20000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 7,000、每五小时 2,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 7,000 AFP/week and 2,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "medium",
+          "name": "Medium",
+          "currency": "CNY",
+          "monthlyPrice": 200,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 100000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 35,000、每五小时 10,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 35,000 AFP/week and 10,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "large",
+          "name": "Large",
+          "currency": "CNY",
+          "monthlyPrice": 500,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 250000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 87,500、每五小时 25,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 87,500 AFP/week and 25,000 AFP/five hours, not tokens."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1000,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 500000,
+            "unit": "credits",
+            "window": "month",
+            "group": "volc-agent-afp"
+          },
+          "note": {
+            "zh": "Agent Plan 月度 AFP；文本另受每周 175,000、每五小时 50,000 AFP 上限约束，非 Token 数。",
+            "en": "Agent Plan monthly AFP; text also capped at 175,000 AFP/week and 50,000 AFP/five hours, not tokens."
+          }
+        }
+      ]
+    },
+    {
+      "id": "glm-cn",
+      "product": "GLM CN",
+      "sources": [
+        {
+          "url": "https://bigmodel.cn/glm-coding",
+          "title": "Official plan documentation"
+        },
+        {
+          "url": "https://docs.bigmodel.cn/cn/coding-plan/overview",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "45de6d87582f3d3d61d83bc6f5d100b5a19833cb5ffa8ffe27e80cad934b7e4c",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 118,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 10000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 2,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 2,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 538,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 60000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 12,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 12,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 1078,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 140000,
+            "unit": "credits",
+            "window": "week",
+            "group": "glm-cn"
+          },
+          "note": {
+            "zh": "每七天刷新；另受每五小时 28,000 积分上限约束；按模型和缓存抵扣。",
+            "en": "Resets every seven days; also capped at 28,000 credits per five hours, with model/cache-dependent deductions."
+          }
+        }
+      ]
+    },
+    {
+      "id": "kimi-cn",
+      "product": "Kimi CN",
+      "sources": [
+        {
+          "url": "https://www.kimi.com/resources/coding-plan",
+          "title": "Official plan documentation"
+        },
+        {
+          "url": "https://www.kimi.com/help/kimi-code/benefits",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "db8fb122eaaf58659200c23170aea82e84456746fd81a1d1590c2856794b7c80",
+      "plans": [
+        {
+          "id": "plus",
+          "name": "Plus",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 199,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 699,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        },
+        {
+          "id": "ultra",
+          "name": "Ultra",
+          "currency": "CNY",
+          "monthlyPrice": 1399,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": null,
+            "unit": "unknown",
+            "window": "5h",
+            "group": null
+          },
+          "note": {
+            "zh": "滚动五小时与共享月总额度；固定数量未公开。新订阅无周限制。",
+            "en": "Rolling five-hour limit and shared monthly allowance; fixed quantities undisclosed. No weekly cap for new subscribers."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mimo-cn",
+      "product": "MiMo CN",
+      "sources": [
+        {
+          "url": "https://mimo.mi.com/static/docs/price/token-plan.md",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "01e53ebdb7ff1cd2d2db1fc568758d201a9f0e278a062abd23ab33f4da9c013b",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 4100000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 11000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 329,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 38000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 659,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 82000000000,
+            "unit": "credits",
+            "window": "month",
+            "group": "mimo-cn"
+          },
+          "note": {
+            "zh": "订阅月积分；各模型按输入、输出及缓存分别抵扣，积分不等于 Token；不含年付及首购折扣。",
+            "en": "Subscription-month credits; model/input/output/cache-dependent deductions, not tokens. Annual and first-purchase discounts excluded."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tencent-hy",
+      "product": "Tencent Hy",
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/product/tokenhub",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "976effc9d98734b082a437dd122949ef67d536410c3737977266a2ad4ebc8675",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 28,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 560,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 78,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1560,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 238,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 4760,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 468,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 9360,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-hy"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tencent-cn",
+      "product": "Tencent General",
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/product/tokenhub",
+          "title": "Official plan documentation"
+        }
+      ],
+      "description": {
+        "zh": "中国大陆个人编程与 Agent 订阅。",
+        "en": "Mainland China individual coding and agent subscription."
+      },
+      "checkedAt": "2026-11-22T08:33:33.912Z",
+      "status": "ok",
+      "sourceHash": "325ef55965a651e7910806c8b53ac3f3c8ea07dd79f185f575e063fb30bb50d1",
+      "plans": [
+        {
+          "id": "lite",
+          "name": "Lite",
+          "currency": "CNY",
+          "monthlyPrice": 39,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 780,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "standard",
+          "name": "Standard",
+          "currency": "CNY",
+          "monthlyPrice": 99,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 1980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "pro",
+          "name": "Pro",
+          "currency": "CNY",
+          "monthlyPrice": 299,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 5980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
+          }
+        },
+        {
+          "id": "max",
+          "name": "Max",
+          "currency": "CNY",
+          "monthlyPrice": 599,
+          "monthlyUsd": null,
+          "quota": {
+            "amount": 11980,
+            "unit": "credits",
+            "window": "month",
+            "group": "tencent-general"
+          },
+          "note": {
+            "zh": "订阅月积分；模型抵扣规则不同，预估 Token 数不作为固定额度。",
+            "en": "Subscription-month credits; model-dependent deductions. Estimated token counts are not fixed allowances."
           }
         }
       ]

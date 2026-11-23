@@ -1,8 +1,10 @@
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {dirname} from 'node:path';
 import {REPO_URL,priceOf,money,md,quotaText} from './model.mjs';
+import {usageReference} from './usage-references.mjs';
 
 const dataset=JSON.parse(await readFile('data/plans.json','utf8'));
+const references=JSON.parse(await readFile('data/usage-references.json','utf8'));
 import {cnyMoney} from './exchange-rate.mjs';
 
 const providers=dataset.providers;
@@ -31,7 +33,7 @@ function allowance(provider,plan,lang,q=plan.quota) {
     const base=provider.plans.find(p=>p.quota.group===(q.group??plan.quota.group) && p.quota.amount===1);
     return `${amount}×${base?.name??(lang==='zh'?'基础档':'base')}`;
   }
-  const unit=lang==='zh'?{credits:'积分',messages:'条',requests:'次'}:{credits:'cr',messages:'💬',requests:'req'};
+  const unit=lang==='zh'?{credits:'积分',messages:'条',requests:'次',tokens:'T'}:{credits:'cr',messages:'💬',requests:'req',tokens:'T'};
   return `${q.max==null?'':'~'}${amount}${provider.id==='volc-cn'?'AFP':unit[q.unit]??q.unit}`;
 }
 
@@ -42,13 +44,16 @@ function usageDisplay(provider,plan,lang) {
   if(!hour || hour.status==='possible')throw new Error(`Research required for five-hour policy: ${provider.id}/${plan.id}`);
   const condition=hour.condition?.[lang]??'';
   const conditionLabel=zh?condition:({Verified:'ID',sample:'obs.'}[condition]??condition);
+  const reference=usageReference(references,provider,plan,hour);
   const status=hour.status==='none'?(zh?`✅${conditionLabel}无`:`✅${conditionLabel?`${conditionLabel}·`:''}None`)
     :hour.status==='dynamic'?(zh?'⚠️动态':'⚠️Dyn.')
+    :reference?`❌${zh?'测':'obs.'}${allowance(provider,plan,lang,reference)}`
     :`❌${hour.amount==null?(zh?'未公布':'Unstated'):allowance(provider,plan,lang,hour)}`;
-  const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
+  let statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
     :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
     :zh?'有5小时限额':'Five-hour cap applies';
-  const periods=zh?{week:'每周',month:'每月','30d':'30天',day:'每天'}:{week:'Week',month:'Month','30d':'30d',day:'Day'};
+  if(reference)statusTitle+=`; ${reference.observedAt}; ${reference.model}; ${reference.note[lang]}; ${reference.source}`;
+  const periods=zh?{week:'每周',month:'每月','30d':'30天',day:'每天'}:{week:'Wk',month:'Mo','30d':'30d',day:'Day'};
   const rows=['day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic')).map(q=>{
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
     const amount=q.status==='possible'?(zh?'可能另限':'May apply')

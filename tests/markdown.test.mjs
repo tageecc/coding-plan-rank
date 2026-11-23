@@ -3,8 +3,10 @@ import assert from 'node:assert/strict';
 import {readFile,access,readdir} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {parseHTML} from 'linkedom';
+import {usageReference} from '../scripts/usage-references.mjs';
 test('each README groups plans under merged tool cells in one single-line table',async()=>{
  const data=JSON.parse(await readFile('data/plans.json','utf8'));
+ const references=JSON.parse(await readFile('data/usage-references.json','utf8'));
  const expectedRows=data.providers.reduce((sum,p)=>sum+Math.max(p.plans.length,1),0);
  for(const file of ['README.md','README.en.md']) {
   const zh=file==='README.md';
@@ -77,10 +79,10 @@ test('each README groups plans under merged tool cells in one single-line table'
   const rowFor=(tool,plan)=>rows.find(row=>row.tool===tool&&row.plan===plan);
   const volc=rowFor(zh?'火山方舟':'Volcengine','Small');
   assert.equal(volc.status,zh?'❌2000AFP':'❌2kAFP');
-  assert.deepEqual(volc.allowances,zh?['每周7000AFP','每月2万AFP']:['Week 7kAFP','Month 20kAFP']);
+  assert.deepEqual(volc.allowances,zh?['每周7000AFP','每月2万AFP']:['Wk 7kAFP','Mo 20kAFP']);
   const plus=rowFor('Codex','Plus');
   assert.equal(plus.status,zh?'❌~15–160条':'❌~15-160💬');
-  assert.deepEqual(plus.allowances,zh?['每周未公布']:['Week Unstated']);
+  assert.deepEqual(plus.allowances,zh?['每周未公布']:['Wk Unstated']);
   assert.equal(rowFor('Codex','Pro 100').status,zh?'✅无':'✅None');
   for(const tool of ['Cursor','Kiro',zh?'阿里云':'Aliyun',zh?'小米 MiMo':'MiMo',zh?'腾讯通用':'Tencent',zh?'腾讯混元':'Tencent Hy','Antigravity','Devin'])assert.ok(rows.filter(row=>row.tool===tool).filter(row=>tool!=='Antigravity'||[zh?'免费':'Free'].includes(row.plan)).every(row=>row.status===(zh?'✅无':'✅None')),`${file}: researched hourly policy for ${tool}`);
   assert.equal(rowFor('Codex','Go·🖥️').status,zh?'✅无':'✅None');
@@ -92,15 +94,26 @@ test('each README groups plans under merged tool cells in one single-line table'
   assert.match(rowFor('Claude Code','Ultra').statusTitle,/认证后无|after verification/);
   const glm=rowFor(zh?'智谱 国际':'GLM Global','Lite');
   assert.equal(glm.status,zh?'❌2000积分':'❌2kcr');
-  assert.deepEqual(glm.allowances,zh?['每周1万积分']:['Week 10kcr']);
+  assert.deepEqual(glm.allowances,zh?['每周1万积分']:['Wk 10kcr']);
   const tencent=rowFor(zh?'腾讯通用':'Tencent','Max');
-  assert.equal(tencent.allowances[0],zh?'每月11980积分':'Month 11.98kcr');
+  assert.equal(tencent.allowances[0],zh?'每月11980积分':'Mo 11.98kcr');
   const kimi=rowFor(zh?'Kimi 中国':'Kimi China','Plus');
   assert.equal(kimi.status,zh?'❌未公布':'❌Unstated');
-  assert.equal(kimi.allowances[0],zh?'每月未公布':'Month Unstated');
+  assert.equal(kimi.allowances[0],zh?'每月未公布':'Mo Unstated');
+  for(const [id,tool,amount] of [['minimax-cn',zh?'MiniMax 中国':'MiniMax China',zh?'1919万T':'19.19MT'],['minimax',zh?'MiniMax 国际':'MiniMax Global',zh?'6294万T':'62.94MT']]) {
+   const go=rowFor(tool,'Go');
+   const provider=data.providers.find(p=>p.id===id),plan=provider.plans.find(p=>p.id==='go');
+   if(usageReference(references,provider,plan,plan.caps.find(q=>q.window==='5h'))) {
+    assert.equal(go.status,`❌${zh?'测':'obs.'}${amount}`);
+    assert.match(go.statusTitle,/2026-10-24/);
+    assert.match(go.statusTitle,/MiniMax-M3\.1-Flash/);
+    assert.match(go.statusTitle,/witchery\.cc/);
+   } else assert.doesNotMatch(go.status,/测|obs\./);
+   for(const plan of ['Explore','Build'])assert.doesNotMatch(rowFor(tool,plan).status,/测|obs\./);
+  }
   assert.equal(rowFor('Devin','Max').status,zh?'✅无':'✅None');
   const devin=rowFor('Devin','Pro');
-  assert.deepEqual(devin.allowances,zh?['每天未公布','每周未公布']:['Day Unstated','Week Unstated']);
+  assert.deepEqual(devin.allowances,zh?['每天未公布','每周未公布']:['Day Unstated','Wk Unstated']);
   for(const row of rows) {
    if(row.status.startsWith('✅'))assert.match(row.statusTitle,/无5小时限额|No five-hour cap/);
    if(row.status.startsWith('❌'))assert.match(row.statusTitle,/有5小时限额|Five-hour cap applies/);

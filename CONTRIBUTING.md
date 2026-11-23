@@ -14,4 +14,6 @@ npm run render -- --check
 
 所有价格保留原币数据；人民币展示由汇率模块统一计算。修改公式、市场范围或限制说明时，同时更新比较规则与测试。
 
+第三方数量样本单独维护在 `data/usage-references.json`，不写回官方 `quota`/`caps`。记录来源、实测日期、模型、地区、套餐和测量方法；表内必须带「测」/「obs.」。`policy` 保存测量对应的套餐规则，规则变化后停止采用，人工复核后才能更新。每日抓取不改变实测日期，不按档位倍数扩展样本。
+
 English: report corrections with official links. Add deterministic parsers and captured-source tests. Preserve original currencies and unknown quotas; CNY conversion uses the shared FX module. No API key is required.

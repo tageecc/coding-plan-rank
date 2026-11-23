@@ -1,0 +1,72 @@
+[
+  {
+    "provider": "minimax-cn",
+    "plan": "go",
+    "kind": "observation",
+    "window": "5h",
+    "amount": 19190000,
+    "unit": "tokens",
+    "observedAt": "2026-10-24",
+    "author": "Witchery",
+    "source": "https://witchery.cc/article-witchery-474.html",
+    "model": "MiniMax-M3.1-Flash; reasoning_effort=max",
+    "note": {
+      "zh": "测=第三方实测；T=Token。长上下文从100%用至0%，控制台与请求日志交叉核对；缓存命中率不到60%。仅为该地区Go测试样本，非官方固定额度；模型、缓存、输出及思考档位会改变可用Token量。原文10月30日补充高缓存工作流可用量更高；不外推其他套餐或周月额度。",
+      "en": "obs.=third-party observation; T=tokens. Long-context requests drained a full window from 100% to 0%, cross-checked against console and request logs; cache hit rate below 60%. Regional Go sample only, not a fixed official quota. Model, cache, output and reasoning affect usable tokens. The Oct 30 follow-up reports higher throughput with more caching. No extrapolation to other tiers or weekly/monthly caps."
+    },
+    "policy": {
+      "name": "Go",
+      "currency": "CNY",
+      "price": 49,
+      "quota": {
+        "amount": 1,
+        "unit": "relative",
+        "window": "week",
+        "group": "minimax-cn-go"
+      },
+      "caps": [
+        {
+          "window": "5h",
+          "amount": null,
+          "unit": "unknown",
+          "status": "limited"
+        }
+      ]
+    }
+  },
+  {
+    "provider": "minimax",
+    "plan": "go",
+    "kind": "observation",
+    "window": "5h",
+    "amount": 62940000,
+    "unit": "tokens",
+    "observedAt": "2026-10-24",
+    "author": "Witchery",
+    "source": "https://witchery.cc/article-witchery-474.html",
+    "model": "MiniMax-M3.1-Flash; reasoning_effort=max",
+    "note": {
+      "zh": "测=第三方实测；T=Token。长上下文从100%用至0%，控制台与请求日志交叉核对；缓存命中率不到60%。仅为该地区Go测试样本，非官方固定额度；模型、缓存、输出及思考档位会改变可用Token量。原文10月30日补充高缓存工作流可用量更高；不外推其他套餐或周月额度。",
+      "en": "obs.=third-party observation; T=tokens. Long-context requests drained a full window from 100% to 0%, cross-checked against console and request logs; cache hit rate below 60%. Regional Go sample only, not a fixed official quota. Model, cache, output and reasoning affect usable tokens. The Oct 30 follow-up reports higher throughput with more caching. No extrapolation to other tiers or weekly/monthly caps."
+    },
+    "policy": {
+      "name": "Go",
+      "currency": "USD",
+      "price": 22,
+      "quota": {
+        "amount": 1,
+        "unit": "relative",
+        "window": "week",
+        "group": "minimax-intl-go"
+      },
+      "caps": [
+        {
+          "window": "5h",
+          "amount": null,
+          "unit": "unknown",
+          "status": "limited"
+        }
+      ]
+    }
+  }
+]

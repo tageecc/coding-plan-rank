@@ -41,9 +41,9 @@ function usageDisplay(provider,plan,lang) {
   const hour=caps.find(q=>q.window==='5h');
   if(!hour || hour.status==='possible')throw new Error(`Research required for five-hour policy: ${provider.id}/${plan.id}`);
   const condition=hour.condition?.[lang]??'';
-  const conditionLabel={Verified:'ID',sample:'obs'}[condition]??condition;
-  const status=hour.status==='none'?(zh?(condition?`${condition}无`:'无此限额'):(condition?`No (${conditionLabel})`:'No cap'))
-    :hour.status==='dynamic'?(zh?'动态':'Dynamic'):(zh?'有限额':'Capped');
+  const conditionLabel=zh?condition:({Verified:'ID',sample:'obs.'}[condition]??condition);
+  const status=hour.status==='none'?`✅${conditionLabel}`
+    :hour.status==='dynamic'?(zh?'⚠️动态':'⚠️Dyn.'):'❌';
   const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
     :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
     :zh?'有5小时限额':'Five-hour cap applies';
@@ -52,11 +52,11 @@ function usageDisplay(provider,plan,lang) {
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
     const amount=q.status==='possible'?(zh?'可能另限':'May apply')
       :q.amount!==null?allowance(provider,plan,lang,q)
-      :summary?summary.replace('More than 100','>100').replace('Most; Ultrafast','Most').replace('最高；含超高速','最高').replace('Undisclosed','Not stated').replace('未公开','未公布')
-      :zh?'未公布':'Not stated';
+      :summary?summary.replace('More than 100','>100').replace('Most; Ultrafast','Most').replace('最高；含超高速','最高').replace('Undisclosed','Unstated').replace('未公开','未公布')
+      :zh?'未公布':'Unstated';
     return `${periods[q.window]} ${amount}`;
   });
-  return {status,statusTitle,rows:rows.length?rows:[zh?'额度未公布':'Not stated']};
+  return {status,statusTitle,rows:rows.length?rows:[zh?'额度未公布':'Unstated']};
 }
 
 function render(lang) {
@@ -67,7 +67,7 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','用量']:['Tool','Plan','CNY/mo','5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时免限','用量']:['Tool','Plan','CNY/mo','No 5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
@@ -78,13 +78,15 @@ function render(lang) {
     entries.forEach(({plan,usage},index)=> {
       const tool=toolName(p,lang);
       const displayTool=zh?tool:tool.replace(/ (China|Global)$/,'\u2009$1');
-      let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):zh&&plan.name==='Free'?'免费':plan.name;
-      if(zh && p.id==='copilot' && plan.id==='student')name='学生';
-      const access=p.id==='codex' && ['free','go'].includes(plan.id)?(zh?'·桌面':'·PC'):p.id==='copilot' && plan.id==='student'?(zh?'·认证':''):'';
+      let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):plan.name;
+      if(zh&&name==='Free')name='免费';
+      const student=p.id==='copilot'&&plan.id==='student';
+      if(student)name='🎓';
+      const access=p.id==='codex' && ['free','go'].includes(plan.id)?'·🖥️':'';
       const label=`${html(name)}${access}`;
       const verification=html(`${p.product}${p.status==='ok'?'':zh?'；本次核验失败，保留上次数据':'; Verification failed; showing last verified data'}`);
       const brand=index===0?`<td rowspan="${groupRows}" nowrap valign="middle" title="${verification}">${html(displayTool)}${p.status==='ok'?'':' ⚠'}</td>`:'';
-      const note=html(plan.note?.[lang]);
+      const note=html(student?`${zh?'学生认证':'Student verification'}; ${plan.note?.[lang]??''}`:plan.note?.[lang]);
       const span=usage.rows.length;
       const price=html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,'').replace(/^≈/,'').replaceAll(',',''));
       const fixed=`${brand}<td rowspan="${span}" nowrap valign="middle" title="${note}">${label}</td><td rowspan="${span}" nowrap valign="middle" align="right">${price}</td><td rowspan="${span}" nowrap valign="middle" align="center" title="${html(usage.statusTitle)}; ${note}">${html(usage.status)}</td>`;

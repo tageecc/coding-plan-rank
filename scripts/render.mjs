@@ -20,7 +20,7 @@ const timestamp=value=>value?`${day(value)} ${new Intl.DateTimeFormat('en-GB',{
 }).format(new Date(value))}`:'—';
 function allowance(provider,plan,lang,q=plan.quota) {
   if(q.amount==null)return plan.usageSummary?.[lang]??(lang==='zh'?'未公开':'Undisclosed');
-  const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:20}).format(n);
+  const number=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:20,useGrouping:false}).format(n);
   const compact=n=>{
     const scales=lang==='zh'?[[1e8,'亿'],[1e4,'万']]:[[1e9,'B'],[1e6,'M'],[1e3,'k']];
     const scale=scales.find(([size])=>n>=size && Number.isInteger(n*100/size));
@@ -31,8 +31,8 @@ function allowance(provider,plan,lang,q=plan.quota) {
     const base=provider.plans.find(p=>p.quota.group===(q.group??plan.quota.group) && p.quota.amount===1);
     return `${amount}×${base?.name??(lang==='zh'?'基础档':'base')}`;
   }
-  const unit=lang==='zh'?{credits:'积分',messages:'条',requests:'次'}:{credits:'cr',messages:'msg',requests:'req'};
-  return `${q.max==null?'':lang==='zh'?'约':'~'}${amount}${provider.id==='volc-cn'?'AFP':unit[q.unit]??q.unit}`;
+  const unit=lang==='zh'?{credits:'积分',messages:'条',requests:'次'}:{credits:'cr',messages:'💬',requests:'req'};
+  return `${q.max==null?'':'~'}${amount}${provider.id==='volc-cn'?'AFP':unit[q.unit]??q.unit}`;
 }
 
 function usageDisplay(provider,plan,lang) {
@@ -42,19 +42,20 @@ function usageDisplay(provider,plan,lang) {
   if(!hour || hour.status==='possible')throw new Error(`Research required for five-hour policy: ${provider.id}/${plan.id}`);
   const condition=hour.condition?.[lang]??'';
   const conditionLabel=zh?condition:({Verified:'ID',sample:'obs.'}[condition]??condition);
-  const status=hour.status==='none'?`✅${conditionLabel}`
-    :hour.status==='dynamic'?(zh?'⚠️动态':'⚠️Dyn.'):'❌';
+  const status=hour.status==='none'?(zh?`✅${conditionLabel}无`:`✅${conditionLabel?`${conditionLabel}·`:''}None`)
+    :hour.status==='dynamic'?(zh?'⚠️动态':'⚠️Dyn.')
+    :`❌${hour.amount==null?(zh?'未公布':'Unstated'):allowance(provider,plan,lang,hour)}`;
   const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
     :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
     :zh?'有5小时限额':'Five-hour cap applies';
-  const periods=zh?{'5h':'5小时',week:'每周',month:'每月','30d':'30天',day:'每天'}:{'5h':'5h',week:'Weekly',month:'Monthly','30d':'30-day',day:'Daily'};
-  const rows=['5h','day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic'&&(window!=='5h'||q.amount!==null))).map(q=>{
+  const periods=zh?{week:'每周',month:'每月','30d':'30天',day:'每天'}:{week:'Week',month:'Month','30d':'30d',day:'Day'};
+  const rows=['day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic')).map(q=>{
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
     const amount=q.status==='possible'?(zh?'可能另限':'May apply')
       :q.amount!==null?allowance(provider,plan,lang,q)
       :summary?summary.replace('More than 100','>100').replace('Most; Ultrafast','Most').replace('最高；含超高速','最高').replace('Undisclosed','Unstated').replace('未公开','未公布')
       :zh?'未公布':'Unstated';
-    return `${periods[q.window]} ${amount}`;
+    return `${periods[q.window]}${zh?'':'\u2009'}${amount}`;
   });
   return {status,statusTitle,rows:rows.length?rows:[zh?'额度未公布':'Unstated']};
 }
@@ -67,7 +68,7 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时免限','用量']:['Tool','Plan','CNY/mo','No 5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','其他额度']:['Tool','Plan','CNY/mo','5h cap','Other caps']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
@@ -77,14 +78,14 @@ function render(lang) {
     const groupRows=entries.reduce((sum,{usage})=>sum+usage.rows.length,0);
     entries.forEach(({plan,usage},index)=> {
       const tool=toolName(p,lang);
-      const displayTool=zh?tool:tool.replace(/ (China|Global)$/,'\u2009$1');
+      const displayTool=zh?tool:tool.replace(/ (China|Global)$/,(_,region)=>`\u2009${region==='China'?'🇨🇳':'🌐'}`);
       let name=p.id==='antigravity'?plan.name.replace(/^Google AI /,''):plan.name;
       if(zh&&name==='Free')name='免费';
       const student=p.id==='copilot'&&plan.id==='student';
       if(student)name='🎓';
       const access=p.id==='codex' && ['free','go'].includes(plan.id)?'·🖥️':'';
       const label=`${html(name)}${access}`;
-      const verification=html(`${p.product}${p.status==='ok'?'':zh?'；本次核验失败，保留上次数据':'; Verification failed; showing last verified data'}`);
+      const verification=html(`${p.product} (${tool})${p.status==='ok'?'':zh?'；本次核验失败，保留上次数据':'; Verification failed; showing last verified data'}`);
       const brand=index===0?`<td rowspan="${groupRows}" nowrap valign="middle" title="${verification}">${html(displayTool)}${p.status==='ok'?'':' ⚠'}</td>`:'';
       const note=html(student?`${zh?'学生认证':'Student verification'}; ${plan.note?.[lang]??''}`:plan.note?.[lang]);
       const span=usage.rows.length;

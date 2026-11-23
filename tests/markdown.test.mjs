@@ -26,7 +26,7 @@ test('each README groups plans under merged tool cells in one single-line table'
   assert.ok(!body.includes('<details>'),`${file}: no collapsed plans`);
   assert.equal(table.querySelectorAll('br').length,0,`${file}: no forced line breaks`);
   for(const cell of table.querySelectorAll('th,td'))assert.ok(cell.hasAttribute('nowrap'),`${file}: cells must not wrap`);
-  assert.deepEqual([...table.querySelectorAll('thead th')].map(cell=>cell.textContent),zh?['工具','套餐','月费/元','5小时限额','其他额度']:['Tool','Plan','CNY/mo','5h cap','Other caps']);
+  assert.deepEqual([...table.querySelectorAll('thead th')].map(cell=>cell.textContent),zh?['工具','套餐','月费/元','重置周期','用量']:['Tool','Plan','CNY/mo','Reset','Usage']);
   assert.ok(!/额度效率|Quota value|刷新/.test(body),`${file}: plain usage and reset wording`);
   let tool,toolRemaining=0,planRemaining=0,current;
   const toolCells=[];
@@ -43,16 +43,22 @@ test('each README groups plans under merged tool cells in one single-line table'
     if(tool.textContent.endsWith(' ⚠'))assert.match(tool.getAttribute('title'),/本次核验失败|Verification failed/);
    }
    if(planRemaining===0) {
-    assert.equal(cells.length,4,`${file}: each plan has price, status and allowance`);
-    const [plan,price,status]=cells.splice(0,3);
+    assert.equal(cells.length,4,`${file}: each plan has price, period and usage`);
+    const [plan,price]=cells.splice(0,2);
+    const status=cells[1];
     planRemaining=Number(plan.getAttribute('rowspan'));
     assert.ok(Number.isInteger(planRemaining)&&planRemaining>0,`${file}: valid plan rowspan`);
-    for(const cell of [price,status])assert.equal(Number(cell.getAttribute('rowspan')),planRemaining,`${file}: plan fields span identical period rows`);
-    current={tool:normalize(tool.textContent.replace(/ ⚠$/,'')),plan:plan.textContent,price:price.textContent,status:status.textContent,statusTitle:status.getAttribute('title'),planTitle:plan.getAttribute('title'),allowances:[],physicalRows:planRemaining};
+    assert.equal(Number(price.getAttribute('rowspan')),planRemaining,`${file}: price spans all period rows`);
+    current={tool:normalize(tool.textContent.replace(/ ⚠$/,'')),plan:plan.textContent,price:price.textContent,status:status.textContent,statusTitle:status.getAttribute('title'),planTitle:plan.getAttribute('title'),allowances:[],periods:[],amounts:[],physicalRows:planRemaining};
     rows.push(current);
    }
-   assert.equal(cells.length,1,`${file}: each physical row contains exactly one period's allowance`);
-   current.allowances.push(normalize(cells[0].textContent));
+   assert.equal(cells.length,2,`${file}: period and usage are separate cells`);
+   const [period,amount]=cells;
+   assert.equal(amount.getAttribute('align'),'right',`${file}: quantities align vertically`);
+   assert.equal(period.getAttribute('rowspan'),null,`${file}: one cycle per row`);
+   current.periods.push(period.textContent);
+   current.amounts.push(amount.textContent);
+   if(current.periods.length>1)current.allowances.push(`${period.textContent}${zh?'':' '}${amount.textContent}`);
    toolRemaining--;planRemaining--;
    assert.ok(toolRemaining>=0&&planRemaining>=0,`${file}: no rowspan overlaps`);
   }
@@ -79,27 +85,27 @@ test('each README groups plans under merged tool cells in one single-line table'
   const rowFor=(tool,plan)=>rows.find(row=>row.tool===tool&&row.plan===plan);
   const volc=rowFor(zh?'火山方舟':'Volcengine','Small');
   assert.equal(volc.status,zh?'❌2000AFP':'❌2kAFP');
-  assert.deepEqual(volc.allowances,zh?['每周7000AFP','每月2万AFP']:['Wk 7kAFP','Mo 20kAFP']);
+  assert.deepEqual(volc.allowances,zh?['周7000AFP','月2万AFP']:['Wk 7kAFP','Mo 20kAFP']);
   const plus=rowFor('Codex','Plus');
   assert.equal(plus.status,zh?'❌~15–160条':'❌~15-160💬');
-  assert.deepEqual(plus.allowances,zh?['每周未公布']:['Wk Unstated']);
-  assert.equal(rowFor('Codex','Pro 100').status,zh?'✅无':'✅None');
-  for(const tool of ['Cursor','Kiro',zh?'阿里云':'Aliyun',zh?'小米 MiMo':'MiMo',zh?'腾讯通用':'Tencent',zh?'腾讯混元':'Tencent Hy','Antigravity','Devin'])assert.ok(rows.filter(row=>row.tool===tool).filter(row=>tool!=='Antigravity'||[zh?'免费':'Free'].includes(row.plan)).every(row=>row.status===(zh?'✅无':'✅None')),`${file}: researched hourly policy for ${tool}`);
-  assert.equal(rowFor('Codex','Go·🖥️').status,zh?'✅无':'✅None');
+  assert.deepEqual(plus.allowances,zh?['周未公布']:['Wk Unstated']);
+  assert.equal(rowFor('Codex','Pro 100').status,zh?'✅不限':'✅No cap');
+  for(const tool of ['Cursor','Kiro',zh?'阿里云':'Aliyun',zh?'小米 MiMo':'MiMo',zh?'腾讯通用':'Tencent',zh?'腾讯混元':'Tencent Hy','Antigravity','Devin'])assert.ok(rows.filter(row=>row.tool===tool).filter(row=>tool!=='Antigravity'||[zh?'免费':'Free'].includes(row.plan)).every(row=>row.status===(zh?'✅不限':'✅No cap')),`${file}: researched hourly policy for ${tool}`);
+  assert.equal(rowFor('Codex','Go·🖥️').status,zh?'✅不限':'✅No cap');
   const free=rowFor('Codex',zh?'免费·🖥️':'Free·🖥️');
-  assert.equal(free.status,zh?'✅实测无':'✅obs.·None');
+  assert.equal(free.status,zh?'✅实测不限':'✅obs.·No cap');
   assert.deepEqual(free.allowances,zh?['30天未公布']:['30d Unstated']);
-  assert.ok(rows.filter(row=>row.tool==='Copilot').every(row=>row.status===(zh?'⚠️动态':'⚠️Dyn.')));
-  assert.equal(rowFor('Claude Code','Ultra').status,zh?'✅认证后无':'✅ID·None');
+  assert.ok(rows.filter(row=>row.tool==='Copilot').every(row=>row.status===(zh?'⚠️限流':'⚠️Limited')));
+  assert.equal(rowFor('Claude Code','Ultra').status,zh?'✅认证后不限':'✅ID·No cap');
   assert.match(rowFor('Claude Code','Ultra').statusTitle,/认证后无|after verification/);
   const glm=rowFor(zh?'智谱 国际':'GLM Global','Lite');
   assert.equal(glm.status,zh?'❌2000积分':'❌2kcr');
-  assert.deepEqual(glm.allowances,zh?['每周1万积分']:['Wk 10kcr']);
+  assert.deepEqual(glm.allowances,zh?['周1万积分']:['Wk 10kcr']);
   const tencent=rowFor(zh?'腾讯通用':'Tencent','Max');
-  assert.equal(tencent.allowances[0],zh?'每月11980积分':'Mo 11.98kcr');
+  assert.equal(tencent.allowances[0],zh?'月11980积分':'Mo 11.98kcr');
   const kimi=rowFor(zh?'Kimi 中国':'Kimi China','Plus');
   assert.equal(kimi.status,zh?'❌未公布':'❌Unstated');
-  assert.equal(kimi.allowances[0],zh?'每月未公布':'Mo Unstated');
+  assert.equal(kimi.allowances[0],zh?'月未公布':'Mo Unstated');
   for(const [id,tool,amount] of [['minimax-cn',zh?'MiniMax 中国':'MiniMax China',zh?'1919万T':'19.19MT'],['minimax',zh?'MiniMax 国际':'MiniMax Global',zh?'6294万T':'62.94MT']]) {
    const go=rowFor(tool,'Go');
    const provider=data.providers.find(p=>p.id===id),plan=provider.plans.find(p=>p.id==='go');
@@ -111,14 +117,27 @@ test('each README groups plans under merged tool cells in one single-line table'
    } else assert.doesNotMatch(go.status,/测|obs\./);
    for(const plan of ['Explore','Build'])assert.doesNotMatch(rowFor(tool,plan).status,/测|obs\./);
   }
-  assert.equal(rowFor('Devin','Max').status,zh?'✅无':'✅None');
+  assert.equal(rowFor('Devin','Max').status,zh?'✅不限':'✅No cap');
   const devin=rowFor('Devin','Pro');
-  assert.deepEqual(devin.allowances,zh?['每天未公布','每周未公布']:['Day Unstated','Wk Unstated']);
+  assert.deepEqual(devin.allowances,zh?['日未公布','周未公布']:['Day Unstated','Wk Unstated']);
+  const windows=zh?{'5h':'5小时',day:'日',week:'周','30d':'30天',month:'月'}:{'5h':'5h',day:'Day',week:'Wk','30d':'30d',month:'Mo'};
+  for(const provider of data.providers)for(const plan of provider.plans) {
+   const caps=[{...plan.quota,status:'limited'},...(plan.caps??[])];
+   const hour=caps.find(q=>q.window==='5h');
+   const other=['day','week','30d','month'].flatMap(w=>caps.filter(q=>q.window===w&&q.status!=='none'&&q.status!=='dynamic').map(q=>windows[q.window]));
+   const title=provider.product;
+   // Locate by merged tool title and plan order instead of translated display names.
+   const brandCell=toolCells.find(c=>c.getAttribute('title').startsWith(`${title} (`));
+   const brand=normalize(brandCell.textContent.replace(/ ⚠$/,''));
+   const ordered=provider.plans.slice().sort((a,b)=>((a.currency==='CNY'?a.monthlyPrice:a.monthlyUsd)-(b.currency==='CNY'?b.monthlyPrice:b.monthlyUsd))||a.name.localeCompare(b.name));
+   const row=rows.filter(r=>r.tool===brand)[ordered.indexOf(plan)];
+   assert.deepEqual(row.periods,[hour.status==='dynamic'?(zh?'动态':'Dynamic'):windows['5h'],...other],`${file}: ${provider.id}/${plan.id} retains every window exactly once`);
+  }
   for(const row of rows) {
    if(row.status.startsWith('✅'))assert.match(row.statusTitle,/无5小时限额|No five-hour cap/);
    if(row.status.startsWith('❌'))assert.match(row.statusTitle,/有5小时限额|Five-hour cap applies/);
-   assert.match(row.status,/^(?:[✅❌].+|⚠️(?:动态|Dyn\.))$/,`${file}: five-hour column includes an allowance or explicit policy, not a bare icon`);
-   assert.ok(!row.allowances.some(value=>/5小时|5h/.test(value)),`${file}: five-hour quantities appear only in the five-hour column`);
+   assert.match(row.status,/^(?:[✅❌].+|⚠️(?:限流|Limited))$/,`${file}: each five-hour or dynamic policy has a quantity or explicit status`);
+   assert.ok(!row.allowances.some(value=>/5小时|5h/.test(value)),`${file}: five-hour quantities appear only in the five-hour row`);
    assert.ok(!row.allowances.some(value=>/[·／/]/.test(value)),`${file}: periods are separate rows, not slash-separated codes`);
   }
   assert.ok(!body.includes('❓')&&!body.includes('未说明'),`${file}: no unexplored-policy placeholders`);

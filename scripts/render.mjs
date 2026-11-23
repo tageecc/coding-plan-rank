@@ -45,24 +45,28 @@ function usageDisplay(provider,plan,lang) {
   const condition=hour.condition?.[lang]??'';
   const conditionLabel=zh?condition:({Verified:'ID',sample:'obs.'}[condition]??condition);
   const reference=usageReference(references,provider,plan,hour);
-  const status=hour.status==='none'?(zh?`✅${conditionLabel}无`:`✅${conditionLabel?`${conditionLabel}·`:''}None`)
-    :hour.status==='dynamic'?(zh?'⚠️动态':'⚠️Dyn.')
+  const status=hour.status==='none'?(zh?`✅${conditionLabel}不限`:`✅${conditionLabel?`${conditionLabel}·`:''}No cap`)
+    :hour.status==='dynamic'?(zh?'⚠️限流':'⚠️Limited')
     :reference?`❌${zh?'测':'obs.'}${allowance(provider,plan,lang,reference)}`
     :`❌${hour.amount==null?(zh?'未公布':'Unstated'):allowance(provider,plan,lang,hour)}`;
   let statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
     :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
     :zh?'有5小时限额':'Five-hour cap applies';
   if(reference)statusTitle+=`; ${reference.observedAt}; ${reference.model}; ${reference.note[lang]}; ${reference.source}`;
-  const periods=zh?{week:'每周',month:'每月','30d':'30天',day:'每天'}:{week:'Wk',month:'Mo','30d':'30d',day:'Day'};
+  const periods=zh?{week:'周',month:'月','30d':'30天',day:'日'}:{week:'Wk',month:'Mo','30d':'30d',day:'Day'};
   const rows=['day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic')).map(q=>{
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
     const amount=q.status==='possible'?(zh?'可能另限':'May apply')
       :q.amount!==null?allowance(provider,plan,lang,q)
       :summary?summary.replace('More than 100','>100').replace('Most; Ultrafast','Most').replace('最高；含超高速','最高').replace('Undisclosed','Unstated').replace('未公开','未公布')
       :zh?'未公布':'Unstated';
-    return `${periods[q.window]}${zh?'':'\u2009'}${amount}`;
+    return {period:periods[q.window],amount};
   });
-  return {status,statusTitle,rows:rows.length?rows:[zh?'额度未公布':'Unstated']};
+  return {rows:[{
+    period:hour.status==='dynamic'?(zh?'动态':'Dynamic'):(zh?'5小时':'5h'),
+    amount:status,
+    title:statusTitle,
+  },...rows]};
 }
 
 function render(lang) {
@@ -73,7 +77,7 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','其他额度']:['Tool','Plan','CNY/mo','5h cap','Other caps']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','重置周期','用量']:['Tool','Plan','CNY/mo','Reset','Usage']).map((title,i)=>`<th width="1000" nowrap${[2,4].includes(i)?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {
@@ -95,8 +99,8 @@ function render(lang) {
       const note=html(student?`${zh?'学生认证':'Student verification'}; ${plan.note?.[lang]??''}`:plan.note?.[lang]);
       const span=usage.rows.length;
       const price=html(cnyMoney(plan,dataset.exchangeRate).replace(/元$/,'').replace(/^≈/,'').replaceAll(',',''));
-      const fixed=`${brand}<td rowspan="${span}" nowrap valign="middle" title="${note}">${label}</td><td rowspan="${span}" nowrap valign="middle" align="right">${price}</td><td rowspan="${span}" nowrap valign="middle" align="center" title="${html(usage.statusTitle)}; ${note}">${html(usage.status)}</td>`;
-      usage.rows.forEach((row,i)=>lines.push(`<tr>${i===0?fixed:''}<td nowrap title="${note}">${html(row)}</td></tr>`));
+      const fixed=`${brand}<td rowspan="${span}" nowrap valign="middle" title="${note}">${label}</td><td rowspan="${span}" nowrap valign="middle" align="right">${price}</td>`;
+      usage.rows.forEach((row,i)=>lines.push(`<tr>${i===0?fixed:''}<td nowrap align="center" title="${note}">${html(row.period)}</td><td nowrap align="right" title="${row.title?`${html(row.title)}; `:''}${note}">${html(row.amount)}</td></tr>`));
     });
   }
   lines.push('</tbody>','</table>','',

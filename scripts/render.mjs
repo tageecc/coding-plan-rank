@@ -40,11 +40,13 @@ function usageDisplay(provider,plan,lang) {
   const caps=[{...plan.quota,status:'limited'},...(plan.caps??[])];
   const hour=caps.find(q=>q.window==='5h');
   if(!hour || hour.status==='possible')throw new Error(`Research required for five-hour policy: ${provider.id}/${plan.id}`);
-  const condition=hour.condition?(zh?hour.condition.zh:({Verified:'w/ID',sample:'obs.'}[hour.condition.en]??hour.condition.en)):'';
-  const status=hour.status==='none'?`❌${condition}`:hour.status==='dynamic'?(zh?'动态':'Dynamic'):'✅';
-  const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限制`:`No five-hour cap${condition?` (${condition==='w/ID'?'after verification':condition})`:''}`)
+  const condition=hour.condition?.[lang]??'';
+  const conditionLabel={Verified:'ID',sample:'obs'}[condition]??condition;
+  const status=hour.status==='none'?(zh?(condition?`${condition}无`:'无此限额'):(condition?`No (${conditionLabel})`:'No cap'))
+    :hour.status==='dynamic'?(zh?'动态':'Dynamic'):(zh?'有限额':'Capped');
+  const statusTitle=hour.status==='none'?(zh?`${condition}无5小时限额`:`No five-hour cap${condition?` (${condition==='Verified'?'after verification':condition==='sample'?'observed account':condition})`:''}`)
     :hour.status==='dynamic'?(zh?'动态速率限制；未规定统一固定5小时窗口，不表示不限流':'Dynamic rate limits; no uniform fixed five-hour window specified, not unlimited usage')
-    :zh?'有5小时限制':'Five-hour cap applies';
+    :zh?'有5小时限额':'Five-hour cap applies';
   const periods=zh?{'5h':'5小时',week:'每周',month:'每月','30d':'30天',day:'每天'}:{'5h':'5h',week:'Weekly',month:'Monthly','30d':'30-day',day:'Daily'};
   const rows=['5h','day','week','30d','month'].flatMap(window=>caps.filter(q=>q.window===window&&q.status!=='none'&&q.status!=='dynamic'&&(window!=='5h'||q.amount!==null))).map(q=>{
     const summary=q===caps[0]?plan.usageSummary?.[lang]:null;
@@ -65,7 +67,7 @@ function render(lang) {
     '<table width="100%">',
     // GitHub's width:max-content ignores table width="100%". Preferred cell widths
     // fill the available space while allowing the columns to shrink on desktop.
-    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限制','用量']:['Tool','Plan','CNY/mo','5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
+    `<thead><tr>${(zh?['工具','套餐','月费/元','5小时限额','用量']:['Tool','Plan','CNY/mo','5h cap','Allowance']).map((title,i)=>`<th width="1000" nowrap${i===2?' align="right"':''}>${title}</th>`).join('')}</tr></thead>`,
     '<tbody>',
   ];
   for(const p of [...providers].sort((a,b)=>toolName(a,'en').localeCompare(toolName(b,'en'),'en'))) {

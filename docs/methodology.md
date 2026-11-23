@@ -12,9 +12,9 @@
 
 按工具名称排列，同工具按原币月费递增。此排列不表示跨工具推荐顺序。
 
-## 5小时限制与用量
+## 5小时限额与用量
 
-5小时列用 ✅ 表示有固定五小时额度，❌ 表示现行额度规则不设固定五小时窗口，不代表没有其他限流。数量未公布不影响标 ✅。Claude 的「❌认证后」保留身份前提，英文 w/ID 表示完成身份验证后。Copilot 现行帮助文档只说明动态速率限制，未规定统一五小时窗口，因此显示「动态」，不擅自写成无限制。新套餐必须补查用量文档、FAQ 和公告；没有依据时停止生成，不能自动补 ❌ 或问号。
+5小时列用「有限额」表示有固定五小时额度，「无此限额」表示现行额度规则不设固定五小时窗口，不代表没有其他限流；不用勾叉或红绿暗示。数量未公布不影响标「有限额」。Claude 的「认证后无」保留身份前提，英文 No (ID) 表示完成身份验证后。Copilot 现行帮助文档只说明动态速率限制，未规定统一五小时窗口，因此显示「动态」，不擅自写成无限制。新套餐必须补查用量文档、FAQ 和公告；没有依据时停止生成，不能自动补「无此限额」或问号。
 
 判定周期优先看完整的用量与限流规则，而非定价卡片上是否提到五小时。阿里云、腾讯按当前 Token Plan 的月积分及 FAQ 规则归纳，不沿用旧 Coding Plan 的调用窗口；仍有动态速率及并发限制。Kiro FAQ 明确请求仅在所有积分耗尽时暂停。MiMo 发布公告明确无五小时 Token 限额。Antigravity 免费档的完整规则为每周，付费档为五小时及每周；Devin Free 使用桌面额度文档，Pro/Max 以现行 self-serve 计费规则为准。Cursor 将当前周用量帮助页与官方论坛工作人员关于小时限制的答复交叉核对。
 
@@ -26,7 +26,7 @@
 
 Codex 使用官方名称 Pro 100、Pro 200、Pro 500，与定价页和 Pro 帮助页交叉核对。Pro 200 用量高于 Pro 100，Pro 500 在三档中用量最高且包含超高速模式；固定数量未公开，不推算各档倍数。超高速会加快额度消耗。这里的 100、200、500 是官方档位名称，月费列仍统一显示人民币。
 
-Codex 官方重置文档明确：Go 为月额度，Plus 为五小时及周额度，Pro 为周额度。Codex Free 的「❌实测」仅对应 CodexBar 开发者在 2026-10-25 公开验证的一个账户：后端只返回固定 2,592,000 秒（30天）窗口。它不是所有免费账户的统一承诺，不能推广到其他灰度账户；30天也不等于自然月。该来源标为 observation，保留原实测日期，例行抓取不代表重新实测。
+Codex 官方重置文档明确：Go 为月额度，Plus 为五小时及周额度，Pro 为周额度。Codex Free 的「实测无」仅对应 CodexBar 开发者在 2026-10-25 公开验证的一个账户：后端只返回固定 2,592,000 秒（30天）窗口。它不是所有免费账户的统一承诺，不能推广到其他灰度账户；30天也不等于自然月。该来源标为 observation，保留原实测日期，例行抓取不代表重新实测。
 
 Codex Plus 显示 GPT-6.1 Sol 在标准速度下的消息预估范围，实际用量受模型、任务复杂度、上下文、推理和工具调用影响。其他模型可能有不同范围。Codex 免费及 Go 档按当前定价文档仅展示桌面应用中分批开放的受限访问，不包含 Codex Cloud。Pro 没有五小时限制，不代表没有所有使用限制；固定周额度未公开。
 
@@ -34,12 +34,12 @@ Codex Plus 显示 GPT-6.1 Sol 在标准速度下的消息预估范围，实际�
 
 每日北京时间 **09:23** 自动抓取价格、额度和汇率，重新生成中英文 README 并提交主干。GitHub 定时任务可能延迟。
 
-只抓取公开资料，不执行远程脚本或让语言模型猜数值。官方规则与第三方亲自实测分开标注，第三方观测不能冒充官方承诺。遇到套餐消失、额度下降、规则或页面结构变化，保留原核验日期并标记待核验。官方原文摘录、原币价格与详细限制保留在 `data/` 中，变更可通过 Git 历史核对。README 使用工具、套餐、月费、5小时限制、用量五列，工具与套餐单元格纵向合并，每个额度周期逐行展示；单元格保持单行，桌面端检查满宽与无横向滚动。
+只抓取公开资料，不执行远程脚本或让语言模型猜数值。官方规则与第三方亲自实测分开标注，第三方观测不能冒充官方承诺。遇到套餐消失、额度下降、规则或页面结构变化，保留原核验日期并标记待核验。官方原文摘录、原币价格与详细限制保留在 `data/` 中，变更可通过 Git 历史核对。README 使用工具、套餐、月费、5小时限额、用量五列，工具与套餐单元格纵向合并，每个额度周期逐行展示；单元格保持单行，桌面端检查满宽与无横向滚动。
 
 ## English
 
 The table lists standard monthly individual plans and verified free access. All displayed prices are in CNY; USD prices use the latest ECB reference rates, rounded to two decimals. The rate's trading date is shown, including on weekends. Converted prices exclude payment fees and tax. Failed or stale FX verification suspends conversion.
 
-Tools are ordered by name; tiers are ordered by original monthly price. Tool and plan cells span their applicable rows. The five-hour column shows ✅ for a fixed five-hour allowance and ❌ when the current allowance rules do not have that window; this does not mean no other rate limits. Copilot says Dynamic because its current docs describe dynamic rate limits without a uniform five-hour window. New policies require research before rendering; missing evidence never defaults to a cross. w/ID preserves the verification requirement. Codex Free says obs. (observed): a CodexBar developer observed one Free account with only a fixed 30-day window on 2026-10-25, not a vendor guarantee for every account. The observation date is retained rather than advanced by daily page checks. The allowance column puts each reset period on its own row, including numeric five-hour allowances and weekly, monthly or daily caps. Unknown quantities stay undisclosed; missing documentation never implies unlimited usage. Relative allowances name their reference tier. Provider units are not interchangeable; no efficiency score is shown. Hover for model and reset details. Pro 100, Pro 200 and Pro 500 keep their official tier names. Fixed quantities are undisclosed. Codex Free/Go indicate limited desktop rollout, not cloud access; Plus message counts are model-specific estimates.
+Tools are ordered by name; tiers are ordered by original monthly price. Tool and plan cells span their applicable rows. The five-hour column uses neutral text: Capped for a fixed five-hour allowance and No cap when the current allowance rules do not have that window; this does not mean no other rate limits. Copilot says Dynamic because its current docs describe dynamic rate limits without a uniform five-hour window. New policies require research before rendering; missing evidence never defaults to No cap. No (ID) preserves the verification requirement. Codex Free says No (obs), meaning observed: a CodexBar developer observed one Free account with only a fixed 30-day window on 2026-10-25, not a vendor guarantee for every account. The observation date is retained rather than advanced by daily page checks. The allowance column puts each reset period on its own row, including numeric five-hour allowances and weekly, monthly or daily caps. Unknown quantities stay undisclosed; missing documentation never implies unlimited usage. Relative allowances name their reference tier. Provider units are not interchangeable; no efficiency score is shown. Hover for model and reset details. Pro 100, Pro 200 and Pro 500 keep their official tier names. Fixed quantities are undisclosed. Codex Free/Go indicate limited desktop rollout, not cloud access; Plus message counts are model-specific estimates.
 
 Daily deterministic parsers refresh official pricing, usage and exchange rates, and separately check the attributed primary account observation. Unsupported changes preserve the last verified timestamp and remain visibly unverified. Detailed evidence and original currencies are retained in data files.

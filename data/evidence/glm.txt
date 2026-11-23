@@ -40,7 +40,8 @@ Model credit usage = (Input tokens × Input multiplier + Cached Input tokens × 
 MCP tool credit usage = Number of calls × Output multiplier
 You can view the number of tokens consumed under each pricing type and the number of tool calls on the Charge Type page.
 Product Type Product Input Multiplier Cached Input Multiplier Output Multiplier
-Model GLM-5.3 6.9 1.7 24
+Model GLM-5.4 4.6 1.1 16
+GLM-5.3 6.9 1.7 24
 GLM-5.3-Flash
 (Including MCP for visual understanding) 2.3 0.56 8
 MCP Server Web Search — — 1.2

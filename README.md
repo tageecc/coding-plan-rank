@@ -1,4 +1,4 @@
-<a id="plans"></a>更新时间：2026-11-23 11:00（北京时间）
+<a id="plans"></a>更新时间：2026-11-23 11:12（北京时间）
 
 <table width="100%">
 <thead><tr><th width="1000" nowrap>工具</th><th width="1000" nowrap>套餐</th><th width="1000" nowrap align="right">月费/元</th><th width="1000" nowrap>5小时免限</th><th width="1000" nowrap>用量</th></tr></thead>

@@ -1,4 +1,4 @@
-<a id="plans"></a>Updated: 2026-11-23 11:00 (UTC+8)
+<a id="plans"></a>Updated: 2026-11-23 11:12 (UTC+8)
 
 <table width="100%">
 <thead><tr><th width="1000" nowrap>Tool</th><th width="1000" nowrap>Plan</th><th width="1000" nowrap align="right">CNY/mo</th><th width="1000" nowrap>No 5h cap</th><th width="1000" nowrap>Allowance</th></tr></thead>

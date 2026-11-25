@@ -1,10 +1,10 @@
 {
-  "attemptedAt": "2026-11-24T11:08:55.240Z",
+  "attemptedAt": "2026-11-25T09:57:04.227Z",
   "providers": [
     {
       "id": "aliyun-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
@@ -17,7 +17,7 @@
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
@@ -30,97 +30,97 @@
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "glm-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "kimi-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "mimo-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "tencent-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "tencent-hy",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     },
     {
       "id": "volc-cn",
       "status": "ok",
-      "checkedAt": "2026-11-24T11:08:55.240Z",
+      "checkedAt": "2026-11-25T09:57:04.227Z",
       "changed": false
     }
   ],
   "exchangeRate": {
     "base": "USD",
     "quote": "CNY",
-    "rate": 6.664686,
-    "rateDate": "2026-11-23",
-    "checkedAt": "2026-11-24T11:08:55.240Z",
+    "rate": 6.664508,
+    "rateDate": "2026-11-24",
+    "checkedAt": "2026-11-25T09:57:04.227Z",
     "referenceRates": {
-      "USD": 1.0939,
-      "CNY": 7.2905
+      "USD": 1.0963,
+      "CNY": 7.3063
     },
     "status": "ok",
     "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"

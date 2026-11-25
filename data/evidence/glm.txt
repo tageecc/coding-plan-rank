@@ -43,9 +43,10 @@ Product Type Product Input Multiplier Cached Input Multiplier Output Multiplier
 Model GLM-5.4 4.6 1.1 16
 GLM-5.3 6.9 1.7 24
 GLM-5.3-Flash
-(Including MCP for visual understanding) 2.3 0.56 8
+(Including MCP for visual understanding) 2.3 1.15 0.56 0.28 8 4
 MCP Server Web Search — — 1.2
 Web Reader — — 1.2
 Zread — — 1.2
 During off-peak hours, model usage is charged at 50% of the standard credit rate.
 Peak hours: Monday to Friday, 14:00–18:00 Singapore Standard Time (UTC+8).
+Limited-Time Offer: From November 24 to December 24, all usage of GLM-5.3-Flash will be charged at 50% of the original quota consumption rate, effectively doubling your available quota.

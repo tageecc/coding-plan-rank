@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:45:56.590Z",
+  "updatedAt": "2026-11-28T08:58:25.731Z",
   "providers": [
     {
       "id": "cursor",
@@ -23,7 +23,7 @@
           "title": "Cursor staff answer about hourly limits"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "57057fd1a5f4df1ccea303bcd7c9e593f3004a82047b67c2c79e262a1faff704",
       "plans": [
@@ -158,7 +158,7 @@
           "title": "Claude plans and pricing"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "2236d804654db13aca062fe3bfc227b763a6ab3902ca02302559edc1e22e2660",
       "plans": [
@@ -445,7 +445,7 @@
           "title": "Current dynamic rate limits and credit allowance"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "1c07f0c61eae45ab0c04bd74da31796190126ffbc4db8db77ab084390a739683",
       "plans": [
@@ -709,7 +709,7 @@
           "title": "Desktop Free daily/weekly quota and legacy migration"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "9a1c0416d76f20880db789f4712bbc353097ddcd0a1c6442faad0915fba1b7fc",
       "plans": [
@@ -814,7 +814,7 @@
           "title": "GLM Coding Plan credit allowances and reset rules"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "4c6c2b97c3eb518e6b12f34e8bc09e6a69d49f04b0640d7bb0ff6fe58bfac49c",
       "plans": [
@@ -907,7 +907,7 @@
           "title": "M Plan international tiers and usage windows"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "5ada53ee325429a23b2a1d4c42f0965a2557e70c86562f2a118346c7020601bb",
       "plans": [
@@ -1000,7 +1000,7 @@
           "title": "M Plan 中国版档位与用量规则"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "5557921ca38d9886d66013d3578a6f487a71c1032114a1895ff251dd5bb94d82",
       "plans": [
@@ -1099,7 +1099,7 @@
           "title": "Kimi Code new and legacy membership limits"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "e621f240eb8270f35810457efa7c7a305ce257dc387a0510895a350fb434f794",
       "plans": [
@@ -1219,7 +1219,7 @@
           "title": "FAQ: requests pause only when credits are exhausted"
         }
       ],
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "9297e76995424f00857e35c69a141a8c1b31709e9d0b045c2f2e16be4e94262e",
       "plans": [
@@ -1361,7 +1361,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "75236ad4a8fa6d9047d4e2bb46003e0ebac72453039efb2ed17fe7b8015a9076",
       "plans": [
@@ -1480,7 +1480,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "218f0c1e117b554004a134b514e85573cad4a2381026cccc2b6986ba68ad82e7",
       "plans": [
@@ -1627,8 +1627,8 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-26T09:40:30.827Z",
-      "status": "unavailable",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
+      "status": "ok",
       "sourceHash": "45de6d87582f3d3d61d83bc6f5d100b5a19833cb5ffa8ffe27e80cad934b7e4c",
       "plans": [
         {
@@ -1706,8 +1706,7 @@
             }
           ]
         }
-      ],
-      "error": "FetchError: Official source unavailable: bigmodel.cn (fetch failed)"
+      ]
     },
     {
       "id": "kimi-cn",
@@ -1726,7 +1725,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "db8fb122eaaf58659200c23170aea82e84456746fd81a1d1590c2856794b7c80",
       "plans": [
@@ -1849,7 +1848,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "86ca82eee4e4801c80178e3c93c7ac70a7282650ae800dac6b3ddee61cfc3cc7",
       "plans": [
@@ -1976,7 +1975,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "972d8843483e55f34201326131ad2dceb009e5c5e0bee8614deae8a1c799d613",
       "plans": [
@@ -2103,7 +2102,7 @@
         "zh": "中国大陆个人编程与 Agent 订阅。",
         "en": "Mainland China individual coding and agent subscription."
       },
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "status": "ok",
       "sourceHash": "8aa91071be470226fb28b6482082d9162d78f8f7f78f71dacfb864eb371c96cc",
       "plans": [
@@ -2213,12 +2212,12 @@
   "exchangeRate": {
     "base": "USD",
     "quote": "CNY",
-    "rate": 6.660228,
-    "rateDate": "2026-11-26",
-    "checkedAt": "2026-11-27T09:45:56.590Z",
+    "rate": 6.654376,
+    "rateDate": "2026-11-27",
+    "checkedAt": "2026-11-28T08:58:25.731Z",
     "referenceRates": {
-      "USD": 1.0975,
-      "CNY": 7.3096
+      "USD": 1.0957,
+      "CNY": 7.2912
     },
     "status": "ok",
     "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"

@@ -1,10 +1,10 @@
 {
-  "attemptedAt": "2026-11-27T09:45:56.590Z",
+  "attemptedAt": "2026-11-28T08:58:25.731Z",
   "providers": [
     {
       "id": "aliyun-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
@@ -17,7 +17,7 @@
     {
       "id": "claude",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
@@ -30,98 +30,97 @@
     {
       "id": "copilot",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "cursor",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "devin",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "glm",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "glm-cn",
-      "status": "unavailable",
-      "checkedAt": "2026-11-26T09:40:30.827Z",
-      "error": "FetchError: Official source unavailable: bigmodel.cn (fetch failed)",
+      "status": "ok",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "kimi",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "kimi-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "kiro",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "mimo-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "minimax",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "minimax-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "tencent-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "tencent-hy",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     },
     {
       "id": "volc-cn",
       "status": "ok",
-      "checkedAt": "2026-11-27T09:45:56.590Z",
+      "checkedAt": "2026-11-28T08:58:25.731Z",
       "changed": false
     }
   ],
   "exchangeRate": {
     "base": "USD",
     "quote": "CNY",
-    "rate": 6.660228,
-    "rateDate": "2026-11-26",
-    "checkedAt": "2026-11-27T09:45:56.590Z",
+    "rate": 6.654376,
+    "rateDate": "2026-11-27",
+    "checkedAt": "2026-11-28T08:58:25.731Z",
     "referenceRates": {
-      "USD": 1.0975,
-      "CNY": 7.3096
+      "USD": 1.0957,
+      "CNY": 7.2912
     },
     "status": "ok",
     "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
